@@ -30,10 +30,10 @@ const deleteSoftwareFromDB = async (softwareId: string) => {
 };
 
 //Update Software
-const updateSoftwareFromDB = async (productId: string, bookData: TSoftware) => {
+const updateSoftwareFromDB = async (productId: string, payload: TSoftware) => {
   const result = await SoftwareModel.findByIdAndUpdate(
     { _id: productId },
-    bookData,
+    payload,
     {
       new: true,
     }

@@ -12,42 +12,42 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SoftwareService = void 0;
+exports.ScheduleService = void 0;
 const AppError_1 = __importDefault(require("../../errors/AppError"));
 const course_model_1 = require("../Course/course.model");
-const software_model_1 = require("./software.model");
-//Insert Software
-const InsertSoftwareIntoDB = (softwareData) => __awaiter(void 0, void 0, void 0, function* () {
-    const { courseRef } = softwareData;
+const schedule_model_1 = require("./schedule.model");
+//Insert Schedule
+const InsertScheduleIntoDB = (scheduleData) => __awaiter(void 0, void 0, void 0, function* () {
+    const { courseRef } = scheduleData;
     console.log("Course ref: ", courseRef);
     const isCourseExists = yield course_model_1.CourseModel.findOne({ _id: courseRef });
     console.log("is Course exists: ", isCourseExists);
     if (!isCourseExists) {
         throw new AppError_1.default(404, "Reference Course is not Exists");
     }
-    const result = yield software_model_1.SoftwareModel.create(softwareData);
+    const result = yield schedule_model_1.ScheduleModel.create(scheduleData);
     return result;
 });
-///Get Needed Software according to course
-const getAllSoftwareFromDB = (courseRefId) => __awaiter(void 0, void 0, void 0, function* () {
-    const res = yield software_model_1.SoftwareModel.find({ courseRef: courseRefId });
+///Get Needed Schedule according to course
+const getAllScheduleFromDB = (courseRefId) => __awaiter(void 0, void 0, void 0, function* () {
+    const res = yield schedule_model_1.ScheduleModel.find({ courseRef: courseRefId });
     return res;
 });
-//delete Software
-const deleteSoftwareFromDB = (softwareId) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield software_model_1.SoftwareModel.findByIdAndDelete({ _id: softwareId });
+//delete Schedule
+const deleteScheduleFromDB = (scheduleId) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield schedule_model_1.ScheduleModel.findByIdAndDelete({ _id: scheduleId });
     return result;
 });
-//Update Software
-const updateSoftwareFromDB = (productId, payload) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield software_model_1.SoftwareModel.findByIdAndUpdate({ _id: productId }, payload, {
+//Update Schedule
+const updateScheduleFromDB = (scheduleId, payload) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield schedule_model_1.ScheduleModel.findByIdAndUpdate({ _id: scheduleId }, payload, {
         new: true,
     });
     return result;
 });
-exports.SoftwareService = {
-    InsertSoftwareIntoDB,
-    getAllSoftwareFromDB,
-    deleteSoftwareFromDB,
-    updateSoftwareFromDB,
+exports.ScheduleService = {
+    InsertScheduleIntoDB,
+    getAllScheduleFromDB,
+    deleteScheduleFromDB,
+    updateScheduleFromDB,
 };

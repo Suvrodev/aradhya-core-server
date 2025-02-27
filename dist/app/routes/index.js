@@ -10,6 +10,7 @@ const service_route_1 = require("../modules/Service/service.route");
 const course_route_1 = require("../modules/Course/course.route");
 const software_route_1 = require("../modules/Software/software.route");
 const courseCurriculum_route_1 = require("../modules/CourseCurriculum/courseCurriculum.route");
+const schedule_route_1 = require("../modules/Schedule/schedule.route");
 const router = express_1.default.Router();
 const moduleRoutes = [
     {
@@ -27,6 +28,10 @@ const moduleRoutes = [
     {
         path: "/curriculum",
         route: courseCurriculum_route_1.CurriculumRoutes,
+    },
+    {
+        path: "/schedule",
+        route: schedule_route_1.ScheduleRoutes,
     },
     {
         path: "/auth",
