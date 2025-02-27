@@ -73,7 +73,7 @@ const updateSchedule: RequestHandler = async (req, res, next) => {
 
     //Send Response
     res.status(200).json({
-      message: "Software updated successfully",
+      message: "Schedules updated successfully",
       status: true,
       data: result,
     });

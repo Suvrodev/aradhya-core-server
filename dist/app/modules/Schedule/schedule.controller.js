@@ -71,7 +71,7 @@ const updateSchedule = (req, res, next) => __awaiter(void 0, void 0, void 0, fun
         const result = yield schedule_service_1.ScheduleService.updateScheduleFromDB(scheduleId, updateScheduleData);
         //Send Response
         res.status(200).json({
-            message: "Software updated successfully",
+            message: "Schedules updated successfully",
             status: true,
             data: result,
         });
