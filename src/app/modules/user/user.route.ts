@@ -6,13 +6,13 @@ import validateRequest from "../../middleware/validateRequest";
 import auth from "../../middleware/auth";
 const router = express.Router();
 
-router.post(
-  "/register",
-  validateRequest(userValidations.userValidationSchema),
-  userControllers.registerUser
-);
+router.post("/register", userControllers.registerUser);
 //Get All User
-router.get("/allusers", auth("admin"), userControllers.getAllUsers);
+// router.get("/allusers", auth("admin"), userControllers.getAllUsers);
+router.get("/allusers", userControllers.getAllUsers);
+
+//Get Single User
+router.get("/allusers/:id", userControllers.getSpecificUsers);
 //delete user
 router.delete("/allusers/:id", auth("admin"), userControllers.deleteUser);
 //update user

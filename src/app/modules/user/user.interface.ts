@@ -3,6 +3,7 @@ import { Schema, model, connect } from "mongoose";
 export type TUser = {
   firstName: string;
   sureName: string;
+  phone: string;
   email: string;
   password: string;
   image?: string;

@@ -12,6 +12,11 @@ const serviceSchema = new mongoose_1.Schema({
         type: String,
         trim: true,
     },
+    serviceId: {
+        type: String,
+        required: [true, "Service id is required"],
+        trim: true,
+    },
 }, {
     timestamps: true,
 });

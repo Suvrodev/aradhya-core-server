@@ -1,5 +1,6 @@
 export type TCourse = {
   refService: string;
+  courseId: string;
   courseTitle: string;
   courseImage: string;
   courseType: "basic" | "pro";

@@ -27,7 +27,7 @@ const registerUser: RequestHandler = async (req, res, next) => {
 };
 
 //Get All User
-const getAllUsers = async (req: Request, res: Response) => {
+const getAllUsers: RequestHandler = async (req, res, next) => {
   try {
     const result = await userServices.getAllUser();
     res.status(201).json({
@@ -37,18 +37,28 @@ const getAllUsers = async (req: Request, res: Response) => {
       data: result,
     });
   } catch (error) {
-    res.status(400).json({
-      success: false,
-      message: "Failed to retrive students",
-      statusCode: 400,
-      error: error,
-      stack: "error stack",
+    next(error);
+  }
+};
+
+//Get Specific User
+const getSpecificUsers: RequestHandler = async (req, res, next) => {
+  try {
+    const id = req?.params?.id;
+    const result = await userServices.getSingleUserFromDB(id);
+    res.status(201).json({
+      success: true,
+      message: "Users Retrived successfully",
+      statusCode: 201,
+      data: result,
     });
+  } catch (error) {
+    next(error);
   }
 };
 
 //delete  User
-const deleteUser = async (req: Request, res: Response) => {
+const deleteUser: RequestHandler = async (req, res, next) => {
   try {
     const id = req?.params?.id;
     const result = await userServices.deleteUser(id);
@@ -59,18 +69,16 @@ const deleteUser = async (req: Request, res: Response) => {
       data: result,
     });
   } catch (error) {
-    res.status(400).json({
-      success: false,
-      message: "Failed to retrive students",
-      statusCode: 400,
-      error: error,
-      stack: "error stack",
-    });
+    next(error);
   }
 };
 
 //Update  User
-const updateUser = async (req: Request, res: Response) => {
+const updateUser: RequestHandler = async (
+  req: Request,
+  res: Response,
+  next
+) => {
   try {
     const id = req?.params?.id;
     const body = req?.body;
@@ -85,13 +93,7 @@ const updateUser = async (req: Request, res: Response) => {
       data: result,
     });
   } catch (error) {
-    res.status(400).json({
-      success: false,
-      message: "Failed to retrive students",
-      statusCode: 400,
-      error: error,
-      stack: "error stack",
-    });
+    next(error);
   }
 };
 
@@ -118,13 +120,6 @@ const updatePassword: RequestHandler = async (req, res, next) => {
       data: result,
     });
   } catch (error: any) {
-    // res.status(400).json({
-    //   success: false,
-    //   message: error.message || "Validation error",
-    //   statusCode: 400,
-    //   error: error,
-    //   stack: "error stack",
-    // });
     next(error);
   }
 };
@@ -135,4 +130,5 @@ export const userControllers = {
   deleteUser,
   updatePassword,
   updateUser,
+  getSpecificUsers,
 };

@@ -39,7 +39,7 @@ const registerUser = (req, res, next) => __awaiter(void 0, void 0, void 0, funct
     }
 });
 //Get All User
-const getAllUsers = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+const getAllUsers = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const result = yield user_service_1.userServices.getAllUser();
         res.status(201).json({
@@ -50,17 +50,28 @@ const getAllUsers = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
         });
     }
     catch (error) {
-        res.status(400).json({
-            success: false,
-            message: "Failed to retrive students",
-            statusCode: 400,
-            error: error,
-            stack: "error stack",
+        next(error);
+    }
+});
+//Get Specific User
+const getSpecificUsers = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    var _a;
+    try {
+        const id = (_a = req === null || req === void 0 ? void 0 : req.params) === null || _a === void 0 ? void 0 : _a.id;
+        const result = yield user_service_1.userServices.getSingleUserFromDB(id);
+        res.status(201).json({
+            success: true,
+            message: "Users Retrived successfully",
+            statusCode: 201,
+            data: result,
         });
+    }
+    catch (error) {
+        next(error);
     }
 });
 //delete  User
-const deleteUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+const deleteUser = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
     try {
         const id = (_a = req === null || req === void 0 ? void 0 : req.params) === null || _a === void 0 ? void 0 : _a.id;
@@ -73,17 +84,11 @@ const deleteUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         });
     }
     catch (error) {
-        res.status(400).json({
-            success: false,
-            message: "Failed to retrive students",
-            statusCode: 400,
-            error: error,
-            stack: "error stack",
-        });
+        next(error);
     }
 });
 //Update  User
-const updateUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+const updateUser = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
     try {
         const id = (_a = req === null || req === void 0 ? void 0 : req.params) === null || _a === void 0 ? void 0 : _a.id;
@@ -99,13 +104,7 @@ const updateUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         });
     }
     catch (error) {
-        res.status(400).json({
-            success: false,
-            message: "Failed to retrive students",
-            statusCode: 400,
-            error: error,
-            stack: "error stack",
-        });
+        next(error);
     }
 });
 ///Update Password
@@ -128,13 +127,6 @@ const updatePassword = (req, res, next) => __awaiter(void 0, void 0, void 0, fun
         });
     }
     catch (error) {
-        // res.status(400).json({
-        //   success: false,
-        //   message: error.message || "Validation error",
-        //   statusCode: 400,
-        //   error: error,
-        //   stack: "error stack",
-        // });
         next(error);
     }
 });
@@ -144,4 +136,5 @@ exports.userControllers = {
     deleteUser,
     updatePassword,
     updateUser,
+    getSpecificUsers,
 };

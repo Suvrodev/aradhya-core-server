@@ -17,8 +17,21 @@ const mongoose_1 = require("mongoose");
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const config_1 = __importDefault(require("../../config"));
 const userSchema = new mongoose_1.Schema({
-    firstName: { type: String, required: true, trim: true },
-    sureName: { type: String, required: true, trim: true },
+    firstName: {
+        type: String,
+        required: [true, "First name is required"],
+        trim: true,
+    },
+    sureName: {
+        type: String,
+        required: [true, "Sure name is required"],
+        trim: true,
+    },
+    phone: {
+        type: String,
+        required: [true, "Phone Number is required"],
+        trim: true,
+    },
     email: {
         type: String,
         required: [true, "Email is required"],

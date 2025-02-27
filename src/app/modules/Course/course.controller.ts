@@ -40,7 +40,7 @@ const getSpecificCourse: RequestHandler = async (req, res, next) => {
     const courseId = req?.params?.serviceId;
     console.log("service id: ", courseId);
     const result = await CourseServices.getSpecificCourseFromDB(courseId);
-    console.log("Result: ", result);
+    // console.log("Result: ", result);
     res.status(201).json({
       success: true,
       message: "Course Retrived successfully",

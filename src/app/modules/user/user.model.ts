@@ -6,8 +6,21 @@ import { NextFunction } from "express";
 
 const userSchema = new Schema<TUser>(
   {
-    firstName: { type: String, required: true, trim: true },
-    sureName: { type: String, required: true, trim: true },
+    firstName: {
+      type: String,
+      required: [true, "First name is required"],
+      trim: true,
+    },
+    sureName: {
+      type: String,
+      required: [true, "Sure name is required"],
+      trim: true,
+    },
+    phone: {
+      type: String,
+      required: [true, "Phone Number is required"],
+      trim: true,
+    },
     email: {
       type: String,
       required: [true, "Email is required"],

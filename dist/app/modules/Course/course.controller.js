@@ -50,7 +50,7 @@ const getSpecificCourse = (req, res, next) => __awaiter(void 0, void 0, void 0, 
         const courseId = (_a = req === null || req === void 0 ? void 0 : req.params) === null || _a === void 0 ? void 0 : _a.serviceId;
         console.log("service id: ", courseId);
         const result = yield course_service_1.CourseServices.getSpecificCourseFromDB(courseId);
-        console.log("Result: ", result);
+        // console.log("Result: ", result);
         res.status(201).json({
             success: true,
             message: "Course Retrived successfully",

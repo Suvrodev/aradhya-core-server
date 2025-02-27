@@ -7,6 +7,10 @@ const CourseSchema = new mongoose_1.Schema({
         type: String,
         required: [true, "Reference service is required"],
     },
+    courseId: {
+        type: String,
+        required: [true, "Course is required"],
+    },
     courseTitle: { type: String, required: [true, "Course title is required"] },
     courseImage: {
         type: String,

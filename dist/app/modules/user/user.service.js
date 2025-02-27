@@ -34,6 +34,11 @@ const getAllUser = () => __awaiter(void 0, void 0, void 0, function* () {
     const result = yield user_model_1.userModel.find();
     return result;
 });
+//Get single User from DB
+const getSingleUserFromDB = (id) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield user_model_1.userModel.findOne({ _id: id });
+    return result;
+});
 //deletel User from DB
 const deleteUser = (id) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -80,4 +85,5 @@ exports.userServices = {
     updatePasswordIntoDB,
     deleteUser,
     updatUserIntoDB,
+    getSingleUserFromDB,
 };

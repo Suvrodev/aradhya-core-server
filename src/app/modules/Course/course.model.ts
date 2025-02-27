@@ -7,6 +7,10 @@ const CourseSchema: Schema = new Schema<TCourse>(
       type: String,
       required: [true, "Reference service is required"],
     },
+    courseId: {
+      type: String,
+      required: [true, "Course is required"],
+    },
     courseTitle: { type: String, required: [true, "Course title is required"] },
     courseImage: {
       type: String,

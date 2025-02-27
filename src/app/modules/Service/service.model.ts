@@ -10,6 +10,12 @@ const serviceSchema = new Schema<TService>(
     },
     image: {
       type: String,
+
+      trim: true,
+    },
+    serviceId: {
+      type: String,
+      required: [true, "Service id is required"],
       trim: true,
     },
   },

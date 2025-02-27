@@ -28,6 +28,12 @@ const getAllUser = async () => {
   return result;
 };
 
+//Get single User from DB
+const getSingleUserFromDB = async (id: string) => {
+  const result = await userModel.findOne({ _id: id });
+  return result;
+};
+
 //deletel User from DB
 const deleteUser = async (id: string) => {
   try {
@@ -89,4 +95,5 @@ export const userServices = {
   updatePasswordIntoDB,
   deleteUser,
   updatUserIntoDB,
+  getSingleUserFromDB,
 };
