@@ -23,6 +23,8 @@ app.use(
 //application route
 // app.use("/api/products", BookRoutes);
 // app.use("/api", OrderRoutes);
+
+//Routes Configuration
 app.use("/api", router);
 
 const getAController = async (req: Request, res: Response) => {

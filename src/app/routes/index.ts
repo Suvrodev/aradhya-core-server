@@ -3,20 +3,20 @@ import { OrderRoutes } from "../modules/order/order.route";
 import { BookRoutes } from "../modules/book/book.route";
 import { userRoutes } from "../modules/user/user.route";
 import { AuthRoutes } from "../modules/Auth/auth.route";
-import { cartRoutes } from "../modules/Cart/cart.route";
 import { aboutRoutes } from "../modules/About/about.route";
-import { paymentRoutes } from "../modules/Payment/payment.route";
+import { ServiceRoute } from "../modules/Service/service.route";
+import { CourseRoute } from "../modules/Course/course.route";
 
 const router = express.Router();
 
 const moduleRoutes = [
   {
-    path: "/",
-    route: OrderRoutes,
+    path: "/service",
+    route: ServiceRoute,
   },
   {
-    path: "/products",
-    route: BookRoutes,
+    path: "/course",
+    route: CourseRoute,
   },
   {
     path: "/auth",
@@ -26,22 +26,6 @@ const moduleRoutes = [
     path: "/login",
     route: AuthRoutes,
   },
-  {
-    path: "/cart",
-    route: cartRoutes,
-  },
-  {
-    path: "/about",
-    route: aboutRoutes,
-  },
-  {
-    path: "/payment",
-    route: paymentRoutes,
-  },
-  // {
-  //   path: "/admin",
-  //   route: AdminRoutes,
-  // },
 ];
 moduleRoutes.forEach((route) => router.use(route.path, route.route));
 

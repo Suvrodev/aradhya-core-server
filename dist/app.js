@@ -30,6 +30,7 @@ app.use((0, cors_1.default)({
 //application route
 // app.use("/api/products", BookRoutes);
 // app.use("/api", OrderRoutes);
+//Routes Configuration
 app.use("/api", routes_1.default);
 const getAController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     res.send("Welcome to Aradhya core");
