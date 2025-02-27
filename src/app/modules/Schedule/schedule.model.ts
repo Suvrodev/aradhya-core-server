@@ -9,7 +9,11 @@ const scheduleSchema = new Schema<TSchedule>(
     },
     date: {
       type: String,
-      required: [true, "dateis required"],
+      required: [true, "date is required"],
+    },
+    time: {
+      type: String,
+      required: [true, "Time is required"],
     },
     data: {
       type: String,

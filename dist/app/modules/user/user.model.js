@@ -17,19 +17,27 @@ const mongoose_1 = require("mongoose");
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const config_1 = __importDefault(require("../../config"));
 const userSchema = new mongoose_1.Schema({
-    name: { type: String, required: true, trim: true },
+    firstName: { type: String, required: true, trim: true },
+    sureName: { type: String, required: true, trim: true },
     email: {
         type: String,
-        required: [true, "Email Must be required"],
-        // unique: [true, "This email already Exists"],
+        required: [true, "Email is required"],
+        unique: true, // Ensures uniqueness in the database
         lowercase: true,
         trim: true,
+        match: [
+            /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
+            "Please enter a valid email address",
+        ], // Validates proper email format
     },
     password: {
         type: String,
         required: [true, "Password Must be required"],
         maxlength: [10, "Password can not be more than 10 character"],
     },
+    image: { type: String },
+    gender: { type: String },
+    location: { type: String },
     role: {
         type: String,
         enum: {

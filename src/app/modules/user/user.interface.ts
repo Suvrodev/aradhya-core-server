@@ -1,11 +1,13 @@
 import { Schema, model, connect } from "mongoose";
 
 export type TUser = {
-  name: string;
+  firstName: string;
+  sureName: string;
   email: string;
   password: string;
+  image?: string;
+  gender: string;
+  location?: string;
   role: "admin" | "user";
   isBlocked: boolean;
-  //   createdAt: Date;
-  //   updatedAt: Date;
 };

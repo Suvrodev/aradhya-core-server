@@ -9,7 +9,11 @@ const scheduleSchema = new mongoose_1.Schema({
     },
     date: {
         type: String,
-        required: [true, "dateis required"],
+        required: [true, "date is required"],
+    },
+    time: {
+        type: String,
+        required: [true, "Time is required"],
     },
     data: {
         type: String,
