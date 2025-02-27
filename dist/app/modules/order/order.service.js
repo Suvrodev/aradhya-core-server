@@ -11,12 +11,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.OrderService = void 0;
 const order_model_1 = require("./order.model");
-const book_model_1 = require("../book/book.model");
+const software_model_1 = require("../Software/software.model");
 //create order
 const createOrderIntoDB = (orderData) => __awaiter(void 0, void 0, void 0, function* () {
     const { product, quantity } = orderData;
     // Fetch the book from the database
-    const book = yield book_model_1.Book.findById(product);
+    const book = yield software_model_1.Book.findById(product);
     if (!book) {
         throw new Error("Book not found");
     }

@@ -1,11 +1,10 @@
 import express from "express";
-import { OrderRoutes } from "../modules/order/order.route";
-import { BookRoutes } from "../modules/book/book.route";
 import { userRoutes } from "../modules/user/user.route";
 import { AuthRoutes } from "../modules/Auth/auth.route";
-import { aboutRoutes } from "../modules/About/about.route";
 import { ServiceRoute } from "../modules/Service/service.route";
 import { CourseRoute } from "../modules/Course/course.route";
+import { SoftwareRoutes } from "../modules/Software/software.route";
+import { CurriculumRoutes } from "../modules/CourseCurriculum/courseCurriculum.route";
 
 const router = express.Router();
 
@@ -17,6 +16,14 @@ const moduleRoutes = [
   {
     path: "/course",
     route: CourseRoute,
+  },
+  {
+    path: "/software",
+    route: SoftwareRoutes,
+  },
+  {
+    path: "/curriculum",
+    route: CurriculumRoutes,
   },
   {
     path: "/auth",

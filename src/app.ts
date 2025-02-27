@@ -1,7 +1,6 @@
 import express, { Application, Request, Response } from "express";
 import cors from "cors";
-import { BookRoutes } from "./app/modules/book/book.route";
-import { OrderRoutes } from "./app/modules/order/order.route";
+
 import router from "./app/routes";
 import globalErrorHandler from "./app/middleware/globalErrorHandler";
 import notFound from "./app/middleware/notFound";
