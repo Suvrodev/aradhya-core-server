@@ -4,7 +4,7 @@ import { TBatch } from "./batch.interface";
 // Create Mongoose Schema
 const batchSchema: Schema = new Schema<TBatch>(
   {
-    batch: {
+    batchId: {
       type: String,
       required: [true, "Batch identifier is required"],
       unique: true,

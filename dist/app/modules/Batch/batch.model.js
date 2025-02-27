@@ -4,7 +4,7 @@ exports.BatchModel = void 0;
 const mongoose_1 = require("mongoose");
 // Create Mongoose Schema
 const batchSchema = new mongoose_1.Schema({
-    batch: {
+    batchId: {
         type: String,
         required: [true, "Batch identifier is required"],
         unique: true,

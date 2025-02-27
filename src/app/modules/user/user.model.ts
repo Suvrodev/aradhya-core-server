@@ -6,6 +6,10 @@ import { NextFunction } from "express";
 
 const userSchema = new Schema<TUser>(
   {
+    userId: {
+      type: String,
+      trim: true,
+    },
     firstName: {
       type: String,
       required: [true, "First name is required"],

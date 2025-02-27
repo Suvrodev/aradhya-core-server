@@ -1,5 +1,5 @@
 export type TBatch = {
-  batch: string;
+  batchId: string;
   batchName: string;
   start?: string;
   end?: string;
