@@ -7,6 +7,7 @@ import { SoftwareRoutes } from "../modules/Software/software.route";
 import { CurriculumRoutes } from "../modules/CourseCurriculum/courseCurriculum.route";
 import { ScheduleRoutes } from "../modules/Schedule/schedule.route";
 import { BatchRoutes } from "../modules/Batch/batch.route";
+import { AssignStudentRoute } from "../modules/AssignStudent/assignStudent.route";
 
 const router = express.Router();
 
@@ -34,6 +35,10 @@ const moduleRoutes = [
   {
     path: "/batch",
     route: BatchRoutes,
+  },
+  {
+    path: "/assign",
+    route: AssignStudentRoute,
   },
   {
     path: "/auth",

@@ -6,8 +6,8 @@ const mongoose_1 = require("mongoose");
 const batchSchema = new mongoose_1.Schema({
     batchId: {
         type: String,
-        required: [true, "Batch identifier is required"],
-        unique: true,
+        required: [true, "Batch id is required"],
+        // unique: true,
         trim: true,
     },
     batchName: {

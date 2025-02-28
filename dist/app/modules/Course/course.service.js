@@ -27,6 +27,11 @@ const getSpecificCourseFromDB = (courseId) => __awaiter(void 0, void 0, void 0, 
     const result = yield course_model_1.CourseModel.findOne({ _id: courseId });
     return result;
 });
+// Get specific Servcie Course
+const getSpecificServiceCourseFromDB = (serviceId) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield course_model_1.CourseModel.find({ refService: serviceId });
+    return result;
+});
 //delete Course
 const deleteCourseFromDB = (courseId) => __awaiter(void 0, void 0, void 0, function* () {
     //main work
@@ -44,6 +49,7 @@ exports.CourseServices = {
     createCourseIntoDB,
     getAllCourseFromDB,
     getSpecificCourseFromDB,
+    getSpecificServiceCourseFromDB,
     deleteCourseFromDB,
     updateCourseFromDB,
 };

@@ -4,8 +4,13 @@ exports.CourseModel = void 0;
 const mongoose_1 = require("mongoose");
 const CourseSchema = new mongoose_1.Schema({
     refService: {
-        type: String,
+        type: mongoose_1.Schema.Types.ObjectId,
+        ref: "service",
         required: [true, "Reference service is required"],
+    },
+    refServiceId: {
+        type: String,
+        required: [true, "Reference service id is required"],
     },
     courseId: {
         type: String,

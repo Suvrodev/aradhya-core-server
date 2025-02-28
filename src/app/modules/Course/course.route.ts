@@ -5,8 +5,9 @@ const router = express.Router();
 
 router.post("/", CourseController.addCourse);
 router.get("/", CourseController.getAllCourse);
-router.get("/:serviceId", CourseController.getSpecificCourse);
-router.delete("/:serviceId", CourseController.deleteCourse);
-router.patch("/:serviceId", CourseController.updateCourse);
+router.get("/:courseId", CourseController.getSpecificCourse);
+router.get("/in-Service/:serviceId", CourseController.getSpecificServiceCourse);
+router.delete("/:courseId", CourseController.deleteCourse);
+router.patch("/:courseId", CourseController.updateCourse);
 
 export const CourseRoute = router;

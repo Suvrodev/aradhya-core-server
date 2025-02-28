@@ -4,8 +4,14 @@ import { TCourse } from "./course.interface";
 const CourseSchema: Schema = new Schema<TCourse>(
   {
     refService: {
-      type: String,
+      type: Schema.Types.ObjectId,
+      ref: "service",
       required: [true, "Reference service is required"],
+    },
+
+    refServiceId: {
+      type: String,
+      required: [true, "Reference service id is required"],
     },
     courseId: {
       type: String,

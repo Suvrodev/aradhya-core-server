@@ -3,6 +3,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ServiceModel = void 0;
 const mongoose_1 = require("mongoose");
 const serviceSchema = new mongoose_1.Schema({
+    serviceId: {
+        type: String,
+        required: [true, "Service id is required"],
+        unique: true,
+        trim: true,
+    },
     name: {
         type: String,
         required: [true, "Name is required"],
@@ -10,11 +16,6 @@ const serviceSchema = new mongoose_1.Schema({
     },
     image: {
         type: String,
-        trim: true,
-    },
-    serviceId: {
-        type: String,
-        required: [true, "Service id is required"],
         trim: true,
     },
 }, {

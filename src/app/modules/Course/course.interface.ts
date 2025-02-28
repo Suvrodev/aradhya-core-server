@@ -1,5 +1,8 @@
+import { Types } from "mongoose";
+
 export type TCourse = {
-  refService: string;
+  refService: Types.ObjectId;
+  refServiceId: string;
   courseId: string;
   courseTitle: string;
   courseImage: string;

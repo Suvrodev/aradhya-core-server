@@ -12,6 +12,7 @@ const software_route_1 = require("../modules/Software/software.route");
 const courseCurriculum_route_1 = require("../modules/CourseCurriculum/courseCurriculum.route");
 const schedule_route_1 = require("../modules/Schedule/schedule.route");
 const batch_route_1 = require("../modules/Batch/batch.route");
+const assignStudent_route_1 = require("../modules/AssignStudent/assignStudent.route");
 const router = express_1.default.Router();
 const moduleRoutes = [
     {
@@ -37,6 +38,10 @@ const moduleRoutes = [
     {
         path: "/batch",
         route: batch_route_1.BatchRoutes,
+    },
+    {
+        path: "/assign",
+        route: assignStudent_route_1.AssignStudentRoute,
     },
     {
         path: "/auth",

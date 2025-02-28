@@ -38,8 +38,28 @@ const getAllCourse: RequestHandler = async (req, res, next) => {
 const getSpecificCourse: RequestHandler = async (req, res, next) => {
   try {
     const courseId = req?.params?.serviceId;
-    console.log("service id: ", courseId);
+    console.log("Course id: ", courseId);
     const result = await CourseServices.getSpecificCourseFromDB(courseId);
+    // console.log("Result: ", result);
+    res.status(201).json({
+      success: true,
+      message: "Course Retrived successfully",
+      statusCode: 201,
+      data: result,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+//Get Specific Course
+const getSpecificServiceCourse: RequestHandler = async (req, res, next) => {
+  try {
+    const serviceId = req?.params?.serviceId;
+    console.log("service id: ", serviceId);
+    const result = await CourseServices.getSpecificServiceCourseFromDB(
+      serviceId
+    );
     // console.log("Result: ", result);
     res.status(201).json({
       success: true,
@@ -93,6 +113,7 @@ export const CourseController = {
   addCourse,
   getAllCourse,
   getSpecificCourse,
+  getSpecificServiceCourse,
   deleteCourse,
   updateCourse,
 };

@@ -20,6 +20,11 @@ const getSpecificCourseFromDB = async (courseId: string) => {
   const result = await CourseModel.findOne({ _id: courseId });
   return result;
 };
+// Get specific Servcie Course
+const getSpecificServiceCourseFromDB = async (serviceId: string) => {
+  const result = await CourseModel.find({ refService: serviceId });
+  return result;
+};
 
 //delete Course
 const deleteCourseFromDB = async (courseId: string) => {
@@ -44,6 +49,7 @@ export const CourseServices = {
   createCourseIntoDB,
   getAllCourseFromDB,
   getSpecificCourseFromDB,
+  getSpecificServiceCourseFromDB,
   deleteCourseFromDB,
   updateCourseFromDB,
 };

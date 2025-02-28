@@ -6,8 +6,8 @@ const batchSchema: Schema = new Schema<TBatch>(
   {
     batchId: {
       type: String,
-      required: [true, "Batch identifier is required"],
-      unique: true,
+      required: [true, "Batch id is required"],
+      // unique: true,
       trim: true,
     },
     batchName: {
