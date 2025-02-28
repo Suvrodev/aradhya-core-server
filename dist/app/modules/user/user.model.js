@@ -21,14 +21,9 @@ const userSchema = new mongoose_1.Schema({
         type: String,
         trim: true,
     },
-    firstName: {
+    name: {
         type: String,
-        required: [true, "First name is required"],
-        trim: true,
-    },
-    sureName: {
-        type: String,
-        required: [true, "Sure name is required"],
+        required: [true, "Name is required"],
         trim: true,
     },
     phone: {

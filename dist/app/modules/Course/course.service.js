@@ -29,7 +29,7 @@ const getSpecificCourseFromDB = (courseId) => __awaiter(void 0, void 0, void 0, 
 });
 // Get specific Servcie Course
 const getSpecificServiceCourseFromDB = (serviceId) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield course_model_1.CourseModel.find({ refService: serviceId });
+    const result = yield course_model_1.CourseModel.find({ refService: serviceId }).select("courseTitle courseImage");
     return result;
 });
 //delete Course

@@ -22,7 +22,9 @@ const getSpecificCourseFromDB = async (courseId: string) => {
 };
 // Get specific Servcie Course
 const getSpecificServiceCourseFromDB = async (serviceId: string) => {
-  const result = await CourseModel.find({ refService: serviceId });
+  const result = await CourseModel.find({ refService: serviceId }).select(
+    "courseTitle courseImage"
+  );
   return result;
 };
 

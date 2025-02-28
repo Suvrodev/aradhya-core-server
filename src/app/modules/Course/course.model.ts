@@ -71,10 +71,6 @@ const CourseSchema: Schema = new Schema<TCourse>(
       default: 0,
       min: [0, "Review score cannot be negative"],
     },
-    courseSchedule: {
-      type: String,
-      required: [true, "Course Schedule is required"],
-    },
     computerConfiguration: {
       type: String,
       required: [true, "Computer Configuration is required"],

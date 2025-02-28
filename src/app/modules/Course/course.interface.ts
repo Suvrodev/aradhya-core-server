@@ -19,7 +19,6 @@ export type TCourse = {
   courseDuration: string;
   courseProjectNumber: number;
   courseReview?: number;
-  courseSchedule: string;
   computerConfiguration: string;
   courseStatus: "onGoing" | "upComming";
   courseExists: boolean;
