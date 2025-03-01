@@ -19,7 +19,7 @@ const addServiceIntoDB = (payload) => __awaiter(void 0, void 0, void 0, function
 });
 //Get All Service from DB
 const getAllServiceFromDB = () => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield service_model_1.ServiceModel.find();
+    const result = yield service_model_1.ServiceModel.find().sort({ order: -1 });
     return result;
 });
 //Get All Service from DB
@@ -29,7 +29,7 @@ const getSpecificServiceFromDB = (serviceId) => __awaiter(void 0, void 0, void 0
 });
 //Delete Service from DB
 const deleteServiceFromDB = (serviceId) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield service_model_1.ServiceModel.findByIdAndDelete({ _id: serviceId });
+    const result = yield service_model_1.ServiceModel.deleteOne({ serviceId: serviceId });
     return result;
 });
 //Update Service

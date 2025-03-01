@@ -18,6 +18,11 @@ const serviceSchema = new mongoose_1.Schema({
         type: String,
         trim: true,
     },
+    order: {
+        type: Number,
+        trim: true,
+        required: [true, "Order Number is required"],
+    },
 }, {
     timestamps: true,
 });

@@ -10,7 +10,7 @@ const addServiceIntoDB = async (payload: TService) => {
 
 //Get All Service from DB
 const getAllServiceFromDB = async () => {
-  const result = await ServiceModel.find();
+  const result = await ServiceModel.find().sort({ order: -1 });
   return result;
 };
 
@@ -22,7 +22,7 @@ const getSpecificServiceFromDB = async (serviceId: string) => {
 
 //Delete Service from DB
 const deleteServiceFromDB = async (serviceId: string) => {
-  const result = await ServiceModel.findByIdAndDelete({ _id: serviceId });
+  const result = await ServiceModel.deleteOne({ serviceId: serviceId });
   return result;
 };
 

@@ -18,6 +18,11 @@ const serviceSchema = new Schema<TService>(
       type: String,
       trim: true,
     },
+    order: {
+      type: Number,
+      trim: true,
+      required: [true, "Order Number is required"],
+    },
   },
   {
     timestamps: true,

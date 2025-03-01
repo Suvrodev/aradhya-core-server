@@ -23,7 +23,11 @@ app.use(express_1.default.json());
 //Cors integration
 // app.use(cors({ origin: ["*"], credentials: true }));
 app.use((0, cors_1.default)({
-    origin: ["http://localhost:5173", "https://aradhyacore.netlify.app"],
+    origin: [
+        "http://localhost:5173",
+        "https://aradhyacore.netlify.app",
+        "https://aradhyacore.com",
+    ],
     credentials: true,
 }));
 // app.use(cors({ origin: "*", credentials: true }));
