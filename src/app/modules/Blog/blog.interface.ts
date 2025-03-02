@@ -3,5 +3,5 @@ export type TBlog = {
   content: string;
   image: string;
   category: string;
-  writter: string;
+  writer: string;
 };

@@ -35,7 +35,7 @@ const getAllBlog = (req, res, next) => __awaiter(void 0, void 0, void 0, functio
         // Send response with the results
         res.status(200).json({
             message: "Blog retrieved successfully",
-            status: true,
+            success: true,
             data: result,
         });
     }
@@ -52,7 +52,7 @@ const getSingleBlog = (req, res, next) => __awaiter(void 0, void 0, void 0, func
         // Send response with the results
         res.status(200).json({
             message: "Blog retrieved successfully",
-            status: true,
+            success: true,
             data: result,
         });
     }
@@ -68,7 +68,7 @@ const deleteBlog = (req, res, next) => __awaiter(void 0, void 0, void 0, functio
         //Send Response
         res.status(200).json({
             message: "Blog deleted successfully ",
-            status: true,
+            success: true,
             data: result,
         });
     }
@@ -84,8 +84,8 @@ const updateBlog = (req, res, next) => __awaiter(void 0, void 0, void 0, functio
         const result = yield blog_service_1.BlogServices.updateBlogFromDB(blogId, blogBody);
         //Send Response
         res.status(200).json({
-            message: "Blog updated successfully From Cart",
-            status: true,
+            message: "Blog updated successfully",
+            success: true,
             data: result,
         });
     }

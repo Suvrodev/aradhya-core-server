@@ -13,9 +13,8 @@ exports.BlogServices = void 0;
 const blog_model_1 = require("./blog.model");
 //create Blog By Admin
 const createBlogIntoDB = (blogData) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log("In blog service: ----------------------------", blogData);
+    console.log("In blog service: ------------", blogData);
     const result = yield blog_model_1.BlogModel.create(blogData);
-    console.log("Now Result##########################", result);
     return result;
 });
 ///Get All Blog
@@ -41,6 +40,8 @@ const deleteBlogFromDB = (blogId) => __awaiter(void 0, void 0, void 0, function*
 });
 //Update book
 const updateBlogFromDB = (blogId, blogData) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log("blog id:", blogId);
+    console.log("Update Data: ", blogData);
     const result = yield blog_model_1.BlogModel.findByIdAndUpdate({ _id: blogId }, blogData, {
         new: true,
     });

@@ -6,7 +6,7 @@ const blogSchema = new Schema<TBlog>(
     title: { type: String, required: [true, "Title is required"] },
     content: { type: String, required: [true, "Content is required"] },
     image: { type: String, required: [true, "Image is required"] },
-    writter: { type: String, required: [true, "Writter Name is Required"] },
+    writer: { type: String, required: [true, "Writer Name is Required"] },
     category: {
       type: String,
       required: [true, "Category is required"],

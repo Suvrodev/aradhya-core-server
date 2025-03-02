@@ -30,7 +30,7 @@ const getAllBlog: RequestHandler = async (req, res, next) => {
     // Send response with the results
     res.status(200).json({
       message: "Blog retrieved successfully",
-      status: true,
+      success: true,
       data: result,
     });
   } catch (error: any) {
@@ -47,7 +47,7 @@ const getSingleBlog: RequestHandler = async (req, res, next) => {
     // Send response with the results
     res.status(200).json({
       message: "Blog retrieved successfully",
-      status: true,
+      success: true,
       data: result,
     });
   } catch (error: any) {
@@ -64,7 +64,7 @@ const deleteBlog: RequestHandler = async (req, res, next) => {
     //Send Response
     res.status(200).json({
       message: "Blog deleted successfully ",
-      status: true,
+      success: true,
       data: result,
     });
   } catch (error: any) {
@@ -81,8 +81,8 @@ const updateBlog: RequestHandler = async (req, res, next) => {
 
     //Send Response
     res.status(200).json({
-      message: "Blog updated successfully From Cart",
-      status: true,
+      message: "Blog updated successfully",
+      success: true,
       data: result,
     });
   } catch (error: any) {

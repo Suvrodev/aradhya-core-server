@@ -6,10 +6,9 @@ import { BlogModel } from "./blog.model";
 
 //create Blog By Admin
 const createBlogIntoDB = async (blogData: TBlog) => {
-  console.log("In blog service: ----------------------------", blogData);
+  console.log("In blog service: ------------", blogData);
   const result = await BlogModel.create(blogData);
 
-  console.log("Now Result##########################", result);
   return result;
 };
 
@@ -38,6 +37,8 @@ const deleteBlogFromDB = async (blogId: string) => {
 
 //Update book
 const updateBlogFromDB = async (blogId: string, blogData: TBlog) => {
+  console.log("blog id:", blogId);
+  console.log("Update Data: ", blogData);
   const result = await BlogModel.findByIdAndUpdate({ _id: blogId }, blogData, {
     new: true,
   });
