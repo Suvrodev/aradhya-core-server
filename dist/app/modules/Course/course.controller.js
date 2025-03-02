@@ -103,9 +103,9 @@ const deleteCourse = (req, res, next) => __awaiter(void 0, void 0, void 0, funct
 //Update Course
 const updateCourse = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const serviceId = req.params.serviceId;
-        const service = req.body;
-        const result = yield course_service_1.CourseServices.updateCourseFromDB(serviceId, service);
+        const courseId = req.params.courseId;
+        const course = req.body;
+        const result = yield course_service_1.CourseServices.updateCourseFromDB(courseId, course);
         //Send Response
         res.status(200).json({
             message: "Course updated successfully",

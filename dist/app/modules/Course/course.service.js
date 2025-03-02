@@ -24,7 +24,7 @@ const getAllCourseFromDB = () => __awaiter(void 0, void 0, void 0, function* () 
 });
 // Get specific Course
 const getSpecificCourseFromDB = (courseId) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield course_model_1.CourseModel.findOne({ _id: courseId });
+    const result = yield course_model_1.CourseModel.findOne({ courseId: courseId });
     return result;
 });
 // Get specific Servcie Course
@@ -41,7 +41,9 @@ const deleteCourseFromDB = (courseId) => __awaiter(void 0, void 0, void 0, funct
 });
 //update Course
 const updateCourseFromDB = (courseId, payload) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield course_model_1.CourseModel.findByIdAndUpdate({ _id: courseId }, payload, {
+    console.log("Course id::::::", courseId);
+    console.log("Update Course Body: ", payload);
+    const result = yield course_model_1.CourseModel.findOneAndUpdate({ courseId: courseId }, payload, {
         new: true,
     });
     return result;

@@ -19,7 +19,7 @@ const getAllCourseFromDB = async () => {
 
 // Get specific Course
 const getSpecificCourseFromDB = async (courseId: string) => {
-  const result = await CourseModel.findOne({ _id: courseId });
+  const result = await CourseModel.findOne({ courseId: courseId });
   return result;
 };
 // Get specific Servcie Course
@@ -40,8 +40,10 @@ const deleteCourseFromDB = async (courseId: string) => {
 
 //update Course
 const updateCourseFromDB = async (courseId: string, payload: TCourse) => {
-  const result = await CourseModel.findByIdAndUpdate(
-    { _id: courseId },
+  console.log("Course id::::::", courseId);
+  console.log("Update Course Body: ", payload);
+  const result = await CourseModel.findOneAndUpdate(
+    { courseId: courseId },
     payload,
     {
       new: true,

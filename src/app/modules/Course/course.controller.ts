@@ -93,10 +93,10 @@ const deleteCourse: RequestHandler = async (req, res, next) => {
 //Update Course
 const updateCourse: RequestHandler = async (req, res, next) => {
   try {
-    const serviceId = req.params.serviceId;
-    const service = req.body;
+    const courseId = req.params.courseId;
+    const course = req.body;
 
-    const result = await CourseServices.updateCourseFromDB(serviceId, service);
+    const result = await CourseServices.updateCourseFromDB(courseId, course);
 
     //Send Response
     res.status(200).json({
