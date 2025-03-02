@@ -19,7 +19,7 @@ const addServiceIntoDB = (payload) => __awaiter(void 0, void 0, void 0, function
 });
 //Get All Service from DB
 const getAllServiceFromDB = () => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield service_model_1.ServiceModel.find().sort({ order: -1 });
+    const result = yield service_model_1.ServiceModel.find().sort({ order: 1 });
     return result;
 });
 //Get All Service from DB

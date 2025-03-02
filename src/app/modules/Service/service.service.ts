@@ -10,7 +10,7 @@ const addServiceIntoDB = async (payload: TService) => {
 
 //Get All Service from DB
 const getAllServiceFromDB = async () => {
-  const result = await ServiceModel.find().sort({ order: -1 });
+  const result = await ServiceModel.find().sort({ order: 1 });
   return result;
 };
 

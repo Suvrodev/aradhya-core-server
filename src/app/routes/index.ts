@@ -8,6 +8,7 @@ import { CurriculumRoutes } from "../modules/CourseCurriculum/courseCurriculum.r
 import { ScheduleRoutes } from "../modules/Schedule/schedule.route";
 import { BatchRoutes } from "../modules/Batch/batch.route";
 import { AssignStudentRoute } from "../modules/AssignStudent/assignStudent.route";
+import { blogRoutes } from "../modules/Blog/blog.route";
 
 const router = express.Router();
 
@@ -39,6 +40,10 @@ const moduleRoutes = [
   {
     path: "/assign",
     route: AssignStudentRoute,
+  },
+  {
+    path: "/blog",
+    route: blogRoutes,
   },
   {
     path: "/auth",

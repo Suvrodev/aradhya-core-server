@@ -13,6 +13,7 @@ const courseCurriculum_route_1 = require("../modules/CourseCurriculum/courseCurr
 const schedule_route_1 = require("../modules/Schedule/schedule.route");
 const batch_route_1 = require("../modules/Batch/batch.route");
 const assignStudent_route_1 = require("../modules/AssignStudent/assignStudent.route");
+const blog_route_1 = require("../modules/Blog/blog.route");
 const router = express_1.default.Router();
 const moduleRoutes = [
     {
@@ -42,6 +43,10 @@ const moduleRoutes = [
     {
         path: "/assign",
         route: assignStudent_route_1.AssignStudentRoute,
+    },
+    {
+        path: "/blog",
+        route: blog_route_1.blogRoutes,
     },
     {
         path: "/auth",

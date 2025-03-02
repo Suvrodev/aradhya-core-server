@@ -21,6 +21,7 @@ const serviceSchema = new Schema<TService>(
     order: {
       type: Number,
       trim: true,
+      unique: true,
       required: [true, "Order Number is required"],
     },
   },
