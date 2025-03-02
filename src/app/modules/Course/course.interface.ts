@@ -6,7 +6,6 @@ export type TCourse = {
   courseId: string;
   courseTitle: string;
   courseImage: string;
-  courseType: "basic" | "pro";
   courseDescription: string;
   coursePrice: number;
   courseDiscount?: number;

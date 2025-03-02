@@ -22,14 +22,7 @@ const CourseSchema: Schema = new Schema<TCourse>(
       type: String,
       required: [true, "Course image URL is required"],
     },
-    courseType: {
-      type: String,
-      enum: {
-        values: ["basic", "pro"],
-        message: "Course type must be either 'basic' or 'pro'",
-      },
-      required: [true, "Course type is required"],
-    },
+
     courseDescription: {
       type: String,
       required: [true, "Course description is required"],

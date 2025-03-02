@@ -19,7 +19,7 @@ const createCourseIntoDB = (courseData) => __awaiter(void 0, void 0, void 0, fun
 });
 // Get all Course
 const getAllCourseFromDB = () => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield course_model_1.CourseModel.find();
+    const result = yield course_model_1.CourseModel.find().select("_id courseId courseTitle courseImage courseClassNumber courseProjectNumber");
     return result;
 });
 // Get specific Course
@@ -35,7 +35,8 @@ const getSpecificServiceCourseFromDB = (serviceId) => __awaiter(void 0, void 0, 
 //delete Course
 const deleteCourseFromDB = (courseId) => __awaiter(void 0, void 0, void 0, function* () {
     //main work
-    const result = yield course_model_1.CourseModel.findByIdAndDelete({ _id: courseId });
+    console.log("course id******", courseId);
+    const result = yield course_model_1.CourseModel.deleteOne({ courseId: courseId });
     return result;
 });
 //update Course

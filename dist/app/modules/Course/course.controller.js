@@ -47,7 +47,7 @@ const getAllCourse = (req, res, next) => __awaiter(void 0, void 0, void 0, funct
 const getSpecificCourse = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
     try {
-        const courseId = (_a = req === null || req === void 0 ? void 0 : req.params) === null || _a === void 0 ? void 0 : _a.serviceId;
+        const courseId = (_a = req === null || req === void 0 ? void 0 : req.params) === null || _a === void 0 ? void 0 : _a.courseId;
         console.log("Course id: ", courseId);
         const result = yield course_service_1.CourseServices.getSpecificCourseFromDB(courseId);
         // console.log("Result: ", result);
@@ -67,7 +67,7 @@ const getSpecificServiceCourse = (req, res, next) => __awaiter(void 0, void 0, v
     var _a;
     try {
         const serviceId = (_a = req === null || req === void 0 ? void 0 : req.params) === null || _a === void 0 ? void 0 : _a.serviceId;
-        console.log("service id: ", serviceId);
+        console.log("serviceId: ", serviceId);
         const result = yield course_service_1.CourseServices.getSpecificServiceCourseFromDB(serviceId);
         // console.log("Result: ", result);
         res.status(201).json({
@@ -85,8 +85,8 @@ const getSpecificServiceCourse = (req, res, next) => __awaiter(void 0, void 0, v
 const deleteCourse = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
     try {
-        const courseId = (_a = req === null || req === void 0 ? void 0 : req.params) === null || _a === void 0 ? void 0 : _a.serviceId;
-        console.log("course id: ", courseId);
+        const courseId = (_a = req === null || req === void 0 ? void 0 : req.params) === null || _a === void 0 ? void 0 : _a.courseId;
+        console.log("course id:=========== ", courseId);
         const result = yield course_service_1.CourseServices.deleteCourseFromDB(courseId);
         console.log("Result: ", result);
         res.status(201).json({

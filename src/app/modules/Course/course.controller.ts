@@ -37,7 +37,7 @@ const getAllCourse: RequestHandler = async (req, res, next) => {
 //Get Specific Course
 const getSpecificCourse: RequestHandler = async (req, res, next) => {
   try {
-    const courseId = req?.params?.serviceId;
+    const courseId = req?.params?.courseId;
     console.log("Course id: ", courseId);
     const result = await CourseServices.getSpecificCourseFromDB(courseId);
     // console.log("Result: ", result);
@@ -56,7 +56,7 @@ const getSpecificCourse: RequestHandler = async (req, res, next) => {
 const getSpecificServiceCourse: RequestHandler = async (req, res, next) => {
   try {
     const serviceId = req?.params?.serviceId;
-    console.log("service id: ", serviceId);
+    console.log("serviceId: ", serviceId);
     const result = await CourseServices.getSpecificServiceCourseFromDB(
       serviceId
     );
@@ -75,8 +75,8 @@ const getSpecificServiceCourse: RequestHandler = async (req, res, next) => {
 //Delete Service
 const deleteCourse: RequestHandler = async (req, res, next) => {
   try {
-    const courseId = req?.params?.serviceId;
-    console.log("course id: ", courseId);
+    const courseId = req?.params?.courseId;
+    console.log("course id:=========== ", courseId);
     const result = await CourseServices.deleteCourseFromDB(courseId);
     console.log("Result: ", result);
     res.status(201).json({

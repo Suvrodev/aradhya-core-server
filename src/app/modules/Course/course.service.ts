@@ -11,7 +11,9 @@ const createCourseIntoDB = async (courseData: TCourse) => {
 
 // Get all Course
 const getAllCourseFromDB = async () => {
-  const result = await CourseModel.find();
+  const result = await CourseModel.find().select(
+    "_id courseId courseTitle courseImage courseClassNumber courseProjectNumber"
+  );
   return result;
 };
 
@@ -31,7 +33,8 @@ const getSpecificServiceCourseFromDB = async (serviceId: string) => {
 //delete Course
 const deleteCourseFromDB = async (courseId: string) => {
   //main work
-  const result = await CourseModel.findByIdAndDelete({ _id: courseId });
+  console.log("course id******", courseId);
+  const result = await CourseModel.deleteOne({ courseId: courseId });
   return result;
 };
 
