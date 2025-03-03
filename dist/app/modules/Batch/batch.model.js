@@ -15,8 +15,17 @@ const batchSchema = new mongoose_1.Schema({
         required: [true, "Batch name is required"],
         trim: true,
     },
+    batchStatus: {
+        type: String,
+        required: [true, "Batch status is required"],
+        enum: {
+            values: ["onGoing", "upComing", "end"],
+            message: "Batch status must be one of: onGoing, upComing, ended",
+        },
+    },
     start: {
         type: String,
+        required: [true, "Start date is required"],
         validate: {
             validator: function (value) {
                 return !value || /^\d{4}-\d{2}-\d{2}$/.test(value);

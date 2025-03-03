@@ -17,7 +17,7 @@ const getAllBatchFromDB = async () => {
 
 //delete btch
 const deleteBatchFromDB = async (batchId: string) => {
-  const result = await BatchModel.findByIdAndDelete({ _id: batchId });
+  const result = await BatchModel.deleteOne({ batchId: batchId });
   return result;
 };
 

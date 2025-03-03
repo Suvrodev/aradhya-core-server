@@ -23,7 +23,7 @@ const getAllBatchFromDB = () => __awaiter(void 0, void 0, void 0, function* () {
 });
 //delete btch
 const deleteBatchFromDB = (batchId) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield batch_model_1.BatchModel.findByIdAndDelete({ _id: batchId });
+    const result = yield batch_model_1.BatchModel.deleteOne({ batchId: batchId });
     return result;
 });
 //Update batch
