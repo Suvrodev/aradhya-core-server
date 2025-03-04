@@ -20,6 +20,14 @@ const registerUser = (req, res, next) => __awaiter(void 0, void 0, void 0, funct
     try {
         const userData = req.body;
         const result = yield user_service_1.userServices.registerUserIntoDB(userData);
+        if (!result) {
+            res.status(400).json({
+                success: true,
+                message: "Unscuccessfull Register",
+                statusCode: 400,
+                data: result,
+            });
+        }
         res.status(201).json({
             success: true,
             message: "User registered successfully",
@@ -28,13 +36,6 @@ const registerUser = (req, res, next) => __awaiter(void 0, void 0, void 0, funct
         });
     }
     catch (error) {
-        // res.status(400).json({
-        //   success: false,
-        //   message: error.message || "Validation error",
-        //   statusCode: 400,
-        //   error: error,
-        //   stack: "error stack",
-        // });
         next(error);
     }
 });

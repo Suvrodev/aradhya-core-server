@@ -3,6 +3,7 @@ import AppError from "../../errors/AppError";
 import { TUser } from "./user.interface";
 import { userModel } from "./user.model";
 import config from "../../config";
+import { generateUserId } from "./generateUserId";
 
 interface IPassword {
   oldPassword: string;
@@ -14,10 +15,17 @@ const registerUserIntoDB = async (payload: TUser) => {
   console.log("User Payload: ", payload);
   const email = payload?.email;
   const res = await userModel.findOne({ email: email });
-  console.log(" res: ", res);
+  console.log(" Email Exists: ", res);
   if (res) {
     throw new AppError(409, "This Email Allready Exists");
   }
+
+  const studentId = await generateUserId();
+  console.log("Generated id : ", studentId);
+  if (!studentId) {
+    throw new AppError(400, "Bad request for user id");
+  }
+  payload.studentId = studentId;
   const result = await userModel.create(payload);
   return result;
 };

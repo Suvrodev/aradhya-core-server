@@ -8,6 +8,14 @@ const registerUser: RequestHandler = async (req, res, next) => {
     const userData = req.body;
     const result = await userServices.registerUserIntoDB(userData);
 
+    if (!result) {
+      res.status(400).json({
+        success: true,
+        message: "Unscuccessfull Register",
+        statusCode: 400,
+        data: result,
+      });
+    }
     res.status(201).json({
       success: true,
       message: "User registered successfully",
@@ -15,13 +23,6 @@ const registerUser: RequestHandler = async (req, res, next) => {
       data: result,
     });
   } catch (error: any) {
-    // res.status(400).json({
-    //   success: false,
-    //   message: error.message || "Validation error",
-    //   statusCode: 400,
-    //   error: error,
-    //   stack: "error stack",
-    // });
     next(error);
   }
 };
@@ -62,6 +63,7 @@ const deleteUser: RequestHandler = async (req, res, next) => {
   try {
     const id = req?.params?.id;
     const result = await userServices.deleteUser(id);
+
     res.status(201).json({
       success: true,
       message: "Users Deleted successfully",

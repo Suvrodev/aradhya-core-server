@@ -20,11 +20,16 @@ const loginUser = async (payload: TLoginUser) => {
   }
 
   //Check Password is right or wrong
-  const isPasswordMatched = await bcrypt.compare(
-    payload?.password,
-    isUserExists?.password
-  );
-  if (!isPasswordMatched) {
+  // const isPasswordMatched = await bcrypt.compare(
+  //   payload?.password,
+  //   isUserExists?.password
+  // );
+  // if (!isPasswordMatched) {
+  //   throw new AppError(401, "Password is Incorrect");
+  // }
+
+  ///Check Password without bycript (For Don't set forget Password)
+  if (payload?.password !== isUserExists?.password) {
     throw new AppError(401, "Password is Incorrect");
   }
 

@@ -17,15 +17,22 @@ const bcrypt_1 = __importDefault(require("bcrypt"));
 const AppError_1 = __importDefault(require("../../errors/AppError"));
 const user_model_1 = require("./user.model");
 const config_1 = __importDefault(require("../../config"));
+const generateUserId_1 = require("./generateUserId");
 ///Create User into db
 const registerUserIntoDB = (payload) => __awaiter(void 0, void 0, void 0, function* () {
     console.log("User Payload: ", payload);
     const email = payload === null || payload === void 0 ? void 0 : payload.email;
     const res = yield user_model_1.userModel.findOne({ email: email });
-    console.log(" res: ", res);
+    console.log(" Email Exists: ", res);
     if (res) {
         throw new AppError_1.default(409, "This Email Allready Exists");
     }
+    const studentId = yield (0, generateUserId_1.generateUserId)();
+    console.log("Generated id : ", studentId);
+    if (!studentId) {
+        throw new AppError_1.default(400, "Bad request for user id");
+    }
+    payload.studentId = studentId;
     const result = yield user_model_1.userModel.create(payload);
     return result;
 });

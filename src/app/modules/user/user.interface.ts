@@ -1,7 +1,7 @@
 import { Schema, model, connect } from "mongoose";
 
 export type TUser = {
-  userId: string;
+  studentId: string;
   name: string;
   phone: string;
   email: string;

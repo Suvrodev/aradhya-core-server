@@ -6,7 +6,7 @@ import { NextFunction } from "express";
 
 const userSchema = new Schema<TUser>(
   {
-    userId: {
+    studentId: {
       type: String,
       trim: true,
     },
@@ -69,14 +69,14 @@ const userSchema = new Schema<TUser>(
 );
 
 //Pre Document middleware for Bycript Password
-userSchema.pre("save", async function (next) {
-  const user = this;
-  user.password = await bcrypt.hash(
-    user.password,
-    Number(config.bcrypt_salt_rounds)
-  );
-  next();
-  // console.log("Now This: ", this);
-});
+// userSchema.pre("save", async function (next) {
+//   const user = this;
+//   user.password = await bcrypt.hash(
+//     user.password,
+//     Number(config.bcrypt_salt_rounds)
+//   );
+//   next();
+//   // console.log("Now This: ", this);
+// });
 
 export const userModel = model<TUser>("users", userSchema);

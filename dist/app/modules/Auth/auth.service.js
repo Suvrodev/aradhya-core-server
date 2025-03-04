@@ -16,7 +16,6 @@ exports.AuthServices = void 0;
 const config_1 = __importDefault(require("../../config"));
 const AppError_1 = __importDefault(require("../../errors/AppError"));
 const user_model_1 = require("../user/user.model");
-const bcrypt_1 = __importDefault(require("bcrypt"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const loginUser = (payload) => __awaiter(void 0, void 0, void 0, function* () {
     //   console.log("Payloadddd: ", payload);
@@ -31,8 +30,15 @@ const loginUser = (payload) => __awaiter(void 0, void 0, void 0, function* () {
         throw new AppError_1.default(403, "User is Blocked");
     }
     //Check Password is right or wrong
-    const isPasswordMatched = yield bcrypt_1.default.compare(payload === null || payload === void 0 ? void 0 : payload.password, isUserExists === null || isUserExists === void 0 ? void 0 : isUserExists.password);
-    if (!isPasswordMatched) {
+    // const isPasswordMatched = await bcrypt.compare(
+    //   payload?.password,
+    //   isUserExists?.password
+    // );
+    // if (!isPasswordMatched) {
+    //   throw new AppError(401, "Password is Incorrect");
+    // }
+    ///Check Password without bycript (For Don't set forget Password)
+    if ((payload === null || payload === void 0 ? void 0 : payload.password) !== (isUserExists === null || isUserExists === void 0 ? void 0 : isUserExists.password)) {
         throw new AppError_1.default(401, "Password is Incorrect");
     }
     // console.log("is User exists----: ", isUserExists);
