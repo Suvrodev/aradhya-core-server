@@ -52,7 +52,7 @@ const getSpecificCourse: RequestHandler = async (req, res, next) => {
   }
 };
 
-//Get Specific Course
+//Get Specific Service Course
 const getSpecificServiceCourse: RequestHandler = async (req, res, next) => {
   try {
     const serviceId = req?.params?.serviceId;

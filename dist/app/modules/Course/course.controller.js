@@ -62,7 +62,7 @@ const getSpecificCourse = (req, res, next) => __awaiter(void 0, void 0, void 0, 
         next(error);
     }
 });
-//Get Specific Course
+//Get Specific Service Course
 const getSpecificServiceCourse = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
     try {

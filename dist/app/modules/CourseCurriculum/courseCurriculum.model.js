@@ -4,9 +4,10 @@ exports.CurriculumModel = void 0;
 const mongoose_1 = require("mongoose");
 const CurriculumSchema = new mongoose_1.Schema({
     title: { type: String, required: [true, "Curriculum title is required"] },
-    courseRef: {
+    courseId: {
         type: String,
-        required: [true, "Course reference is required"],
+        required: [true, "Course ref id is required"],
     },
+    order: { type: Number, required: [true, "Curriculum order is required"] },
 }, { timestamps: true });
 exports.CurriculumModel = (0, mongoose_1.model)("Curriculum", CurriculumSchema);

@@ -5,9 +5,12 @@ import { CurriculumModel } from "./courseCurriculum.model";
 
 // Create Curriculum
 const createCurriculum = async (curriculumData: TCurriculum) => {
-  const { courseRef } = curriculumData;
-  console.log("Course ref--: ", courseRef);
-  const isCourseExists = await CourseModel.findOne({ _id: courseRef });
+  const { courseId } = curriculumData;
+  console.log("Course ref--: ", courseId);
+  console.log("Curriculum data: ", curriculumData);
+  const isCourseExists = await CourseModel.findOne({
+    courseId: courseId,
+  });
   // console.log("is Course exists:-- ", isCourseExists);
   if (!isCourseExists) {
     throw new AppError(404, "Reference Course is not Exists");
@@ -19,7 +22,9 @@ const createCurriculum = async (curriculumData: TCurriculum) => {
 
 ///Get Needed Curriculum according to course
 const getAllCurriculumFromDB = async (courseRefId: string) => {
-  const res = await CurriculumModel.find({ courseRef: courseRefId });
+  const res = await CurriculumModel.find({ courseId: courseRefId }).sort({
+    order: 1,
+  });
   return res;
 };
 

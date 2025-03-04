@@ -1,4 +1,5 @@
 export type TCurriculum = {
   title: string;
-  courseRef: string;
+  courseId: string;
+  order: number;
 };

@@ -12,7 +12,6 @@ const batchSchema: Schema = new Schema<TBatch>(
     },
     batchName: {
       type: String,
-      required: [true, "Batch name is required"],
       trim: true,
     },
     batchStatus: {

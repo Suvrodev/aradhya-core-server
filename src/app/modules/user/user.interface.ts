@@ -9,6 +9,6 @@ export type TUser = {
   image?: string;
   gender: string;
   location?: string;
-  role: "admin" | "user";
+  role: "admin" | "student";
   isBlocked: boolean;
 };

@@ -18,9 +18,12 @@ const course_model_1 = require("../Course/course.model");
 const courseCurriculum_model_1 = require("./courseCurriculum.model");
 // Create Curriculum
 const createCurriculum = (curriculumData) => __awaiter(void 0, void 0, void 0, function* () {
-    const { courseRef } = curriculumData;
-    console.log("Course ref--: ", courseRef);
-    const isCourseExists = yield course_model_1.CourseModel.findOne({ _id: courseRef });
+    const { courseId } = curriculumData;
+    console.log("Course ref--: ", courseId);
+    console.log("Curriculum data: ", curriculumData);
+    const isCourseExists = yield course_model_1.CourseModel.findOne({
+        courseId: courseId,
+    });
     // console.log("is Course exists:-- ", isCourseExists);
     if (!isCourseExists) {
         throw new AppError_1.default(404, "Reference Course is not Exists");
@@ -30,7 +33,9 @@ const createCurriculum = (curriculumData) => __awaiter(void 0, void 0, void 0, f
 });
 ///Get Needed Curriculum according to course
 const getAllCurriculumFromDB = (courseRefId) => __awaiter(void 0, void 0, void 0, function* () {
-    const res = yield courseCurriculum_model_1.CurriculumModel.find({ courseRef: courseRefId });
+    const res = yield courseCurriculum_model_1.CurriculumModel.find({ courseId: courseRefId }).sort({
+        order: 1,
+    });
     return res;
 });
 //delete curriculum

@@ -5,10 +5,12 @@ import { TCurriculum } from "./courseCurriculum.interface";
 const CurriculumSchema = new Schema<TCurriculum>(
   {
     title: { type: String, required: [true, "Curriculum title is required"] },
-    courseRef: {
+
+    courseId: {
       type: String,
-      required: [true, "Course reference is required"],
+      required: [true, "Course ref id is required"],
     },
+    order: { type: Number, required: [true, "Curriculum order is required"] },
   },
   { timestamps: true }
 );

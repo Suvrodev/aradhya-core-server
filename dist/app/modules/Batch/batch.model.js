@@ -12,7 +12,6 @@ const batchSchema = new mongoose_1.Schema({
     },
     batchName: {
         type: String,
-        required: [true, "Batch name is required"],
         trim: true,
     },
     batchStatus: {
