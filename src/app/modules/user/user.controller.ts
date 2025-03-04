@@ -30,7 +30,9 @@ const registerUser: RequestHandler = async (req, res, next) => {
 //Get All User
 const getAllUsers: RequestHandler = async (req, res, next) => {
   try {
-    const result = await userServices.getAllUser();
+    const { search } = req.query;
+    console.log("search: ", search);
+    const result = await userServices.getAllUser(search as string);
     res.status(201).json({
       success: true,
       message: "Users Retrived successfully",

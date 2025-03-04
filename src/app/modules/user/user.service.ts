@@ -31,8 +31,19 @@ const registerUserIntoDB = async (payload: TUser) => {
 };
 
 //Get All User from DB
-const getAllUser = async () => {
-  const result = await userModel.find();
+const getAllUser = async (search?: string) => {
+  const filter: any = {};
+
+  if (search) {
+    filter.$or = [
+      { name: { $regex: search, $options: "i" } },
+      { phone: { $regex: search, $options: "i" } },
+      { email: { $regex: search, $options: "i" } },
+      { studentId: { $regex: search, $options: "i" } },
+    ];
+  }
+
+  const result = await userModel.find(filter);
   return result;
 };
 
@@ -45,7 +56,7 @@ const getSingleUserFromDB = async (id: string) => {
 //deletel User from DB
 const deleteUser = async (id: string) => {
   try {
-    const result = await userModel.findOneAndDelete({ _id: id });
+    const result = await userModel.findOneAndDelete({ studentId: id });
     return result;
   } catch (error) {
     throw new Error("USer Not Found");

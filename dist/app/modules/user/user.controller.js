@@ -42,7 +42,9 @@ const registerUser = (req, res, next) => __awaiter(void 0, void 0, void 0, funct
 //Get All User
 const getAllUsers = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const result = yield user_service_1.userServices.getAllUser();
+        const { search } = req.query;
+        console.log("search: ", search);
+        const result = yield user_service_1.userServices.getAllUser(search);
         res.status(201).json({
             success: true,
             message: "Users Retrived successfully",

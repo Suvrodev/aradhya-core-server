@@ -14,9 +14,9 @@ router.get("/allusers", userControllers.getAllUsers);
 //Get Single User
 router.get("/allusers/:id", userControllers.getSpecificUsers);
 //delete user
-router.delete("/allusers/:id", auth("admin"), userControllers.deleteUser);
+router.delete("/allusers/:id", userControllers.deleteUser);
 //update user
-router.patch("/allusers/:id", auth("admin"), userControllers.updateUser);
+router.patch("/allusers/:id", userControllers.updateUser);
 //change password
 router.patch(
   "/updatepassword/:userId",

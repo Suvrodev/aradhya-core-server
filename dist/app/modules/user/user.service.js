@@ -37,8 +37,17 @@ const registerUserIntoDB = (payload) => __awaiter(void 0, void 0, void 0, functi
     return result;
 });
 //Get All User from DB
-const getAllUser = () => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield user_model_1.userModel.find();
+const getAllUser = (search) => __awaiter(void 0, void 0, void 0, function* () {
+    const filter = {};
+    if (search) {
+        filter.$or = [
+            { name: { $regex: search, $options: "i" } },
+            { phone: { $regex: search, $options: "i" } },
+            { email: { $regex: search, $options: "i" } },
+            { studentId: { $regex: search, $options: "i" } },
+        ];
+    }
+    const result = yield user_model_1.userModel.find(filter);
     return result;
 });
 //Get single User from DB
@@ -49,7 +58,7 @@ const getSingleUserFromDB = (id) => __awaiter(void 0, void 0, void 0, function* 
 //deletel User from DB
 const deleteUser = (id) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const result = yield user_model_1.userModel.findOneAndDelete({ _id: id });
+        const result = yield user_model_1.userModel.findOneAndDelete({ studentId: id });
         return result;
     }
     catch (error) {
