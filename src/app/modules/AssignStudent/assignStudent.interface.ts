@@ -1,7 +1,11 @@
 import { Types } from "mongoose";
 
 export type TAssignStudent = {
-  userRef: Types.ObjectId;
-  batchRef: Types.ObjectId;
-  courseRef: Types.ObjectId;
+  studentId: string;
+  name: string;
+  email: string;
+  phone: string;
+  courseId: string;
+  batchId: string;
+  transactionId: string;
 };

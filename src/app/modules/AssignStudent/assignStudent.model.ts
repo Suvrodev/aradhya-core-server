@@ -4,20 +4,33 @@ import { TAssignStudent } from "./assignStudent.interface";
 // Create Mongoose Schema
 const AssignStudentSchema: Schema = new Schema<TAssignStudent>(
   {
-    userRef: {
-      type: Schema.Types.ObjectId,
-      ref: "Student",
-      required: [true, "Student reference is required"],
+    studentId: {
+      type: String,
+      required: [true, "Student id is required"],
     },
-    batchRef: {
-      type: Schema.Types.ObjectId,
-      ref: "Batch",
-      required: [true, "Batch reference is required"],
+    name: {
+      type: String,
+      required: [true, "Name is required"],
     },
-    courseRef: {
-      type: Schema.Types.ObjectId,
-      ref: "Course",
-      required: [true, "Course reference is required"],
+    email: {
+      type: String,
+      required: [true, "Email is required"],
+    },
+    phone: {
+      type: String,
+      required: [true, "Phone is required"],
+    },
+    courseId: {
+      type: String,
+      required: [true, "courseId is required"],
+    },
+    batchId: {
+      type: String,
+      required: [true, "batchId is required"],
+    },
+    transactionId: {
+      type: String,
+      required: [true, "transactionId is required"],
     },
   },
   { timestamps: true }

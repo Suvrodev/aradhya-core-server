@@ -57,8 +57,9 @@ const getSingleUserFromDB = (id) => __awaiter(void 0, void 0, void 0, function* 
 });
 //deletel User from DB
 const deleteUser = (id) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log("Delete id: ", id);
     try {
-        const result = yield user_model_1.userModel.findOneAndDelete({ studentId: id });
+        const result = yield user_model_1.userModel.deleteOne({ studentId: id });
         return result;
     }
     catch (error) {

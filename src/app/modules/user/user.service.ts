@@ -55,8 +55,9 @@ const getSingleUserFromDB = async (id: string) => {
 
 //deletel User from DB
 const deleteUser = async (id: string) => {
+  console.log("Delete id: ", id);
   try {
-    const result = await userModel.findOneAndDelete({ studentId: id });
+    const result = await userModel.deleteOne({ studentId: id });
     return result;
   } catch (error) {
     throw new Error("USer Not Found");
