@@ -34,7 +34,7 @@ const getSpecificCourseFromDB = (courseId) => __awaiter(void 0, void 0, void 0, 
 const getSpecificServiceCourseFromDB = (serviceId) => __awaiter(void 0, void 0, void 0, function* () {
     let result;
     if (serviceId == "0") {
-        result = yield course_model_1.CourseModel.find().select("courseTitle courseImage");
+        result = yield course_model_1.CourseModel.find().select("courseTitle courseImage courseId");
     }
     else {
         result = yield course_model_1.CourseModel.find({ refServiceId: serviceId }).select("courseTitle courseImage");

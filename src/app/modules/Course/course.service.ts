@@ -30,7 +30,9 @@ const getSpecificCourseFromDB = async (courseId: string) => {
 const getSpecificServiceCourseFromDB = async (serviceId: string) => {
   let result;
   if (serviceId == "0") {
-    result = await CourseModel.find().select("courseTitle courseImage");
+    result = await CourseModel.find().select(
+      "courseTitle courseImage courseId"
+    );
   } else {
     result = await CourseModel.find({ refServiceId: serviceId }).select(
       "courseTitle courseImage"
