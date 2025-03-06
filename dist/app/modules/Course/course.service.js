@@ -27,9 +27,18 @@ const getSpecificCourseFromDB = (courseId) => __awaiter(void 0, void 0, void 0, 
     const result = yield course_model_1.CourseModel.findOne({ courseId: courseId });
     return result;
 });
+/**
+ * Home page
+ */
 // Get specific Servcie Course
 const getSpecificServiceCourseFromDB = (serviceId) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield course_model_1.CourseModel.find({ refService: serviceId }).select("courseTitle courseImage");
+    let result;
+    if (serviceId == "0") {
+        result = yield course_model_1.CourseModel.find().select("courseTitle courseImage");
+    }
+    else {
+        result = yield course_model_1.CourseModel.find({ refServiceId: serviceId }).select("courseTitle courseImage");
+    }
     return result;
 });
 //delete Course

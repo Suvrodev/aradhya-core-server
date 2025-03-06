@@ -22,11 +22,20 @@ const getSpecificCourseFromDB = async (courseId: string) => {
   const result = await CourseModel.findOne({ courseId: courseId });
   return result;
 };
+
+/**
+ * Home page
+ */
 // Get specific Servcie Course
 const getSpecificServiceCourseFromDB = async (serviceId: string) => {
-  const result = await CourseModel.find({ refService: serviceId }).select(
-    "courseTitle courseImage"
-  );
+  let result;
+  if (serviceId == "0") {
+    result = await CourseModel.find().select("courseTitle courseImage");
+  } else {
+    result = await CourseModel.find({ refServiceId: serviceId }).select(
+      "courseTitle courseImage"
+    );
+  }
   return result;
 };
 
