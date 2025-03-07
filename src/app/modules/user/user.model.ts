@@ -36,7 +36,10 @@ const userSchema = new Schema<TUser>(
       required: [true, "Password Must be required"],
       maxlength: [10, "Password can not be more than 10 character"],
     },
-    image: { type: String },
+    image: {
+      type: String,
+      default: "https://i.ibb.co/d4rvmWjR/logged-User.png",
+    },
     gender: { type: String },
     location: { type: String },
     role: {
