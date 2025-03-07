@@ -50,6 +50,7 @@ const loginUser = (payload) => __awaiter(void 0, void 0, void 0, function* () {
         role: isUserExists === null || isUserExists === void 0 ? void 0 : isUserExists.role,
         isBlocked: isUserExists === null || isUserExists === void 0 ? void 0 : isUserExists.isBlocked,
         studentId: isUserExists === null || isUserExists === void 0 ? void 0 : isUserExists.studentId,
+        phone: isUserExists === null || isUserExists === void 0 ? void 0 : isUserExists.phone,
     };
     const accessToken = jsonwebtoken_1.default.sign(jwtPayload, config_1.default.jwt_access_token, {
         expiresIn: "30d",

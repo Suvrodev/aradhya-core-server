@@ -32,5 +32,9 @@ const AssignStudentSchema = new mongoose_1.Schema({
         type: String,
         required: [true, "transactionId is required"],
     },
+    paymentNumber: {
+        type: String,
+    },
+    status: { type: Boolean, required: true, default: false },
 }, { timestamps: true });
 exports.AssignStudentModel = (0, mongoose_1.model)("assignStudent", AssignStudentSchema);

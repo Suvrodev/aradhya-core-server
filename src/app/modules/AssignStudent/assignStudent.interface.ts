@@ -8,4 +8,6 @@ export type TAssignStudent = {
   courseId: string;
   batchId: string;
   transactionId: string;
+  paymentNumber: string;
+  status: boolean;
 };

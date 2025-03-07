@@ -42,6 +42,7 @@ const loginUser = async (payload: TLoginUser) => {
     role: isUserExists?.role,
     isBlocked: isUserExists?.isBlocked,
     studentId: isUserExists?.studentId,
+    phone: isUserExists?.phone,
   };
   const accessToken = Jwt.sign(jwtPayload, config.jwt_access_token as string, {
     expiresIn: "30d",

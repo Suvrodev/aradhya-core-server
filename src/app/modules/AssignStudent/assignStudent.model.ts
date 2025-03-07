@@ -28,10 +28,15 @@ const AssignStudentSchema: Schema = new Schema<TAssignStudent>(
       type: String,
       required: [true, "batchId is required"],
     },
+
     transactionId: {
       type: String,
       required: [true, "transactionId is required"],
     },
+    paymentNumber: {
+      type: String,
+    },
+    status: { type: Boolean, required: true, default: false },
   },
   { timestamps: true }
 );

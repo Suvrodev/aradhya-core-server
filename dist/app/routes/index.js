@@ -14,6 +14,7 @@ const schedule_route_1 = require("../modules/Schedule/schedule.route");
 const batch_route_1 = require("../modules/Batch/batch.route");
 const assignStudent_route_1 = require("../modules/AssignStudent/assignStudent.route");
 const blog_route_1 = require("../modules/Blog/blog.route");
+const promocode_route_1 = require("../modules/PromoCode/promocode.route");
 const router = express_1.default.Router();
 const moduleRoutes = [
     {
@@ -47,6 +48,10 @@ const moduleRoutes = [
     {
         path: "/blog",
         route: blog_route_1.blogRoutes,
+    },
+    {
+        path: "/promo",
+        route: promocode_route_1.PromocodeRoute,
     },
     {
         path: "/auth",

@@ -9,6 +9,7 @@ import { ScheduleRoutes } from "../modules/Schedule/schedule.route";
 import { BatchRoutes } from "../modules/Batch/batch.route";
 import { AssignStudentRoute } from "../modules/AssignStudent/assignStudent.route";
 import { blogRoutes } from "../modules/Blog/blog.route";
+import { PromocodeRoute } from "../modules/PromoCode/promocode.route";
 
 const router = express.Router();
 
@@ -44,6 +45,10 @@ const moduleRoutes = [
   {
     path: "/blog",
     route: blogRoutes,
+  },
+  {
+    path: "/promo",
+    route: PromocodeRoute,
   },
   {
     path: "/auth",
