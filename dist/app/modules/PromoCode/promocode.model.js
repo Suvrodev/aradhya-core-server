@@ -23,9 +23,10 @@ const promoCodeSchma = new mongoose_1.Schema({
         max: [100, "Promo Percent cannot exceed 100%"],
     },
     promoStatus: {
-        type: Boolean,
+        type: String,
+        enum: ["yes", "no"],
         required: [true, "Promo Status is required"],
-        default: false,
+        default: "no",
     },
 }, {
     timestamps: true,

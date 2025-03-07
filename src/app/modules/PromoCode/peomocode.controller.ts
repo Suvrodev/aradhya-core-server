@@ -84,7 +84,7 @@ const updatePromocode: RequestHandler = async (req, res, next) => {
     //Send Response
     res.status(200).json({
       message: "Promocode updated successfully",
-      status: true,
+      success: true,
       data: result,
     });
   } catch (error) {

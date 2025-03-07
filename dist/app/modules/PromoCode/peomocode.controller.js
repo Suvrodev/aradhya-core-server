@@ -90,7 +90,7 @@ const updatePromocode = (req, res, next) => __awaiter(void 0, void 0, void 0, fu
         //Send Response
         res.status(200).json({
             message: "Promocode updated successfully",
-            status: true,
+            success: true,
             data: result,
         });
     }

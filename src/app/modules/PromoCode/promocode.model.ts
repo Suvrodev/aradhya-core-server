@@ -23,9 +23,10 @@ const promoCodeSchma = new Schema<TPromocode>(
       max: [100, "Promo Percent cannot exceed 100%"],
     },
     promoStatus: {
-      type: Boolean,
+      type: String,
+      enum: ["yes", "no"],
       required: [true, "Promo Status is required"],
-      default: false,
+      default: "no",
     },
   },
   {
