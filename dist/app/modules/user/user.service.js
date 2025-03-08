@@ -52,7 +52,7 @@ const getAllUser = (search) => __awaiter(void 0, void 0, void 0, function* () {
 });
 //Get single User from DB
 const getSingleUserFromDB = (id) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield user_model_1.userModel.findOne({ _id: id });
+    const result = yield user_model_1.userModel.findOne({ studentId: id });
     return result;
 });
 //deletel User from DB

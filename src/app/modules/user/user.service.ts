@@ -49,7 +49,7 @@ const getAllUser = async (search?: string) => {
 
 //Get single User from DB
 const getSingleUserFromDB = async (id: string) => {
-  const result = await userModel.findOne({ _id: id });
+  const result = await userModel.findOne({ studentId: id });
   return result;
 };
 
