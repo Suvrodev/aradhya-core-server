@@ -18,11 +18,12 @@ router.delete("/allusers/:id", userControllers.deleteUser);
 //update user
 router.patch("/allusers/:id", userControllers.updateUser);
 //change password
-router.patch(
-  "/updatepassword/:userId",
-  auth("user"),
-  userControllers.updatePassword
-);
+router.patch("/updatepassword/:userId", userControllers.updatePassword);
+// router.patch(
+//   "/updatepassword/:userId",
+//   auth("user"),
+//   userControllers.updatePassword
+// );
 // router.get("/register", userControllers.getAllUsers);
 
 export const userRoutes = router;

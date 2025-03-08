@@ -8,13 +8,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.userControllers = void 0;
 const user_service_1 = require("./user.service");
-const AppError_1 = __importDefault(require("../../errors/AppError"));
 ///Register User
 const registerUser = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -112,15 +108,15 @@ const updateUser = (req, res, next) => __awaiter(void 0, void 0, void 0, functio
 });
 ///Update Password
 const updatePassword = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    var _a, _b, _c;
+    var _a, _b;
     try {
         const userId = (_a = req === null || req === void 0 ? void 0 : req.params) === null || _a === void 0 ? void 0 : _a.userId;
         const userPassword = req.body;
         console.log("Logged user id : ", (_b = req === null || req === void 0 ? void 0 : req.user) === null || _b === void 0 ? void 0 : _b._id);
         console.log("come user id: ", userId);
-        if (((_c = req === null || req === void 0 ? void 0 : req.user) === null || _c === void 0 ? void 0 : _c._id) !== userId) {
-            throw new AppError_1.default(403, "You are not authorized");
-        }
+        // if (req?.user?._id !== userId) {
+        //   throw new AppError(403, "You are not authorized");
+        // }
         const result = yield user_service_1.userServices.updatePasswordIntoDB(userId, userPassword);
         res.status(201).json({
             success: true,

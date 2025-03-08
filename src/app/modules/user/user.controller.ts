@@ -108,9 +108,9 @@ const updatePassword: RequestHandler = async (req, res, next) => {
     const userPassword = req.body;
     console.log("Logged user id : ", req?.user?._id);
     console.log("come user id: ", userId);
-    if (req?.user?._id !== userId) {
-      throw new AppError(403, "You are not authorized");
-    }
+    // if (req?.user?._id !== userId) {
+    //   throw new AppError(403, "You are not authorized");
+    // }
 
     const result = await userServices.updatePasswordIntoDB(
       userId,

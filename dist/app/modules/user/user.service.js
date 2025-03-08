@@ -13,10 +13,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.userServices = void 0;
-const bcrypt_1 = __importDefault(require("bcrypt"));
 const AppError_1 = __importDefault(require("../../errors/AppError"));
 const user_model_1 = require("./user.model");
-const config_1 = __importDefault(require("../../config"));
 const generateUserId_1 = require("./generateUserId");
 ///Create User into db
 const registerUserIntoDB = (payload) => __awaiter(void 0, void 0, void 0, function* () {
@@ -69,22 +67,28 @@ const deleteUser = (id) => __awaiter(void 0, void 0, void 0, function* () {
 //Update Password
 const updatePasswordIntoDB = (userId, payload) => __awaiter(void 0, void 0, void 0, function* () {
     const { oldPassword, newPassword } = payload;
+    console.log("------------------");
     console.log("User Id: ", userId);
     console.log("Old Password ", oldPassword);
     console.log("New  Password ", newPassword);
     //Checking  if the user is exist
-    const isUserExists = yield user_model_1.userModel.findOne({ _id: userId });
+    const isUserExists = yield user_model_1.userModel.findOne({ studentId: userId });
     if (!isUserExists) {
         throw new AppError_1.default(404, "User not Found");
     }
     //Check Password is right or wrong
-    const isPasswordMatched = yield bcrypt_1.default.compare(oldPassword, isUserExists === null || isUserExists === void 0 ? void 0 : isUserExists.password);
-    console.log("is Password Matched: ", isPasswordMatched);
-    if (!isPasswordMatched) {
-        throw new AppError_1.default(401, "Old password is not right");
+    // const isPasswordMatched = await bcrypt.compare(
+    //   oldPassword,
+    //   isUserExists?.password
+    // );
+    if (oldPassword !== (isUserExists === null || isUserExists === void 0 ? void 0 : isUserExists.password)) {
+        throw new AppError_1.default(401, "Old password is not matched");
     }
-    const hashNewPassword = yield bcrypt_1.default.hash(newPassword, Number(config_1.default.bcrypt_salt_rounds));
-    const result = yield user_model_1.userModel.findByIdAndUpdate(userId, { password: hashNewPassword }, { new: true });
+    // const hashNewPassword = await bcrypt.hash(
+    //   newPassword,
+    //   Number(config.bcrypt_salt_rounds)
+    // );
+    const result = yield user_model_1.userModel.updateOne({ studentId: userId }, { password: newPassword }, { new: true });
     return result;
 });
 //Update User

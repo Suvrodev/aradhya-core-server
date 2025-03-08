@@ -67,33 +67,34 @@ const deleteUser = async (id: string) => {
 //Update Password
 const updatePasswordIntoDB = async (userId: string, payload: IPassword) => {
   const { oldPassword, newPassword } = payload;
+  console.log("------------------");
   console.log("User Id: ", userId);
   console.log("Old Password ", oldPassword);
   console.log("New  Password ", newPassword);
 
   //Checking  if the user is exist
-  const isUserExists = await userModel.findOne({ _id: userId });
+  const isUserExists = await userModel.findOne({ studentId: userId });
   if (!isUserExists) {
     throw new AppError(404, "User not Found");
   }
 
   //Check Password is right or wrong
-  const isPasswordMatched = await bcrypt.compare(
-    oldPassword,
-    isUserExists?.password
-  );
-  console.log("is Password Matched: ", isPasswordMatched);
-  if (!isPasswordMatched) {
-    throw new AppError(401, "Old password is not right");
+  // const isPasswordMatched = await bcrypt.compare(
+  //   oldPassword,
+  //   isUserExists?.password
+  // );
+
+  if (oldPassword !== isUserExists?.password) {
+    throw new AppError(401, "Old password is not matched");
   }
 
-  const hashNewPassword = await bcrypt.hash(
-    newPassword,
-    Number(config.bcrypt_salt_rounds)
-  );
-  const result = await userModel.findByIdAndUpdate(
-    userId,
-    { password: hashNewPassword },
+  // const hashNewPassword = await bcrypt.hash(
+  //   newPassword,
+  //   Number(config.bcrypt_salt_rounds)
+  // );
+  const result = await userModel.updateOne(
+    { studentId: userId },
+    { password: newPassword },
     { new: true }
   );
   return result;
