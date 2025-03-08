@@ -91,7 +91,7 @@ const updatePasswordIntoDB = (userId, payload) => __awaiter(void 0, void 0, void
 const updatUserIntoDB = (userId, payload) => __awaiter(void 0, void 0, void 0, function* () {
     console.log("User Id in service: ", userId);
     console.log("payload in service", payload);
-    const result = yield user_model_1.userModel.findByIdAndUpdate({ _id: userId }, payload, {
+    const result = yield user_model_1.userModel.updateOne({ studentId: userId }, payload, {
         new: true,
     });
     return result;

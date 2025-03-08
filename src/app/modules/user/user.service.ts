@@ -103,7 +103,7 @@ const updatUserIntoDB = async (userId: string, payload: TUser) => {
   console.log("User Id in service: ", userId);
   console.log("payload in service", payload);
 
-  const result = await userModel.findByIdAndUpdate({ _id: userId }, payload, {
+  const result = await userModel.updateOne({ studentId: userId }, payload, {
     new: true,
   });
   return result;
