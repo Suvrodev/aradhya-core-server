@@ -14,6 +14,11 @@ const batchSchema = new mongoose_1.Schema({
         type: String,
         trim: true,
     },
+    underCourse: {
+        type: String,
+        required: [true, "Batch under which course is required"],
+        trim: true,
+    },
     batchStatus: {
         type: String,
         required: [true, "Batch status is required"],
