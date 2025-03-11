@@ -19,7 +19,7 @@ const getAllBatchFromDB = async () => {
 const getSpecificBatchUnderCourseFromDB = async (courseId: string) => {
   console.log("Check Course id: ", courseId);
   const res = await BatchModel.findOne({
-    batchId: courseId,
+    underCourse: courseId,
     batchStatus: "onGoing",
   });
   return res;

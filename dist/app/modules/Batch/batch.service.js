@@ -25,7 +25,7 @@ const getAllBatchFromDB = () => __awaiter(void 0, void 0, void 0, function* () {
 const getSpecificBatchUnderCourseFromDB = (courseId) => __awaiter(void 0, void 0, void 0, function* () {
     console.log("Check Course id: ", courseId);
     const res = yield batch_model_1.BatchModel.findOne({
-        batchId: courseId,
+        underCourse: courseId,
         batchStatus: "onGoing",
     });
     return res;
