@@ -21,6 +21,15 @@ const getAllBatchFromDB = () => __awaiter(void 0, void 0, void 0, function* () {
     const res = yield batch_model_1.BatchModel.find();
     return res;
 });
+///Get Specific batch under course
+const getSpecificBatchUnderCourseFromDB = (courseId) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log("Check Course id: ", courseId);
+    const res = yield batch_model_1.BatchModel.findOne({
+        batchId: courseId,
+        batchStatus: "onGoing",
+    });
+    return res;
+});
 //delete btch
 const deleteBatchFromDB = (batchId) => __awaiter(void 0, void 0, void 0, function* () {
     const result = yield batch_model_1.BatchModel.deleteOne({ batchId: batchId });
@@ -36,6 +45,7 @@ const updateBatchFromDB = (batchId, payload) => __awaiter(void 0, void 0, void 0
 exports.BatchService = {
     insertBatchIntoDB,
     getAllBatchFromDB,
+    getSpecificBatchUnderCourseFromDB,
     deleteBatchFromDB,
     updateBatchFromDB,
 };
