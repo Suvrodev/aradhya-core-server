@@ -14,6 +14,7 @@ export type TAssignStudent = {
   appliedpromoCode: string;
   promoPercent: number;
   finalPrice: number;
+  paymentGateWay: string;
   transactionId: string;
   transactionMobileNumber: string;
   status: boolean;
