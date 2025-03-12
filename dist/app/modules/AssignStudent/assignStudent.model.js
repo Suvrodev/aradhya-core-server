@@ -42,11 +42,12 @@ const AssignStudentSchema = new mongoose_1.Schema({
     },
     promoCode: {
         type: String,
-        required: [true, "promoCode is required"],
+    },
+    appliedpromoCode: {
+        type: String,
     },
     promoPercent: {
         type: Number,
-        required: [true, "promoCode is required"],
     },
     finalPrice: {
         type: Number,

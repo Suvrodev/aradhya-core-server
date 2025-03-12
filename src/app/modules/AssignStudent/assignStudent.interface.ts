@@ -11,6 +11,7 @@ export type TAssignStudent = {
   courseDiscount: number;
   promoCodeStatus: string;
   promoCode: string;
+  appliedpromoCode: string;
   promoPercent: number;
   finalPrice: number;
   transactionId: string;
