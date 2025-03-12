@@ -2,12 +2,18 @@ import { Types } from "mongoose";
 
 export type TAssignStudent = {
   studentId: string;
-  name: string;
-  email: string;
-  phone: string;
+  studentName: string;
+  studentEmail: string;
+  studentPhone: string;
   courseId: string;
   batchId: string;
+  coursePrice: number;
+  courseDiscount: number;
+  promoCodeStatus: string;
+  promoCode: string;
+  promoPercent: number;
+  finalPrice: number;
   transactionId: string;
-  paymentNumber: string;
+  transactionMobileNumber: string;
   status: boolean;
 };

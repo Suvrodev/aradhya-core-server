@@ -8,17 +8,17 @@ const AssignStudentSchema: Schema = new Schema<TAssignStudent>(
       type: String,
       required: [true, "Student id is required"],
     },
-    name: {
+    studentName: {
       type: String,
-      required: [true, "Name is required"],
+      required: [true, "Student Name is required"],
     },
-    email: {
+    studentEmail: {
       type: String,
-      required: [true, "Email is required"],
+      required: [true, "Student Email is required"],
     },
-    phone: {
+    studentPhone: {
       type: String,
-      required: [true, "Phone is required"],
+      required: [true, "Student Phone is required"],
     },
     courseId: {
       type: String,
@@ -28,12 +28,36 @@ const AssignStudentSchema: Schema = new Schema<TAssignStudent>(
       type: String,
       required: [true, "batchId is required"],
     },
+    coursePrice: {
+      type: Number,
+      required: [true, "coursePrice is required"],
+    },
+    courseDiscount: {
+      type: Number,
+      required: [true, "courseDiscount is required"],
+    },
+    promoCodeStatus: {
+      type: String,
+      required: [true, "promoCodeStatus is required"],
+    },
+    promoCode: {
+      type: String,
+      required: [true, "promoCode is required"],
+    },
+    promoPercent: {
+      type: Number,
+      required: [true, "promoCode is required"],
+    },
+    finalPrice: {
+      type: Number,
+      required: [true, "promoCode is required"],
+    },
 
     transactionId: {
       type: String,
       required: [true, "transactionId is required"],
     },
-    paymentNumber: {
+    transactionMobileNumber: {
       type: String,
     },
     status: { type: Boolean, required: true, default: false },
