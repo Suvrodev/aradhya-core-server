@@ -37,7 +37,10 @@ const deleteBatchFromDB = (batchId) => __awaiter(void 0, void 0, void 0, functio
 });
 //Update batch
 const updateBatchFromDB = (batchId, payload) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield batch_model_1.BatchModel.findByIdAndUpdate({ _id: batchId }, payload, {
+    console.log("Update Batch");
+    console.log("Batch id: ", batchId);
+    console.log("Payload: ", payload);
+    const result = yield batch_model_1.BatchModel.updateOne({ batchId: batchId }, payload, {
         new: true,
     });
     return result;

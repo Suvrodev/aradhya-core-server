@@ -33,7 +33,10 @@ const deleteBatchFromDB = async (batchId: string) => {
 
 //Update batch
 const updateBatchFromDB = async (batchId: string, payload: TBatch) => {
-  const result = await BatchModel.findByIdAndUpdate({ _id: batchId }, payload, {
+  console.log("Update Batch");
+  console.log("Batch id: ", batchId);
+  console.log("Payload: ", payload);
+  const result = await BatchModel.updateOne({ batchId: batchId }, payload, {
     new: true,
   });
   return result;
