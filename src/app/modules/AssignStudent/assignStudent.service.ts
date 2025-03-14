@@ -16,9 +16,16 @@ const createAssignStudentIntoDB = async (assignStudent: TAssignStudent) => {
 // Get all Assign Student
 // Get all Assign Students with search
 // Get all Assign Students with search (status field removed)
-const getAllAssignSudentFromDB = async (search?: string) => {
+
+// Get all Assign Students with search & filter (paymentGateWay + status)
+const getAllAssignSudentFromDB = async (
+  search?: string,
+  paymentGateWay?: string,
+  status?: string
+) => {
   const filter: any = {};
 
+  // 🔍 সার্চ কন্ডিশন (status বাদ)
   if (search) {
     filter.$or = [
       { studentId: { $regex: search, $options: "i" } },
@@ -32,7 +39,7 @@ const getAllAssignSudentFromDB = async (search?: string) => {
       { paymentGateWay: { $regex: search, $options: "i" } },
     ];
 
-    // যদি সংখ্যা হয়, তাহলে `coursePrice`, `finalPrice` ইত্যাদিতে খুঁজবো
+    // সংখ্যা হলে coursePrice, finalPrice ইত্যাদিতে খুঁজবো
     if (!isNaN(Number(search))) {
       filter.$or.push(
         { coursePrice: Number(search) },
@@ -41,6 +48,16 @@ const getAllAssignSudentFromDB = async (search?: string) => {
         { finalPrice: Number(search) }
       );
     }
+  }
+
+  // 🎯 paymentGateWay ফিল্টার (যদি দেওয়া থাকে)
+  if (paymentGateWay) {
+    filter.paymentGateWay = paymentGateWay;
+  }
+
+  // 🎯 status ফিল্টার (search-এ না, কেবল ফিল্টারে)
+  if (status) {
+    filter.status = status === "true"; // "true" হলে true, অন্যথায় false
   }
 
   const result = await AssignStudentModel.find(filter);

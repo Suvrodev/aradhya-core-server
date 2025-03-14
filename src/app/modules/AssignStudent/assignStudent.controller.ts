@@ -25,11 +25,17 @@ const insertAssignStundet: RequestHandler = async (req, res, next) => {
 // Get All Assign student with search
 const getAllAssignStudent: RequestHandler = async (req, res, next) => {
   try {
-    const search = req.query.search as string; // Get search parameter
-    const result = await AssignStudentServices.getAllAssignSudentFromDB(search);
+    const { search, paymentGateWay, status } = req.query;
+
+    // Updated service call with search & filter
+    const result = await AssignStudentServices.getAllAssignSudentFromDB(
+      search as string,
+      paymentGateWay as string,
+      status as string
+    );
 
     res.status(200).json({
-      message: "Assign Student Retrieved successfully",
+      message: "Assign Student Retrieve successfully",
       success: true,
       data: result,
     });

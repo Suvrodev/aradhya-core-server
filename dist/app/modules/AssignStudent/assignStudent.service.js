@@ -25,8 +25,10 @@ const createAssignStudentIntoDB = (assignStudent) => __awaiter(void 0, void 0, v
 // Get all Assign Student
 // Get all Assign Students with search
 // Get all Assign Students with search (status field removed)
-const getAllAssignSudentFromDB = (search) => __awaiter(void 0, void 0, void 0, function* () {
+// Get all Assign Students with search & filter (paymentGateWay + status)
+const getAllAssignSudentFromDB = (search, paymentGateWay, status) => __awaiter(void 0, void 0, void 0, function* () {
     const filter = {};
+    // 🔍 সার্চ কন্ডিশন (status বাদ)
     if (search) {
         filter.$or = [
             { studentId: { $regex: search, $options: "i" } },
@@ -39,10 +41,18 @@ const getAllAssignSudentFromDB = (search) => __awaiter(void 0, void 0, void 0, f
             { transactionMobileNumber: { $regex: search, $options: "i" } },
             { paymentGateWay: { $regex: search, $options: "i" } },
         ];
-        // যদি সংখ্যা হয়, তাহলে `coursePrice`, `finalPrice` ইত্যাদিতে খুঁজবো
+        // সংখ্যা হলে coursePrice, finalPrice ইত্যাদিতে খুঁজবো
         if (!isNaN(Number(search))) {
             filter.$or.push({ coursePrice: Number(search) }, { courseDiscount: Number(search) }, { promoPercent: Number(search) }, { finalPrice: Number(search) });
         }
+    }
+    // 🎯 paymentGateWay ফিল্টার (যদি দেওয়া থাকে)
+    if (paymentGateWay) {
+        filter.paymentGateWay = paymentGateWay;
+    }
+    // 🎯 status ফিল্টার (search-এ না, কেবল ফিল্টারে)
+    if (status) {
+        filter.status = status === "true"; // "true" হলে true, অন্যথায় false
     }
     const result = yield assignStudent_model_1.AssignStudentModel.find(filter);
     return result;
