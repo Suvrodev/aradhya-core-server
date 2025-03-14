@@ -62,6 +62,7 @@ const AssignStudentSchema: Schema = new Schema<TAssignStudent>(
       type: String,
       required: [true, "transactionId is required"],
     },
+    checkTransactionId: { type: String },
     transactionMobileNumber: {
       type: String,
     },

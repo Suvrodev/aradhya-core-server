@@ -16,6 +16,7 @@ export type TAssignStudent = {
   finalPrice: number;
   paymentGateWay: string;
   transactionId: string;
+  checkTransactionId: string;
   transactionMobileNumber: string;
   status: boolean;
 };

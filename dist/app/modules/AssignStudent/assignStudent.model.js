@@ -61,6 +61,7 @@ const AssignStudentSchema = new mongoose_1.Schema({
         type: String,
         required: [true, "transactionId is required"],
     },
+    checkTransactionId: { type: String },
     transactionMobileNumber: {
         type: String,
     },
