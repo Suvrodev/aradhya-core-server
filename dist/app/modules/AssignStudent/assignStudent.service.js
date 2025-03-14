@@ -78,6 +78,8 @@ const deleteAssignStudentFromDB = (assignId) => __awaiter(void 0, void 0, void 0
 });
 //update Course
 const updateAssignStudetFromDB = (assignId, payload) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log("Assign id: ", assignId);
+    console.log("Payload: ", payload);
     const result = yield assignStudent_model_1.AssignStudentModel.findByIdAndUpdate({ _id: assignId }, payload, {
         new: true,
     });

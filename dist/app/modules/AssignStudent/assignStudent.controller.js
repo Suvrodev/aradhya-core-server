@@ -82,7 +82,7 @@ const deleteAssignStudent = (req, res, next) => __awaiter(void 0, void 0, void 0
 //Update AssignStudent
 const updateAssignStudent = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const assignId = req.params.batchId;
+        const assignId = req.params.assignId;
         const updateAssignData = req.body;
         const result = yield assignStudent_service_1.AssignStudentServices.updateAssignStudetFromDB(assignId, updateAssignData);
         //Send Response

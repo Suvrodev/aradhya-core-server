@@ -91,6 +91,8 @@ const updateAssignStudetFromDB = async (
   assignId: string,
   payload: TAssignStudent
 ) => {
+  console.log("Assign id: ", assignId);
+  console.log("Payload: ", payload);
   const result = await AssignStudentModel.findByIdAndUpdate(
     { _id: assignId },
     payload,

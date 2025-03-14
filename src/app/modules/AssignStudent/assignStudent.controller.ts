@@ -84,7 +84,7 @@ const deleteAssignStudent: RequestHandler = async (req, res, next) => {
 //Update AssignStudent
 const updateAssignStudent: RequestHandler = async (req, res, next) => {
   try {
-    const assignId = req.params.batchId;
+    const assignId = req.params.assignId;
     const updateAssignData = req.body;
 
     const result = await AssignStudentServices.updateAssignStudetFromDB(
