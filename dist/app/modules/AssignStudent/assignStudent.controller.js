@@ -28,12 +28,13 @@ const insertAssignStundet = (req, res, next) => __awaiter(void 0, void 0, void 0
         next(error);
     }
 });
-//Get All Assign student
+// Get All Assign student with search
 const getAllAssignStudent = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const result = yield assignStudent_service_1.AssignStudentServices.getAllAssignSudentFromDB();
+        const search = req.query.search; // Get search parameter
+        const result = yield assignStudent_service_1.AssignStudentServices.getAllAssignSudentFromDB(search);
         res.status(200).json({
-            message: "Assign Student Retrive successfully",
+            message: "Assign Student Retrieved successfully",
             success: true,
             data: result,
         });

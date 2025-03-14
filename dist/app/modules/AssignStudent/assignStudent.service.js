@@ -17,9 +17,34 @@ const createAssignStudentIntoDB = (assignStudent) => __awaiter(void 0, void 0, v
     const result = yield assignStudent_model_1.AssignStudentModel.create(assignStudent);
     return result;
 });
+// // Get all Assign Student
+// const getAllAssignSudentFromDB = async () => {
+//   const result = await AssignStudentModel.find();
+//   return result;
+// };
 // Get all Assign Student
-const getAllAssignSudentFromDB = () => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield assignStudent_model_1.AssignStudentModel.find();
+// Get all Assign Students with search
+// Get all Assign Students with search (status field removed)
+const getAllAssignSudentFromDB = (search) => __awaiter(void 0, void 0, void 0, function* () {
+    const filter = {};
+    if (search) {
+        filter.$or = [
+            { studentId: { $regex: search, $options: "i" } },
+            { studentName: { $regex: search, $options: "i" } },
+            { studentEmail: { $regex: search, $options: "i" } },
+            { studentPhone: { $regex: search, $options: "i" } },
+            { batchId: { $regex: search, $options: "i" } },
+            { promoCode: { $regex: search, $options: "i" } },
+            { transactionId: { $regex: search, $options: "i" } },
+            { transactionMobileNumber: { $regex: search, $options: "i" } },
+            { paymentGateWay: { $regex: search, $options: "i" } },
+        ];
+        // যদি সংখ্যা হয়, তাহলে `coursePrice`, `finalPrice` ইত্যাদিতে খুঁজবো
+        if (!isNaN(Number(search))) {
+            filter.$or.push({ coursePrice: Number(search) }, { courseDiscount: Number(search) }, { promoPercent: Number(search) }, { finalPrice: Number(search) });
+        }
+    }
+    const result = yield assignStudent_model_1.AssignStudentModel.find(filter);
     return result;
 });
 // Get specific Assign Student

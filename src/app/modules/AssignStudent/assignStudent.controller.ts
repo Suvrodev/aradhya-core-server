@@ -22,12 +22,14 @@ const insertAssignStundet: RequestHandler = async (req, res, next) => {
   }
 };
 
-//Get All Assign student
+// Get All Assign student with search
 const getAllAssignStudent: RequestHandler = async (req, res, next) => {
   try {
-    const result = await AssignStudentServices.getAllAssignSudentFromDB();
+    const search = req.query.search as string; // Get search parameter
+    const result = await AssignStudentServices.getAllAssignSudentFromDB(search);
+
     res.status(200).json({
-      message: "Assign Student Retrive successfully",
+      message: "Assign Student Retrieved successfully",
       success: true,
       data: result,
     });
