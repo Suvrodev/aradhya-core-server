@@ -79,6 +79,13 @@ const getSpecificAssignStudentFromDB = async (assignId: string) => {
   return result;
 };
 
+// Get specific Assign Student
+const getOwnCourseOfSAssignStudentFromDB = async (studentId: string) => {
+  console.log("student id:", studentId);
+  const result = await AssignStudentModel.find({ studentId: studentId });
+  return result;
+};
+
 //delete AssignStudent
 const deleteAssignStudentFromDB = async (assignId: string) => {
   //main work
@@ -107,6 +114,7 @@ export const AssignStudentServices = {
   createAssignStudentIntoDB,
   getAllAssignSudentFromDB,
   getSpecificAssignStudentFromDB,
+  getOwnCourseOfSAssignStudentFromDB,
   deleteAssignStudentFromDB,
   updateAssignStudetFromDB,
 };

@@ -10,6 +10,7 @@ const router = express_1.default.Router();
 router.post("/", assignStudent_controller_1.AssignStudentController.insertAssignStundet);
 router.get("/", assignStudent_controller_1.AssignStudentController.getAllAssignStudent);
 router.get("/:assignId", assignStudent_controller_1.AssignStudentController.getSpecificAssignStudent);
+router.get("/own-course/:studentId", assignStudent_controller_1.AssignStudentController.getOwnCourseOfSAssignStudent);
 router.delete("/:assignId", assignStudent_controller_1.AssignStudentController.deleteAssignStudent);
 router.patch("/:assignId", assignStudent_controller_1.AssignStudentController.updateAssignStudent);
 exports.AssignStudentRoute = router;

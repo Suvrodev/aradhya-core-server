@@ -62,6 +62,21 @@ const getSpecificAssignStudent: RequestHandler = async (req, res, next) => {
   }
 };
 
+const getOwnCourseOfSAssignStudent: RequestHandler = async (req, res, next) => {
+  try {
+    const studentId = req?.params?.studentId;
+    const result =
+      await AssignStudentServices.getOwnCourseOfSAssignStudentFromDB(studentId);
+    res.status(200).json({
+      message: "Own Course of Student Retrive successfully",
+      success: true,
+      data: result,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 //Delete Assign
 const deleteAssignStudent: RequestHandler = async (req, res, next) => {
   try {
@@ -107,6 +122,7 @@ export const AssignStudentController = {
   insertAssignStundet,
   getAllAssignStudent,
   getSpecificAssignStudent,
+  getOwnCourseOfSAssignStudent,
   deleteAssignStudent,
   updateAssignStudent,
 };

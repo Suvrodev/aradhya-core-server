@@ -70,6 +70,12 @@ const getSpecificAssignStudentFromDB = (assignId) => __awaiter(void 0, void 0, v
     const result = yield assignStudent_model_1.AssignStudentModel.findOne({ _id: assignId });
     return result;
 });
+// Get specific Assign Student
+const getOwnCourseOfSAssignStudentFromDB = (studentId) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log("student id:", studentId);
+    const result = yield assignStudent_model_1.AssignStudentModel.find({ studentId: studentId });
+    return result;
+});
 //delete AssignStudent
 const deleteAssignStudentFromDB = (assignId) => __awaiter(void 0, void 0, void 0, function* () {
     //main work
@@ -89,6 +95,7 @@ exports.AssignStudentServices = {
     createAssignStudentIntoDB,
     getAllAssignSudentFromDB,
     getSpecificAssignStudentFromDB,
+    getOwnCourseOfSAssignStudentFromDB,
     deleteAssignStudentFromDB,
     updateAssignStudetFromDB,
 };

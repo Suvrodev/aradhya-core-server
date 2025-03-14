@@ -61,6 +61,21 @@ const getSpecificAssignStudent = (req, res, next) => __awaiter(void 0, void 0, v
         next(error);
     }
 });
+const getOwnCourseOfSAssignStudent = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    var _a;
+    try {
+        const studentId = (_a = req === null || req === void 0 ? void 0 : req.params) === null || _a === void 0 ? void 0 : _a.studentId;
+        const result = yield assignStudent_service_1.AssignStudentServices.getOwnCourseOfSAssignStudentFromDB(studentId);
+        res.status(200).json({
+            message: "Own Course of Student Retrive successfully",
+            success: true,
+            data: result,
+        });
+    }
+    catch (error) {
+        next(error);
+    }
+});
 //Delete Assign
 const deleteAssignStudent = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
@@ -100,6 +115,7 @@ exports.AssignStudentController = {
     insertAssignStundet,
     getAllAssignStudent,
     getSpecificAssignStudent,
+    getOwnCourseOfSAssignStudent,
     deleteAssignStudent,
     updateAssignStudent,
 };
