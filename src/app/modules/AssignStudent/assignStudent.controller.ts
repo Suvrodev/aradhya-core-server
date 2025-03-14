@@ -25,13 +25,14 @@ const insertAssignStundet: RequestHandler = async (req, res, next) => {
 // Get All Assign student with search
 const getAllAssignStudent: RequestHandler = async (req, res, next) => {
   try {
-    const { search, paymentGateWay, status } = req.query;
+    const { search, paymentGateWay, status, sort } = req.query;
 
-    // Updated service call with search & filter
+    // Updated service call with search, filter, and sorting
     const result = await AssignStudentServices.getAllAssignSudentFromDB(
       search as string,
       paymentGateWay as string,
-      status as string
+      status as string,
+      sort as string // Pass the sort parameter
     );
 
     res.status(200).json({

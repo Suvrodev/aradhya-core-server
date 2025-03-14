@@ -25,10 +25,10 @@ const createAssignStudentIntoDB = (assignStudent) => __awaiter(void 0, void 0, v
 // Get all Assign Student
 // Get all Assign Students with search
 // Get all Assign Students with search (status field removed)
-// Get all Assign Students with search & filter (paymentGateWay + status)
-const getAllAssignSudentFromDB = (search, paymentGateWay, status) => __awaiter(void 0, void 0, void 0, function* () {
+// Get all Assign Student with search & filter (paymentGateWay + status) and sort
+const getAllAssignSudentFromDB = (search, paymentGateWay, status, sort) => __awaiter(void 0, void 0, void 0, function* () {
     const filter = {};
-    // 🔍 সার্চ কন্ডিশন (status বাদ)
+    // Search condition (status বাদ)
     if (search) {
         filter.$or = [
             { studentId: { $regex: search, $options: "i" } },
@@ -41,20 +41,28 @@ const getAllAssignSudentFromDB = (search, paymentGateWay, status) => __awaiter(v
             { transactionMobileNumber: { $regex: search, $options: "i" } },
             { paymentGateWay: { $regex: search, $options: "i" } },
         ];
-        // সংখ্যা হলে coursePrice, finalPrice ইত্যাদিতে খুঁজবো
+        // If search is a number, search in coursePrice, finalPrice etc.
         if (!isNaN(Number(search))) {
             filter.$or.push({ coursePrice: Number(search) }, { courseDiscount: Number(search) }, { promoPercent: Number(search) }, { finalPrice: Number(search) });
         }
     }
-    // 🎯 paymentGateWay ফিল্টার (যদি দেওয়া থাকে)
+    // PaymentGateway filter
     if (paymentGateWay) {
         filter.paymentGateWay = paymentGateWay;
     }
-    // 🎯 status ফিল্টার (search-এ না, কেবল ফিল্টারে)
+    // Status filter
     if (status) {
-        filter.status = status === "true"; // "true" হলে true, অন্যথায় false
+        filter.status = status === "true"; // "true" means true, else false
     }
-    const result = yield assignStudent_model_1.AssignStudentModel.find(filter);
+    // Sorting by createdAt
+    let sortCriteria = {};
+    if (sort) {
+        sortCriteria = { createdAt: sort === "asc" ? 1 : -1 }; // ASC or DESC
+    }
+    else {
+        sortCriteria = { createdAt: -1 }; // Default: DESCENDING order
+    }
+    const result = yield assignStudent_model_1.AssignStudentModel.find(filter).sort(sortCriteria);
     return result;
 });
 // Get specific Assign Student

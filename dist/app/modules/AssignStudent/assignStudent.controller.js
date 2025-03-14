@@ -31,9 +31,10 @@ const insertAssignStundet = (req, res, next) => __awaiter(void 0, void 0, void 0
 // Get All Assign student with search
 const getAllAssignStudent = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { search, paymentGateWay, status } = req.query;
-        // Updated service call with search & filter
-        const result = yield assignStudent_service_1.AssignStudentServices.getAllAssignSudentFromDB(search, paymentGateWay, status);
+        const { search, paymentGateWay, status, sort } = req.query;
+        // Updated service call with search, filter, and sorting
+        const result = yield assignStudent_service_1.AssignStudentServices.getAllAssignSudentFromDB(search, paymentGateWay, status, sort // Pass the sort parameter
+        );
         res.status(200).json({
             message: "Assign Student Retrieve successfully",
             success: true,
