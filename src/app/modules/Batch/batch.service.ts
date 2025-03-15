@@ -15,6 +15,12 @@ const getAllBatchFromDB = async () => {
   return res;
 };
 
+///Get specific batch
+const getSpecificBatchFromDB = async (batchId: string) => {
+  const res = await BatchModel.findOne({ batchId: batchId });
+  return res;
+};
+
 ///Get Specific batch under course
 const getSpecificBatchUnderCourseFromDB = async (courseId: string) => {
   console.log("Check Course id: ", courseId);
@@ -45,6 +51,7 @@ const updateBatchFromDB = async (batchId: string, payload: TBatch) => {
 export const BatchService = {
   insertBatchIntoDB,
   getAllBatchFromDB,
+  getSpecificBatchFromDB,
   getSpecificBatchUnderCourseFromDB,
   deleteBatchFromDB,
   updateBatchFromDB,

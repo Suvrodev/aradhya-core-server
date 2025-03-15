@@ -34,6 +34,21 @@ const getAllBatch: RequestHandler = async (req, res, next) => {
   }
 };
 
+//Get specific batch
+const getSpecificBatch: RequestHandler = async (req, res, next) => {
+  try {
+    const batchId = req?.params?.batchId;
+    const result = await BatchService.getSpecificBatchFromDB(batchId);
+    res.status(200).json({
+      message: "Batch Retrive successfully",
+      success: true,
+      data: result,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 //getUnder Course Batch
 const getSpecificBatchUnderCourse: RequestHandler = async (req, res, next) => {
   try {
@@ -94,6 +109,7 @@ const updateBatch: RequestHandler = async (req, res, next) => {
 export const BatchController = {
   insertBatch,
   getAllBatch,
+  getSpecificBatch,
   getSpecificBatchUnderCourse,
   deleteBatch,
   updateBatch,

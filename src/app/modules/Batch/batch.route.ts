@@ -6,6 +6,7 @@ const router = express.Router();
 //will call controller function
 router.post("/", BatchController.insertBatch);
 router.get("/", BatchController.getAllBatch);
+router.get("/:batchId", BatchController.getSpecificBatch);
 router.get(
   "/undercourse/:courseId",
   BatchController.getSpecificBatchUnderCourse

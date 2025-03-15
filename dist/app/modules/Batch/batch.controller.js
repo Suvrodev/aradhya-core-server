@@ -42,6 +42,22 @@ const getAllBatch = (req, res, next) => __awaiter(void 0, void 0, void 0, functi
         next(error);
     }
 });
+//Get specific batch
+const getSpecificBatch = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    var _a;
+    try {
+        const batchId = (_a = req === null || req === void 0 ? void 0 : req.params) === null || _a === void 0 ? void 0 : _a.batchId;
+        const result = yield batch_service_1.BatchService.getSpecificBatchFromDB(batchId);
+        res.status(200).json({
+            message: "Batch Retrive successfully",
+            success: true,
+            data: result,
+        });
+    }
+    catch (error) {
+        next(error);
+    }
+});
 //getUnder Course Batch
 const getSpecificBatchUnderCourse = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -95,6 +111,7 @@ const updateBatch = (req, res, next) => __awaiter(void 0, void 0, void 0, functi
 exports.BatchController = {
     insertBatch,
     getAllBatch,
+    getSpecificBatch,
     getSpecificBatchUnderCourse,
     deleteBatch,
     updateBatch,
