@@ -82,7 +82,10 @@ const getSpecificAssignStudentFromDB = async (assignId: string) => {
 // Get specific Assign Student
 const getOwnCourseOfSAssignStudentFromDB = async (studentId: string) => {
   console.log("student id:", studentId);
-  const result = await AssignStudentModel.find({ studentId: studentId });
+  const result = await AssignStudentModel.find({
+    studentId: studentId,
+    status: true,
+  });
   return result;
 };
 
