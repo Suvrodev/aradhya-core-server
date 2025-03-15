@@ -46,6 +46,6 @@ const batchSchema = new mongoose_1.Schema({
             message: "End date must be in YYYY-MM-DD format",
         },
     },
-    classNumber: { type: Number },
+    classNumber: { type: Number, default: 0 },
 }, { timestamps: true });
 exports.BatchModel = (0, mongoose_1.model)("batch", batchSchema);
