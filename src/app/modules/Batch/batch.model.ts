@@ -47,6 +47,7 @@ const batchSchema: Schema = new Schema<TBatch>(
         message: "End date must be in YYYY-MM-DD format",
       },
     },
+    classNumber: { type: Number },
   },
   { timestamps: true }
 );
