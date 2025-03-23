@@ -7,5 +7,6 @@ exports.ForgetPasswordRoute = void 0;
 const express_1 = __importDefault(require("express"));
 const forgetPassword_controller_1 = require("./forgetPassword.controller");
 const router = express_1.default.Router();
-router.post("/", forgetPassword_controller_1.ForgetPasswordController.addForgetPassword);
+router.post("/", forgetPassword_controller_1.ForgetPasswordController.sendOTP);
+router.post("/update-password-after-otp", forgetPassword_controller_1.ForgetPasswordController.updatePasswordAfterOTP);
 exports.ForgetPasswordRoute = router;

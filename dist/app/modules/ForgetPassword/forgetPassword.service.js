@@ -16,8 +16,8 @@ exports.ForgetPasswordService = void 0;
 const AppError_1 = __importDefault(require("../../errors/AppError"));
 const user_model_1 = require("../user/user.model");
 const senfForgetPasswordEmail_1 = require("./senfForgetPasswordEmail");
-///add forget password
-const addForgetPassword = (payload) => __awaiter(void 0, void 0, void 0, function* () {
+///Send OTP
+const SendOTP = (payload) => __awaiter(void 0, void 0, void 0, function* () {
     console.log("------------------------------------------");
     console.log("Payload: ", payload);
     const isUserExists = yield user_model_1.userModel.findOne({ email: payload });
@@ -36,6 +36,27 @@ const addForgetPassword = (payload) => __awaiter(void 0, void 0, void 0, functio
     yield (0, senfForgetPasswordEmail_1.sendForgetPasswordEmail)(payload.toString(), resetCode.toString());
     return resetCode;
 });
+//Update Password of user
+const updatPasswordAfterOTPIntoDB = (email, otp, password) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log("================================");
+    console.log("email: ", email);
+    console.log("OTP:", otp);
+    console.log("Password:", password);
+    //Checking  if the user is exist
+    const isUserExists = yield user_model_1.userModel.findOne({ email: email });
+    if (!isUserExists) {
+        throw new AppError_1.default(404, "User not Found");
+    }
+    console.log("Exist user: ", isUserExists);
+    if (otp != (isUserExists === null || isUserExists === void 0 ? void 0 : isUserExists.passwordResetCode)) {
+        throw new AppError_1.default(400, "Invalid OTP");
+    }
+    const result = yield user_model_1.userModel.updateOne({ email: email }, { password: password }, {
+        new: true,
+    });
+    return result;
+});
 exports.ForgetPasswordService = {
-    addForgetPassword,
+    SendOTP,
+    updatPasswordAfterOTPIntoDB,
 };

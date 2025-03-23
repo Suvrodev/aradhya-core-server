@@ -3,6 +3,10 @@ import { ForgetPasswordController } from "./forgetPassword.controller";
 
 const router = express.Router();
 
-router.post("/", ForgetPasswordController.addForgetPassword);
+router.post("/", ForgetPasswordController.sendOTP);
+router.post(
+  "/update-password-after-otp",
+  ForgetPasswordController.updatePasswordAfterOTP
+);
 
 export const ForgetPasswordRoute = router;

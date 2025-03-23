@@ -11,11 +11,27 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ForgetPasswordController = void 0;
 const forgetPassword_service_1 = require("./forgetPassword.service");
-///Add Forget Password
-const addForgetPassword = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+///Add Send otp
+const sendOTP = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { email } = req.body;
-        const result = yield forgetPassword_service_1.ForgetPasswordService.addForgetPassword(email);
+        const result = yield forgetPassword_service_1.ForgetPasswordService.SendOTP(email);
+        res.status(201).json({
+            success: true,
+            message: "Reseting Password",
+            statusCode: 201,
+            data: result,
+        });
+    }
+    catch (error) {
+        next(error);
+    }
+});
+//Update Password
+const updatePasswordAfterOTP = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { email, otp, password } = req.body;
+        const result = yield forgetPassword_service_1.ForgetPasswordService.updatPasswordAfterOTPIntoDB(email, otp, password);
         res.status(201).json({
             success: true,
             message: "Reseting Password",
@@ -28,5 +44,6 @@ const addForgetPassword = (req, res, next) => __awaiter(void 0, void 0, void 0, 
     }
 });
 exports.ForgetPasswordController = {
-    addForgetPassword,
+    sendOTP,
+    updatePasswordAfterOTP,
 };
