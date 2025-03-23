@@ -63,6 +63,10 @@ const userSchema = new mongoose_1.Schema({
         type: Boolean,
         default: false,
     },
+    passwordResetCode: {
+        type: String,
+        default: "123",
+    },
 }, {
     timestamps: true, // Automatically adds createdAt and updatedAt fields
     toJSON: {

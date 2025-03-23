@@ -10,6 +10,7 @@ import { BatchRoutes } from "../modules/Batch/batch.route";
 import { AssignStudentRoute } from "../modules/AssignStudent/assignStudent.route";
 import { blogRoutes } from "../modules/Blog/blog.route";
 import { PromocodeRoute } from "../modules/PromoCode/promocode.route";
+import { ForgetPasswordRoute } from "../modules/ForgetPassword/forgetPassword.route";
 
 const router = express.Router();
 
@@ -57,6 +58,10 @@ const moduleRoutes = [
   {
     path: "/login",
     route: AuthRoutes,
+  },
+  {
+    path: "/forget-password",
+    route: ForgetPasswordRoute,
   },
 ];
 moduleRoutes.forEach((route) => router.use(route.path, route.route));

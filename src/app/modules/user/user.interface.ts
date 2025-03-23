@@ -23,4 +23,5 @@ export type TUser = {
   whatsappNumber: string;
   role: "admin" | "student";
   isBlocked: boolean;
+  passwordResetCode: string;
 };

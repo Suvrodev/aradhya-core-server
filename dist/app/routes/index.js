@@ -15,6 +15,7 @@ const batch_route_1 = require("../modules/Batch/batch.route");
 const assignStudent_route_1 = require("../modules/AssignStudent/assignStudent.route");
 const blog_route_1 = require("../modules/Blog/blog.route");
 const promocode_route_1 = require("../modules/PromoCode/promocode.route");
+const forgetPassword_route_1 = require("../modules/ForgetPassword/forgetPassword.route");
 const router = express_1.default.Router();
 const moduleRoutes = [
     {
@@ -60,6 +61,10 @@ const moduleRoutes = [
     {
         path: "/login",
         route: auth_route_1.AuthRoutes,
+    },
+    {
+        path: "/forget-password",
+        route: forgetPassword_route_1.ForgetPasswordRoute,
     },
 ];
 moduleRoutes.forEach((route) => router.use(route.path, route.route));

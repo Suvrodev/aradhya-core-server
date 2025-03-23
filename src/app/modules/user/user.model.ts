@@ -66,6 +66,10 @@ const userSchema = new Schema<TUser>(
       type: Boolean,
       default: false,
     },
+    passwordResetCode: {
+      type: String,
+      default: "123",
+    },
   },
   {
     timestamps: true, // Automatically adds createdAt and updatedAt fields
