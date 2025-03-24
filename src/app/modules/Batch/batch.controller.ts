@@ -49,6 +49,23 @@ const getSpecificBatch: RequestHandler = async (req, res, next) => {
   }
 };
 
+//get Upcoming batch under Course
+const getUpComingBatchUnderCourse: RequestHandler = async (req, res, next) => {
+  try {
+    const courseId = req.params.courseId;
+    console.log("Course id-----------------: ", courseId);
+    const result = await BatchService.getUpComingBatchUnderCourseFromDB(
+      courseId
+    );
+    res.status(200).json({
+      message: "Batch Retrive successfully",
+      success: true,
+      data: result,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
 //getUnder Course Batch
 const getSpecificBatchUnderCourse: RequestHandler = async (req, res, next) => {
   try {
@@ -110,6 +127,7 @@ export const BatchController = {
   insertBatch,
   getAllBatch,
   getSpecificBatch,
+  getUpComingBatchUnderCourse,
   getSpecificBatchUnderCourse,
   deleteBatch,
   updateBatch,

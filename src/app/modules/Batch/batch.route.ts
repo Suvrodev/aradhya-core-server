@@ -8,6 +8,10 @@ router.post("/", BatchController.insertBatch);
 router.get("/", BatchController.getAllBatch);
 router.get("/:batchId", BatchController.getSpecificBatch);
 router.get(
+  "/undercourse/upComing/:courseId",
+  BatchController.getUpComingBatchUnderCourse
+);
+router.get(
   "/undercourse/:courseId",
   BatchController.getSpecificBatchUnderCourse
 );

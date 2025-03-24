@@ -11,6 +11,7 @@ const router = express_1.default.Router();
 router.post("/", batch_controller_1.BatchController.insertBatch);
 router.get("/", batch_controller_1.BatchController.getAllBatch);
 router.get("/:batchId", batch_controller_1.BatchController.getSpecificBatch);
+router.get("/undercourse/upComing/:courseId", batch_controller_1.BatchController.getUpComingBatchUnderCourse);
 router.get("/undercourse/:courseId", batch_controller_1.BatchController.getSpecificBatchUnderCourse);
 router.delete("/:batchId", batch_controller_1.BatchController.deleteBatch);
 router.patch("/:batchId", batch_controller_1.BatchController.updateBatch);

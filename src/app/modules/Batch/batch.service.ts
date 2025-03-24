@@ -5,11 +5,24 @@ import { BatchModel } from "./batch.model";
 
 //Insert Batch
 const insertBatchIntoDB = async (batchData: TBatch) => {
+  //Batch id Exist or not
   const isBatchIdExists = await BatchModel.findOne({
     batchId: batchData?.batchId,
   });
   if (isBatchIdExists) {
     throw new AppError(400, "Batch id already exists");
+  }
+
+  //Same course batch upcoming exist or not
+  const isSameCourseIdUpcomingExist = await BatchModel.findOne({
+    underCourse: batchData?.underCourse,
+    batchStatus: "upComing",
+  });
+  if (isSameCourseIdUpcomingExist) {
+    throw new AppError(
+      400,
+      `UpComing Batch already exist in course ${batchData?.underCourse} `
+    );
   }
 
   const result = await BatchModel.create(batchData);
@@ -28,12 +41,20 @@ const getSpecificBatchFromDB = async (batchId: string) => {
   return res;
 };
 
-///Get Specific batch under course
-const getSpecificBatchUnderCourseFromDB = async (courseId: string) => {
+///Get Specific batch under course upComing
+const getUpComingBatchUnderCourseFromDB = async (courseId: string) => {
   console.log("Check Course id: ", courseId);
   const res = await BatchModel.findOne({
     underCourse: courseId,
-    batchStatus: "onGoing",
+    batchStatus: "upComing",
+  });
+  return res;
+};
+///Get Specific batch under course
+const getSpecificBatchUnderCourseFromDB = async (courseId: string) => {
+  console.log("Check Course id: ", courseId);
+  const res = await BatchModel.find({
+    underCourse: courseId,
   });
   return res;
 };
@@ -59,6 +80,7 @@ export const BatchService = {
   insertBatchIntoDB,
   getAllBatchFromDB,
   getSpecificBatchFromDB,
+  getUpComingBatchUnderCourseFromDB,
   getSpecificBatchUnderCourseFromDB,
   deleteBatchFromDB,
   updateBatchFromDB,

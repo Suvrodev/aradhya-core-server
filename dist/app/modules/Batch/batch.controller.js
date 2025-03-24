@@ -58,6 +58,22 @@ const getSpecificBatch = (req, res, next) => __awaiter(void 0, void 0, void 0, f
         next(error);
     }
 });
+//get Upcoming batch under Course
+const getUpComingBatchUnderCourse = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const courseId = req.params.courseId;
+        console.log("Course id-----------------: ", courseId);
+        const result = yield batch_service_1.BatchService.getUpComingBatchUnderCourseFromDB(courseId);
+        res.status(200).json({
+            message: "Batch Retrive successfully",
+            success: true,
+            data: result,
+        });
+    }
+    catch (error) {
+        next(error);
+    }
+});
 //getUnder Course Batch
 const getSpecificBatchUnderCourse = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -112,6 +128,7 @@ exports.BatchController = {
     insertBatch,
     getAllBatch,
     getSpecificBatch,
+    getUpComingBatchUnderCourse,
     getSpecificBatchUnderCourse,
     deleteBatch,
     updateBatch,

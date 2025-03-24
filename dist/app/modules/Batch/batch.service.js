@@ -17,11 +17,20 @@ const AppError_1 = __importDefault(require("../../errors/AppError"));
 const batch_model_1 = require("./batch.model");
 //Insert Batch
 const insertBatchIntoDB = (batchData) => __awaiter(void 0, void 0, void 0, function* () {
+    //Batch id Exist or not
     const isBatchIdExists = yield batch_model_1.BatchModel.findOne({
         batchId: batchData === null || batchData === void 0 ? void 0 : batchData.batchId,
     });
     if (isBatchIdExists) {
         throw new AppError_1.default(400, "Batch id already exists");
+    }
+    //Same course batch upcoming exist or not
+    const isSameCourseIdUpcomingExist = yield batch_model_1.BatchModel.findOne({
+        underCourse: batchData === null || batchData === void 0 ? void 0 : batchData.underCourse,
+        batchStatus: "upComing",
+    });
+    if (isSameCourseIdUpcomingExist) {
+        throw new AppError_1.default(400, `UpComing Batch already exist in course ${batchData === null || batchData === void 0 ? void 0 : batchData.underCourse} `);
     }
     const result = yield batch_model_1.BatchModel.create(batchData);
     return result;
@@ -36,12 +45,20 @@ const getSpecificBatchFromDB = (batchId) => __awaiter(void 0, void 0, void 0, fu
     const res = yield batch_model_1.BatchModel.findOne({ batchId: batchId });
     return res;
 });
-///Get Specific batch under course
-const getSpecificBatchUnderCourseFromDB = (courseId) => __awaiter(void 0, void 0, void 0, function* () {
+///Get Specific batch under course upComing
+const getUpComingBatchUnderCourseFromDB = (courseId) => __awaiter(void 0, void 0, void 0, function* () {
     console.log("Check Course id: ", courseId);
     const res = yield batch_model_1.BatchModel.findOne({
         underCourse: courseId,
-        batchStatus: "onGoing",
+        batchStatus: "upComing",
+    });
+    return res;
+});
+///Get Specific batch under course
+const getSpecificBatchUnderCourseFromDB = (courseId) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log("Check Course id: ", courseId);
+    const res = yield batch_model_1.BatchModel.find({
+        underCourse: courseId,
     });
     return res;
 });
@@ -64,6 +81,7 @@ exports.BatchService = {
     insertBatchIntoDB,
     getAllBatchFromDB,
     getSpecificBatchFromDB,
+    getUpComingBatchUnderCourseFromDB,
     getSpecificBatchUnderCourseFromDB,
     deleteBatchFromDB,
     updateBatchFromDB,
