@@ -5,6 +5,14 @@ import { CourseModel } from "./course.model";
 //Insert Course
 const createCourseIntoDB = async (courseData: TCourse) => {
   console.log("Course Data: ", courseData);
+
+  const isExistId = await CourseModel.findOne({
+    courseId: courseData?.courseId,
+  });
+  if (isExistId) {
+    throw new AppError(400, "This Course id already exists");
+  }
+
   const result = await CourseModel.create(courseData);
   return result;
 };

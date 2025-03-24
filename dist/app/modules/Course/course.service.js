@@ -8,12 +8,22 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CourseServices = void 0;
+const AppError_1 = __importDefault(require("../../errors/AppError"));
 const course_model_1 = require("./course.model");
 //Insert Course
 const createCourseIntoDB = (courseData) => __awaiter(void 0, void 0, void 0, function* () {
     console.log("Course Data: ", courseData);
+    const isExistId = yield course_model_1.CourseModel.findOne({
+        courseId: courseData === null || courseData === void 0 ? void 0 : courseData.courseId,
+    });
+    if (isExistId) {
+        throw new AppError_1.default(400, "This Course id already exists");
+    }
     const result = yield course_model_1.CourseModel.create(courseData);
     return result;
 });
