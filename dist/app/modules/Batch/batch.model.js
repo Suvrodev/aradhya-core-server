@@ -7,7 +7,6 @@ const batchSchema = new mongoose_1.Schema({
     batchId: {
         type: String,
         required: [true, "Batch id is required"],
-        // unique: true,
         trim: true,
     },
     batchName: {
@@ -18,14 +17,6 @@ const batchSchema = new mongoose_1.Schema({
         type: String,
         required: [true, "Batch under which course is required"],
         trim: true,
-    },
-    batchStatus: {
-        type: String,
-        required: [true, "Batch status is required"],
-        enum: {
-            values: ["onGoing", "upComing", "end"],
-            message: "Batch status must be one of: onGoing, upComing, ended",
-        },
     },
     start: {
         type: String,
@@ -46,6 +37,53 @@ const batchSchema = new mongoose_1.Schema({
             message: "End date must be in YYYY-MM-DD format",
         },
     },
-    classNumber: { type: Number, default: 0 },
+    duration: {
+        type: String,
+        required: [true, "Batch duration is required"],
+        trim: true,
+    },
+    classNumber: {
+        type: Number,
+        required: [true, "Number of classes is required"],
+        min: [1, "There must be at least 1 class"],
+    },
+    projectnumber: {
+        type: Number,
+        required: [true, "Number of projects is required"],
+        min: [0, "Project number cannot be negative"],
+    },
+    instructorname: {
+        type: String,
+        required: [true, "Instructor name is required"],
+        trim: true,
+    },
+    instructorimage: {
+        type: String,
+        required: [true, "Instructor image URL is required"],
+        trim: true,
+    },
+    instructorfb: {
+        type: String,
+        required: [true, "Instructor Facebook profile link is required"],
+        trim: true,
+    },
+    classdays: {
+        type: String,
+        required: [true, "Class days information is required"],
+        trim: true,
+    },
+    supportdays: {
+        type: String,
+        required: [true, "Support days information is required"],
+        trim: true,
+    },
+    batchStatus: {
+        type: String,
+        required: [true, "Batch status is required"],
+        enum: {
+            values: ["onGoing", "upComing", "end"],
+            message: "Batch status must be one of: onGoing, upComing, ended",
+        },
+    },
 }, { timestamps: true });
 exports.BatchModel = (0, mongoose_1.model)("batch", batchSchema);

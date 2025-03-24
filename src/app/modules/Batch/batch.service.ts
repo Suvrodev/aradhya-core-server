@@ -5,6 +5,13 @@ import { BatchModel } from "./batch.model";
 
 //Insert Batch
 const insertBatchIntoDB = async (batchData: TBatch) => {
+  const isBatchIdExists = await BatchModel.findOne({
+    batchId: batchData?.batchId,
+  });
+  if (isBatchIdExists) {
+    throw new AppError(400, "Batch id already exists");
+  }
+
   const result = await BatchModel.create(batchData);
   return result;
 };

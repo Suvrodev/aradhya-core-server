@@ -8,11 +8,21 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BatchService = void 0;
+const AppError_1 = __importDefault(require("../../errors/AppError"));
 const batch_model_1 = require("./batch.model");
 //Insert Batch
 const insertBatchIntoDB = (batchData) => __awaiter(void 0, void 0, void 0, function* () {
+    const isBatchIdExists = yield batch_model_1.BatchModel.findOne({
+        batchId: batchData === null || batchData === void 0 ? void 0 : batchData.batchId,
+    });
+    if (isBatchIdExists) {
+        throw new AppError_1.default(400, "Batch id already exists");
+    }
     const result = yield batch_model_1.BatchModel.create(batchData);
     return result;
 });
