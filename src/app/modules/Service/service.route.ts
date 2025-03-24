@@ -5,6 +5,7 @@ const router = express.Router();
 
 router.post("/", ServiceController.addService);
 router.get("/", ServiceController.getAllService);
+router.get("/admin/", ServiceController.getAllServiceByAdmin);
 router.get("/:serviceId", ServiceController.getSpecificService);
 router.delete("/:serviceId", ServiceController.deleteService);
 router.patch("/:serviceId", ServiceController.updateService);

@@ -19,13 +19,23 @@ const addServiceIntoDB = async (payload: TService) => {
 
 //Get All Service from DB
 const getAllServiceFromDB = async () => {
-  const result = await ServiceModel.find().sort({ order: 1 });
+  const result = await ServiceModel.find({ serviceExists: "yes" }).sort({
+    order: 1,
+  });
   return result;
 };
 
 //Get All Service from DB
+const getAllServiceByAdminFromDB = async () => {
+  const result = await ServiceModel.find().sort({
+    order: 1,
+  });
+  return result;
+};
+
+//Get All Service from DB By Admin
 const getSpecificServiceFromDB = async (serviceId: string) => {
-  const result = await ServiceModel.findOne({ _id: serviceId });
+  const result = await ServiceModel.findOne({ serviceId: serviceId });
   return result;
 };
 
@@ -40,11 +50,11 @@ const updatServiceIntoDBFromDB = async (
   serviceId: string,
   payload: TService
 ) => {
-  //   console.log("User Id in service: ", userId);
-  //   console.log("payload in service", payload);
+  console.log("User Id in service: ", serviceId);
+  console.log("payload in service", payload);
 
-  const result = await ServiceModel.findByIdAndUpdate(
-    { _id: serviceId },
+  const result = await ServiceModel.updateOne(
+    { serviceId: serviceId },
     payload,
     {
       new: true,
@@ -56,6 +66,7 @@ const updatServiceIntoDBFromDB = async (
 export const serviceServices = {
   addServiceIntoDB,
   getAllServiceFromDB,
+  getAllServiceByAdminFromDB,
   getSpecificServiceFromDB,
   deleteServiceFromDB,
   updatServiceIntoDBFromDB,

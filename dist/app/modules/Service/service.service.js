@@ -29,12 +29,21 @@ const addServiceIntoDB = (payload) => __awaiter(void 0, void 0, void 0, function
 });
 //Get All Service from DB
 const getAllServiceFromDB = () => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield service_model_1.ServiceModel.find().sort({ order: 1 });
+    const result = yield service_model_1.ServiceModel.find({ serviceExists: "yes" }).sort({
+        order: 1,
+    });
     return result;
 });
 //Get All Service from DB
+const getAllServiceByAdminFromDB = () => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield service_model_1.ServiceModel.find().sort({
+        order: 1,
+    });
+    return result;
+});
+//Get All Service from DB By Admin
 const getSpecificServiceFromDB = (serviceId) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield service_model_1.ServiceModel.findOne({ _id: serviceId });
+    const result = yield service_model_1.ServiceModel.findOne({ serviceId: serviceId });
     return result;
 });
 //Delete Service from DB
@@ -44,9 +53,9 @@ const deleteServiceFromDB = (serviceId) => __awaiter(void 0, void 0, void 0, fun
 });
 //Update Service
 const updatServiceIntoDBFromDB = (serviceId, payload) => __awaiter(void 0, void 0, void 0, function* () {
-    //   console.log("User Id in service: ", userId);
-    //   console.log("payload in service", payload);
-    const result = yield service_model_1.ServiceModel.findByIdAndUpdate({ _id: serviceId }, payload, {
+    console.log("User Id in service: ", serviceId);
+    console.log("payload in service", payload);
+    const result = yield service_model_1.ServiceModel.updateOne({ serviceId: serviceId }, payload, {
         new: true,
     });
     return result;
@@ -54,6 +63,7 @@ const updatServiceIntoDBFromDB = (serviceId, payload) => __awaiter(void 0, void 
 exports.serviceServices = {
     addServiceIntoDB,
     getAllServiceFromDB,
+    getAllServiceByAdminFromDB,
     getSpecificServiceFromDB,
     deleteServiceFromDB,
     updatServiceIntoDBFromDB,

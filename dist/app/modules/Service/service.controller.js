@@ -43,6 +43,21 @@ const getAllService = (req, res, next) => __awaiter(void 0, void 0, void 0, func
         next(error);
     }
 });
+//Get All Service by Admin
+const getAllServiceByAdmin = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const result = yield service_service_1.serviceServices.getAllServiceByAdminFromDB();
+        res.status(201).json({
+            success: true,
+            message: "Service Retrived successfully",
+            statusCode: 201,
+            data: result,
+        });
+    }
+    catch (error) {
+        next(error);
+    }
+});
 //Get Specific Service
 const getSpecificService = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
@@ -100,6 +115,7 @@ const updateService = (req, res, next) => __awaiter(void 0, void 0, void 0, func
 });
 exports.ServiceController = {
     addService,
+    getAllServiceByAdmin,
     getAllService,
     getSpecificService,
     deleteService,
