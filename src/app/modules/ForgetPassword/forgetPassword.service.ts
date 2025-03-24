@@ -11,7 +11,7 @@ const SendOTP = async (payload: TForgetPassword) => {
   console.log("Payload: ", payload);
   const isUserExists = await userModel.findOne({ email: payload });
   if (!isUserExists) {
-    throw new AppError(404, "User not Found");
+    throw new AppError(404, "This email is not exists");
   }
 
   const resetCode = Math.floor(100000 + Math.random() * 900000);

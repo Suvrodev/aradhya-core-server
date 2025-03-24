@@ -3,80 +3,131 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CourseModel = void 0;
 const mongoose_1 = require("mongoose");
 const CourseSchema = new mongoose_1.Schema({
-    refService: {
-        type: mongoose_1.Schema.Types.ObjectId,
-        ref: "service",
-        required: [true, "Reference service is required"],
-    },
     refServiceId: {
         type: String,
-        required: [true, "Reference service id is required"],
+        required: [true, "RefServiceId is required"],
+        trim: true,
     },
     courseId: {
         type: String,
-        required: [true, "Course is required"],
+        required: [true, "Course ID is required"],
+        trim: true,
     },
-    courseTitle: { type: String, required: [true, "Course title is required"] },
+    courseTitle: {
+        type: String,
+        required: [true, "Course title is required"],
+        trim: true,
+    },
     courseImage: {
         type: String,
         required: [true, "Course image URL is required"],
+        trim: true,
     },
     courseDescription: {
         type: String,
         required: [true, "Course description is required"],
+        trim: true,
+        minlength: [10, "Course description must be at least 10 characters long"],
     },
     coursePrice: {
         type: Number,
         required: [true, "Course price is required"],
-        min: [0, "Course price cannot be negative"],
+        min: [0, "Course price can't be less than 0"],
     },
     courseDiscount: {
         type: Number,
-        default: 0,
-        min: [0, "Discount cannot be negative"],
+        min: [0, "Discount can't be less than 0"],
+        max: [100, "Discount can't be more than 100"],
     },
-    courseDiscountReason: { type: String },
-    courseCoupon: { type: String },
-    courseCouponStatus: { type: Boolean, default: false },
-    courseYoutubeVideo: { type: String },
-    courseClassNumber: {
-        type: Number,
-        required: [true, "Number of classes is required"],
-        min: [1, "Course must have at least one class"],
-    },
-    courseStartDate: {
+    courseDiscountReason: {
         type: String,
-        required: [true, "Course start date is required"],
+        trim: true,
+    },
+    courseYoutubeVideo: {
+        type: String,
+        trim: true,
+    },
+    courseClassNumber: {
+        type: String,
+        required: [true, "Number of classes is required"],
+        min: [1, "Number of classes must be at least 1"],
     },
     courseDuration: {
         type: String,
         required: [true, "Course duration is required"],
+        trim: true,
     },
     courseProjectNumber: {
-        type: Number,
+        type: String,
         required: [true, "Number of projects is required"],
-        min: [0, "Projects cannot be negative"],
     },
     courseReview: {
         type: Number,
-        default: 0,
-        min: [0, "Review score cannot be negative"],
+        min: [0, "Review score can't be less than 0"],
+        max: [5, "Review score can't be more than 5"],
     },
     computerConfiguration: {
         type: String,
-        required: [true, "Computer Configuration is required"],
-    },
-    courseStatus: {
-        type: String,
-        enum: {
-            values: ["onGoing", "upComming"],
-            message: "Course status must be 'onGoing' or 'upComming'",
-        },
-        required: [true, "Course status is required"],
+        required: [true, "Computer configuration is required"],
+        trim: true,
     },
     courseExists: {
-        type: Boolean,
+        type: String,
         required: [true, "Course existence status is required"],
     },
+    kikipaschen: {
+        type: [String],
+        required: [true, "Kikipaschen is required"],
+        validate: {
+            validator: function (value) {
+                return value.length > 0;
+            },
+            message: "At least one Kikipaschen is required",
+        },
+    },
+    courseCurriculum: {
+        type: [String],
+        required: [true, "Course curriculum is required"],
+        validate: {
+            validator: function (value) {
+                return value.length > 0;
+            },
+            message: "At least one course curriculum item is required",
+        },
+    },
+    jobposition: {
+        type: [String],
+        required: [true, "Job position is required"],
+        validate: {
+            validator: function (value) {
+                return value.length > 0;
+            },
+            message: "At least one job position is required",
+        },
+    },
+    projects: {
+        type: [String],
+        required: [true, "Projects are required"],
+        validate: {
+            validator: function (value) {
+                return value.length > 0;
+            },
+            message: "At least one project is required",
+        },
+    },
+    neededSoftware: [
+        {
+            image: {
+                type: String,
+                required: [true, "Software image is required"],
+                trim: true,
+            },
+            title: {
+                type: String,
+                required: [true, "Software title is required"],
+                trim: true,
+            },
+        },
+    ],
 }, { timestamps: true });
 exports.CourseModel = (0, mongoose_1.model)("course", CourseSchema);

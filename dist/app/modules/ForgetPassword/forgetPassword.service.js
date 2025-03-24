@@ -22,7 +22,7 @@ const SendOTP = (payload) => __awaiter(void 0, void 0, void 0, function* () {
     console.log("Payload: ", payload);
     const isUserExists = yield user_model_1.userModel.findOne({ email: payload });
     if (!isUserExists) {
-        throw new AppError_1.default(404, "User not Found");
+        throw new AppError_1.default(404, "This email is not exists");
     }
     const resetCode = Math.floor(100000 + Math.random() * 900000);
     const UpdatepasswordResetCode = yield user_model_1.userModel.updateOne({ email: payload }, { passwordResetCode: resetCode }, {

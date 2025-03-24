@@ -1,8 +1,7 @@
 import { Types } from "mongoose";
 
 export type TCourse = {
-  refService: Types.ObjectId;
-  refServiceId: string;
+  refServiceId: string; // Keeping only the refServiceId
   courseId: string;
   courseTitle: string;
   courseImage: string;
@@ -10,15 +9,17 @@ export type TCourse = {
   coursePrice: number;
   courseDiscount?: number;
   courseDiscountReason?: string;
-  courseCoupon?: string;
-  courseCouponStatus?: boolean;
   courseYoutubeVideo?: string;
-  courseClassNumber: number;
-  courseStartDate: string;
+  courseClassNumber: string;
+
   courseDuration: string;
-  courseProjectNumber: number;
+  courseProjectNumber: string;
   courseReview?: number;
   computerConfiguration: string;
-  courseStatus: "onGoing" | "upComming";
-  courseExists: boolean;
+  courseExists: string;
+  kikipaschen: string[];
+  courseCurriculum: string[];
+  jobposition: string[];
+  projects: string[];
+  neededSoftware: { image: string; title: string }[];
 };
