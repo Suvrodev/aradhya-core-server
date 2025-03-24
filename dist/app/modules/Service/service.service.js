@@ -8,12 +8,22 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.serviceServices = void 0;
+const AppError_1 = __importDefault(require("../../errors/AppError"));
 const service_model_1 = require("./service.model");
 ///Create Service into db
 const addServiceIntoDB = (payload) => __awaiter(void 0, void 0, void 0, function* () {
     //   console.log("Payload: ", payload);
+    const isServiceIdExists = yield service_model_1.ServiceModel.findOne({
+        serviceId: payload.serviceId,
+    });
+    if (isServiceIdExists) {
+        throw new AppError_1.default(400, "Service id is already exists");
+    }
     const result = yield service_model_1.ServiceModel.create(payload);
     return result;
 });

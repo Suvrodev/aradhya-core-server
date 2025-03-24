@@ -1,9 +1,18 @@
+import AppError from "../../errors/AppError";
 import { TService } from "./service.inrerface";
 import { ServiceModel } from "./service.model";
 
 ///Create Service into db
 const addServiceIntoDB = async (payload: TService) => {
   //   console.log("Payload: ", payload);
+
+  const isServiceIdExists = await ServiceModel.findOne({
+    serviceId: payload.serviceId,
+  });
+  if (isServiceIdExists) {
+    throw new AppError(400, "Service id is already exists");
+  }
+
   const result = await ServiceModel.create(payload);
   return result;
 };

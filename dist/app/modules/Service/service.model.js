@@ -6,7 +6,6 @@ const serviceSchema = new mongoose_1.Schema({
     serviceId: {
         type: String,
         required: [true, "Service id is required"],
-        unique: true,
         trim: true,
     },
     name: {
@@ -22,6 +21,11 @@ const serviceSchema = new mongoose_1.Schema({
         type: Number,
         trim: true,
         required: [true, "Order Number is required"],
+    },
+    serviceExists: {
+        type: String,
+        trim: true,
+        required: [true, "Service Exists Must be Required"],
     },
 }, {
     timestamps: true,

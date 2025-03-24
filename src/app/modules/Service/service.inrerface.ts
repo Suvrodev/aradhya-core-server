@@ -3,4 +3,5 @@ export type TService = {
   image: string;
   serviceId: string;
   order: number;
+  serviceExists: string;
 };
