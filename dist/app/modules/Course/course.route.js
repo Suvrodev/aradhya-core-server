@@ -9,6 +9,7 @@ const course_controller_1 = require("./course.controller");
 const router = express_1.default.Router();
 router.post("/", course_controller_1.CourseController.addCourse);
 router.get("/", course_controller_1.CourseController.getAllCourse);
+router.get("/admin/", course_controller_1.CourseController.getAllCourseByAdmin);
 router.get("/:courseId", course_controller_1.CourseController.getSpecificCourse);
 router.get("/in-Service/:serviceId", course_controller_1.CourseController.getSpecificServiceCourse);
 router.delete("/:courseId", course_controller_1.CourseController.deleteCourse);

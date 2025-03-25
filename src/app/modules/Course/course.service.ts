@@ -19,8 +19,16 @@ const createCourseIntoDB = async (courseData: TCourse) => {
 
 // Get all Course
 const getAllCourseFromDB = async () => {
+  const result = await CourseModel.find({ courseExists: "yes" }).select(
+    "_id courseId courseTitle courseImage courseClassNumber courseProjectNumber courseExists"
+  );
+  return result;
+};
+
+// Get all Course By Admin
+const getAllCourseByAdminFromDB = async () => {
   const result = await CourseModel.find().select(
-    "_id courseId courseTitle courseImage courseClassNumber courseProjectNumber"
+    "_id courseId courseTitle courseImage courseClassNumber courseProjectNumber courseExists"
   );
   return result;
 };
@@ -74,6 +82,7 @@ const updateCourseFromDB = async (courseId: string, payload: TCourse) => {
 export const CourseServices = {
   createCourseIntoDB,
   getAllCourseFromDB,
+  getAllCourseByAdminFromDB,
   getSpecificCourseFromDB,
   getSpecificServiceCourseFromDB,
   deleteCourseFromDB,

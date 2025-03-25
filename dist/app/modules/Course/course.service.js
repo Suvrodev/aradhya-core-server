@@ -29,7 +29,12 @@ const createCourseIntoDB = (courseData) => __awaiter(void 0, void 0, void 0, fun
 });
 // Get all Course
 const getAllCourseFromDB = () => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield course_model_1.CourseModel.find().select("_id courseId courseTitle courseImage courseClassNumber courseProjectNumber");
+    const result = yield course_model_1.CourseModel.find({ courseExists: "yes" }).select("_id courseId courseTitle courseImage courseClassNumber courseProjectNumber courseExists");
+    return result;
+});
+// Get all Course By Admin
+const getAllCourseByAdminFromDB = () => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield course_model_1.CourseModel.find().select("_id courseId courseTitle courseImage courseClassNumber courseProjectNumber courseExists");
     return result;
 });
 // Get specific Course
@@ -70,6 +75,7 @@ const updateCourseFromDB = (courseId, payload) => __awaiter(void 0, void 0, void
 exports.CourseServices = {
     createCourseIntoDB,
     getAllCourseFromDB,
+    getAllCourseByAdminFromDB,
     getSpecificCourseFromDB,
     getSpecificServiceCourseFromDB,
     deleteCourseFromDB,

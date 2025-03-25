@@ -43,6 +43,21 @@ const getAllCourse = (req, res, next) => __awaiter(void 0, void 0, void 0, funct
         next(error);
     }
 });
+//Get All Course by Admin
+const getAllCourseByAdmin = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const result = yield course_service_1.CourseServices.getAllCourseByAdminFromDB();
+        res.status(201).json({
+            success: true,
+            message: "Course Retrived successfully",
+            statusCode: 201,
+            data: result,
+        });
+    }
+    catch (error) {
+        next(error);
+    }
+});
 //Get Specific Course
 const getSpecificCourse = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
@@ -120,6 +135,7 @@ const updateCourse = (req, res, next) => __awaiter(void 0, void 0, void 0, funct
 exports.CourseController = {
     addCourse,
     getAllCourse,
+    getAllCourseByAdmin,
     getSpecificCourse,
     getSpecificServiceCourse,
     deleteCourse,

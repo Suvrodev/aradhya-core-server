@@ -5,6 +5,7 @@ const router = express.Router();
 
 router.post("/", CourseController.addCourse);
 router.get("/", CourseController.getAllCourse);
+router.get("/admin/", CourseController.getAllCourseByAdmin);
 router.get("/:courseId", CourseController.getSpecificCourse);
 router.get("/in-Service/:serviceId", CourseController.getSpecificServiceCourse);
 router.delete("/:courseId", CourseController.deleteCourse);

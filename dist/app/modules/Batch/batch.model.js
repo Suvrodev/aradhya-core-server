@@ -49,8 +49,6 @@ const batchSchema = new mongoose_1.Schema({
     },
     projectnumber: {
         type: Number,
-        required: [true, "Number of projects is required"],
-        min: [0, "Project number cannot be negative"],
     },
     instructorname: {
         type: String,
@@ -85,5 +83,19 @@ const batchSchema = new mongoose_1.Schema({
             message: "Batch status must be one of: onGoing, upComing, ended",
         },
     },
+    schedule: [
+        {
+            date: {
+                type: String,
+                required: [true, "Date is required"],
+                trim: true,
+            },
+            topic: {
+                type: String,
+                required: [true, "Topic is required"],
+                trim: true,
+            },
+        },
+    ],
 }, { timestamps: true });
 exports.BatchModel = (0, mongoose_1.model)("batch", batchSchema);

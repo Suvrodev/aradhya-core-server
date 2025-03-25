@@ -34,6 +34,21 @@ const getAllCourse: RequestHandler = async (req, res, next) => {
   }
 };
 
+//Get All Course by Admin
+const getAllCourseByAdmin: RequestHandler = async (req, res, next) => {
+  try {
+    const result = await CourseServices.getAllCourseByAdminFromDB();
+    res.status(201).json({
+      success: true,
+      message: "Course Retrived successfully",
+      statusCode: 201,
+      data: result,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 //Get Specific Course
 const getSpecificCourse: RequestHandler = async (req, res, next) => {
   try {
@@ -112,6 +127,7 @@ const updateCourse: RequestHandler = async (req, res, next) => {
 export const CourseController = {
   addCourse,
   getAllCourse,
+  getAllCourseByAdmin,
   getSpecificCourse,
   getSpecificServiceCourse,
   deleteCourse,
