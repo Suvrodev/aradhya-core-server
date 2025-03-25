@@ -29,7 +29,7 @@ const createCourseIntoDB = (courseData) => __awaiter(void 0, void 0, void 0, fun
 });
 // Get all Course
 const getAllCourseFromDB = () => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield course_model_1.CourseModel.find({ courseExists: "yes" }).select("_id courseId courseTitle courseImage courseClassNumber courseProjectNumber courseExists");
+    const result = yield course_model_1.CourseModel.find({ courseExists: "yes" }).select("_id courseId courseTitle courseImage courseClassNumber courseProjectNumber courseDuration courseExists");
     return result;
 });
 // Get all Course By Admin
@@ -49,10 +49,13 @@ const getSpecificCourseFromDB = (courseId) => __awaiter(void 0, void 0, void 0, 
 const getSpecificServiceCourseFromDB = (serviceId) => __awaiter(void 0, void 0, void 0, function* () {
     let result;
     if (serviceId == "0") {
-        result = yield course_model_1.CourseModel.find().select("courseTitle courseImage courseId");
+        result = yield course_model_1.CourseModel.find({ courseExists: "yes" }).select("courseTitle courseImage courseId courseClassNumber courseProjectNumber courseDuration");
     }
     else {
-        result = yield course_model_1.CourseModel.find({ refServiceId: serviceId }).select("courseTitle courseImage");
+        result = yield course_model_1.CourseModel.find({
+            refServiceId: serviceId,
+            courseExists: "yes",
+        }).select("courseTitle courseImage courseClassNumber courseProjectNumber courseDuration");
     }
     return result;
 });

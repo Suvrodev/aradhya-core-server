@@ -20,7 +20,7 @@ const createCourseIntoDB = async (courseData: TCourse) => {
 // Get all Course
 const getAllCourseFromDB = async () => {
   const result = await CourseModel.find({ courseExists: "yes" }).select(
-    "_id courseId courseTitle courseImage courseClassNumber courseProjectNumber courseExists"
+    "_id courseId courseTitle courseImage courseClassNumber courseProjectNumber courseDuration courseExists"
   );
   return result;
 };
@@ -46,12 +46,15 @@ const getSpecificCourseFromDB = async (courseId: string) => {
 const getSpecificServiceCourseFromDB = async (serviceId: string) => {
   let result;
   if (serviceId == "0") {
-    result = await CourseModel.find().select(
-      "courseTitle courseImage courseId"
+    result = await CourseModel.find({ courseExists: "yes" }).select(
+      "courseTitle courseImage courseId courseClassNumber courseProjectNumber courseDuration"
     );
   } else {
-    result = await CourseModel.find({ refServiceId: serviceId }).select(
-      "courseTitle courseImage"
+    result = await CourseModel.find({
+      refServiceId: serviceId,
+      courseExists: "yes",
+    }).select(
+      "courseTitle courseImage courseClassNumber courseProjectNumber courseDuration"
     );
   }
   return result;
