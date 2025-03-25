@@ -7,7 +7,7 @@ router.post("/", AssignStudentController.insertAssignStundet);
 router.get("/", AssignStudentController.getAllAssignStudent);
 router.get("/:assignId", AssignStudentController.getSpecificAssignStudent);
 router.get(
-  "/own-course/:studentId",
+  "/own-course/:studentEmail",
   AssignStudentController.getOwnCourseOfSAssignStudent
 );
 router.delete("/:assignId", AssignStudentController.deleteAssignStudent);

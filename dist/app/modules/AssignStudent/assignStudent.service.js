@@ -71,10 +71,10 @@ const getSpecificAssignStudentFromDB = (assignId) => __awaiter(void 0, void 0, v
     return result;
 });
 // Get specific Assign Student
-const getOwnCourseOfSAssignStudentFromDB = (studentId) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log("student id:", studentId);
+const getOwnCourseOfSAssignStudentFromDB = (studentEmail) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log("student Email:", studentEmail);
     const result = yield assignStudent_model_1.AssignStudentModel.find({
-        studentId: studentId,
+        studentEmail: studentEmail,
         status: true,
     });
     return result;

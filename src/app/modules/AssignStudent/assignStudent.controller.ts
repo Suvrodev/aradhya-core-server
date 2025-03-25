@@ -64,9 +64,11 @@ const getSpecificAssignStudent: RequestHandler = async (req, res, next) => {
 
 const getOwnCourseOfSAssignStudent: RequestHandler = async (req, res, next) => {
   try {
-    const studentId = req?.params?.studentId;
+    const studentEmail = req?.params?.studentEmail;
     const result =
-      await AssignStudentServices.getOwnCourseOfSAssignStudentFromDB(studentId);
+      await AssignStudentServices.getOwnCourseOfSAssignStudentFromDB(
+        studentEmail
+      );
     res.status(200).json({
       message: "Own Course of Student Retrive successfully",
       success: true,

@@ -64,8 +64,8 @@ const getSpecificAssignStudent = (req, res, next) => __awaiter(void 0, void 0, v
 const getOwnCourseOfSAssignStudent = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
     try {
-        const studentId = (_a = req === null || req === void 0 ? void 0 : req.params) === null || _a === void 0 ? void 0 : _a.studentId;
-        const result = yield assignStudent_service_1.AssignStudentServices.getOwnCourseOfSAssignStudentFromDB(studentId);
+        const studentEmail = (_a = req === null || req === void 0 ? void 0 : req.params) === null || _a === void 0 ? void 0 : _a.studentEmail;
+        const result = yield assignStudent_service_1.AssignStudentServices.getOwnCourseOfSAssignStudentFromDB(studentEmail);
         res.status(200).json({
             message: "Own Course of Student Retrive successfully",
             success: true,
