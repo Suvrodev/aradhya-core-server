@@ -37,7 +37,10 @@ const getAllBatchFromDB = async () => {
 
 ///Get specific batch
 const getSpecificBatchFromDB = async (batchId: string) => {
-  const res = await BatchModel.findOne({ batchId: batchId });
+  const res = await BatchModel.findOne({
+    batchId: batchId,
+    batchStatus: "upComing",
+  });
   return res;
 };
 

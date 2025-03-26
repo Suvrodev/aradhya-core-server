@@ -49,13 +49,13 @@ const getSpecificCourseFromDB = (courseId) => __awaiter(void 0, void 0, void 0, 
 const getSpecificServiceCourseFromDB = (serviceId) => __awaiter(void 0, void 0, void 0, function* () {
     let result;
     if (serviceId == "0") {
-        result = yield course_model_1.CourseModel.find({ courseExists: "yes" }).select("courseTitle courseImage courseId courseClassNumber courseProjectNumber courseDuration");
+        result = yield course_model_1.CourseModel.find({ courseExists: "yes" }).select("courseTitle courseImage courseId courseClassNumber courseProjectNumber courseDuration courseDiscount");
     }
     else {
         result = yield course_model_1.CourseModel.find({
             refServiceId: serviceId,
             courseExists: "yes",
-        }).select("courseTitle courseImage courseClassNumber courseProjectNumber courseDuration");
+        }).select("courseTitle courseImage courseClassNumber courseProjectNumber courseDuration courseDiscount");
     }
     return result;
 });

@@ -42,7 +42,10 @@ const getAllBatchFromDB = () => __awaiter(void 0, void 0, void 0, function* () {
 });
 ///Get specific batch
 const getSpecificBatchFromDB = (batchId) => __awaiter(void 0, void 0, void 0, function* () {
-    const res = yield batch_model_1.BatchModel.findOne({ batchId: batchId });
+    const res = yield batch_model_1.BatchModel.findOne({
+        batchId: batchId,
+        batchStatus: "upComing",
+    });
     return res;
 });
 ///Get Specific batch under course upComing
