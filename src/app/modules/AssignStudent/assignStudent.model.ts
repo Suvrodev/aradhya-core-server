@@ -53,10 +53,10 @@ const AssignStudentSchema: Schema = new Schema<TAssignStudent>(
       type: Number,
       required: [true, "promoCode is required"],
     },
-    paymentGateWay: {
-      type: String,
-      required: [true, "Payment Gateway is required"],
-    },
+    // paymentGateWay: {
+    //   type: String,
+    //   required: [true, "Payment Gateway is required"],
+    // },
 
     transactionId: {
       type: String,

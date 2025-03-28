@@ -53,10 +53,10 @@ const AssignStudentSchema = new mongoose_1.Schema({
         type: Number,
         required: [true, "promoCode is required"],
     },
-    paymentGateWay: {
-        type: String,
-        required: [true, "Payment Gateway is required"],
-    },
+    // paymentGateWay: {
+    //   type: String,
+    //   required: [true, "Payment Gateway is required"],
+    // },
     transactionId: {
         type: String,
         required: [true, "transactionId is required"],
