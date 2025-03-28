@@ -18,6 +18,16 @@ const batchSchema: Schema = new Schema<TBatch>(
       required: [true, "Batch under which course is required"],
       trim: true,
     },
+    coursePrice: {
+      type: Number,
+      required: [true, "Course Price must be required"],
+      trim: true,
+    },
+    courseDiscount: {
+      type: Number,
+      required: [true, "Course Discount must be required"],
+      trim: true,
+    },
 
     start: {
       type: String,

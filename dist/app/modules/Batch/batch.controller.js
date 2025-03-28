@@ -58,6 +58,22 @@ const getSpecificBatch = (req, res, next) => __awaiter(void 0, void 0, void 0, f
         next(error);
     }
 });
+//Get Just one batch (Not matter status for update)
+const getJustOneBatch = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    var _a;
+    try {
+        const batchId = (_a = req === null || req === void 0 ? void 0 : req.params) === null || _a === void 0 ? void 0 : _a.batchId;
+        const result = yield batch_service_1.BatchService.getJustOneBatchFromDB(batchId);
+        res.status(200).json({
+            message: "Batch Retrive successfully",
+            success: true,
+            data: result,
+        });
+    }
+    catch (error) {
+        next(error);
+    }
+});
 //get Upcoming batch under Course
 const getUpComingBatchUnderCourse = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -128,6 +144,7 @@ exports.BatchController = {
     insertBatch,
     getAllBatch,
     getSpecificBatch,
+    getJustOneBatch,
     getUpComingBatchUnderCourse,
     getSpecificBatchUnderCourse,
     deleteBatch,

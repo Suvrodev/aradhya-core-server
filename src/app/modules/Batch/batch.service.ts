@@ -35,7 +35,7 @@ const getAllBatchFromDB = async () => {
   return res;
 };
 
-///Get specific batch
+///Get specific batch  (Not used)
 const getSpecificBatchFromDB = async (batchId: string) => {
   const res = await BatchModel.findOne({
     batchId: batchId,
@@ -44,7 +44,16 @@ const getSpecificBatchFromDB = async (batchId: string) => {
   return res;
 };
 
-///Get Specific batch under course upComing
+///Get just 1 batch based on batch id (Not matter status for update)
+const getJustOneBatchFromDB = async (batchId: string) => {
+  console.log("(Just) batch id", batchId);
+  const res = await BatchModel.findOne({
+    batchId: batchId,
+  });
+  return res;
+};
+
+///Get Specific 1 batch under course upComing
 const getUpComingBatchUnderCourseFromDB = async (courseId: string) => {
   console.log("Check Course id: ", courseId);
   const res = await BatchModel.findOne({
@@ -53,7 +62,7 @@ const getUpComingBatchUnderCourseFromDB = async (courseId: string) => {
   });
   return res;
 };
-///Get Specific batch under course
+///Get Specific all batch under course
 const getSpecificBatchUnderCourseFromDB = async (courseId: string) => {
   console.log("Check Course id: ", courseId);
   const res = await BatchModel.find({
@@ -83,6 +92,7 @@ export const BatchService = {
   insertBatchIntoDB,
   getAllBatchFromDB,
   getSpecificBatchFromDB,
+  getJustOneBatchFromDB,
   getUpComingBatchUnderCourseFromDB,
   getSpecificBatchUnderCourseFromDB,
   deleteBatchFromDB,

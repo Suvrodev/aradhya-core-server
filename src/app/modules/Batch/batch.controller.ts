@@ -49,6 +49,21 @@ const getSpecificBatch: RequestHandler = async (req, res, next) => {
   }
 };
 
+//Get Just one batch (Not matter status for update)
+const getJustOneBatch: RequestHandler = async (req, res, next) => {
+  try {
+    const batchId = req?.params?.batchId;
+    const result = await BatchService.getJustOneBatchFromDB(batchId);
+    res.status(200).json({
+      message: "Batch Retrive successfully",
+      success: true,
+      data: result,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 //get Upcoming batch under Course
 const getUpComingBatchUnderCourse: RequestHandler = async (req, res, next) => {
   try {
@@ -127,6 +142,7 @@ export const BatchController = {
   insertBatch,
   getAllBatch,
   getSpecificBatch,
+  getJustOneBatch,
   getUpComingBatchUnderCourse,
   getSpecificBatchUnderCourse,
   deleteBatch,

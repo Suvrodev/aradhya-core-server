@@ -40,7 +40,7 @@ const getAllBatchFromDB = () => __awaiter(void 0, void 0, void 0, function* () {
     const res = yield batch_model_1.BatchModel.find();
     return res;
 });
-///Get specific batch
+///Get specific batch  (Not used)
 const getSpecificBatchFromDB = (batchId) => __awaiter(void 0, void 0, void 0, function* () {
     const res = yield batch_model_1.BatchModel.findOne({
         batchId: batchId,
@@ -48,7 +48,15 @@ const getSpecificBatchFromDB = (batchId) => __awaiter(void 0, void 0, void 0, fu
     });
     return res;
 });
-///Get Specific batch under course upComing
+///Get just 1 batch based on batch id (Not matter status for update)
+const getJustOneBatchFromDB = (batchId) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log("(Just) batch id", batchId);
+    const res = yield batch_model_1.BatchModel.findOne({
+        batchId: batchId,
+    });
+    return res;
+});
+///Get Specific 1 batch under course upComing
 const getUpComingBatchUnderCourseFromDB = (courseId) => __awaiter(void 0, void 0, void 0, function* () {
     console.log("Check Course id: ", courseId);
     const res = yield batch_model_1.BatchModel.findOne({
@@ -57,7 +65,7 @@ const getUpComingBatchUnderCourseFromDB = (courseId) => __awaiter(void 0, void 0
     });
     return res;
 });
-///Get Specific batch under course
+///Get Specific all batch under course
 const getSpecificBatchUnderCourseFromDB = (courseId) => __awaiter(void 0, void 0, void 0, function* () {
     console.log("Check Course id: ", courseId);
     const res = yield batch_model_1.BatchModel.find({
@@ -84,6 +92,7 @@ exports.BatchService = {
     insertBatchIntoDB,
     getAllBatchFromDB,
     getSpecificBatchFromDB,
+    getJustOneBatchFromDB,
     getUpComingBatchUnderCourseFromDB,
     getSpecificBatchUnderCourseFromDB,
     deleteBatchFromDB,

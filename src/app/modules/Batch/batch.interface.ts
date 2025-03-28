@@ -2,6 +2,8 @@ export type TBatch = {
   batchId: string;
   batchName: string;
   underCourse: string;
+  coursePrice: number;
+  courseDiscount: number;
   start: string;
   end?: string;
   duration: string;
