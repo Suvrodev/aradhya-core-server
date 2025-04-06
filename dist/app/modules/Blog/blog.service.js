@@ -18,8 +18,15 @@ const createBlogIntoDB = (blogData) => __awaiter(void 0, void 0, void 0, functio
     return result;
 });
 ///Get All Blog
-const getAllBlog = () => __awaiter(void 0, void 0, void 0, function* () {
-    const res = yield blog_model_1.BlogModel.find().select("title category image createdAt writer pin");
+const getAllBlog = (params) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log("params: ", params);
+    let res;
+    if (params == "yes") {
+        res = yield blog_model_1.BlogModel.find({ pin: "yes" }).select("title category image createdAt writer pin");
+    }
+    else {
+        res = yield blog_model_1.BlogModel.find().select("title category image createdAt writer pin");
+    }
     return res;
 });
 //Get Single Blog

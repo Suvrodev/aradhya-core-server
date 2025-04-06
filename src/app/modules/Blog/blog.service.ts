@@ -13,10 +13,18 @@ const createBlogIntoDB = async (blogData: TBlog) => {
 };
 
 ///Get All Blog
-const getAllBlog = async () => {
-  const res = await BlogModel.find().select(
-    "title category image createdAt writer pin"
-  );
+const getAllBlog = async (params: string) => {
+  console.log("params: ", params);
+  let res;
+  if (params == "yes") {
+    res = await BlogModel.find({ pin: "yes" }).select(
+      "title category image createdAt writer pin"
+    );
+  } else {
+    res = await BlogModel.find().select(
+      "title category image createdAt writer pin"
+    );
+  }
   return res;
 };
 

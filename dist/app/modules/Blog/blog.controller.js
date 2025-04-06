@@ -31,7 +31,8 @@ const createBlog = (req, res, next) => __awaiter(void 0, void 0, void 0, functio
 // Get All Blog
 const getAllBlog = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const result = yield blog_service_1.BlogServices.getAllBlog();
+        const { pin } = req.query;
+        const result = yield blog_service_1.BlogServices.getAllBlog(pin);
         // Send response with the results
         res.status(200).json({
             message: "Blog retrieved successfully",

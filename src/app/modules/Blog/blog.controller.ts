@@ -25,7 +25,8 @@ const createBlog: RequestHandler = async (req, res, next) => {
 // Get All Blog
 const getAllBlog: RequestHandler = async (req, res, next) => {
   try {
-    const result = await BlogServices.getAllBlog();
+    const { pin } = req.query;
+    const result = await BlogServices.getAllBlog(pin as string);
 
     // Send response with the results
     res.status(200).json({
