@@ -90,10 +90,29 @@ const updateBlog: RequestHandler = async (req, res, next) => {
   }
 };
 
+//Update Blog
+const updateBlogPin: RequestHandler = async (req, res, next) => {
+  try {
+    const blogId = req.params.id;
+    const blogBody = req?.body;
+    const result = await BlogServices.updateBlogPinFromDB(blogId, blogBody);
+
+    //Send Response
+    res.status(200).json({
+      message: "Pin updated successfully",
+      success: true,
+      data: result,
+    });
+  } catch (error: any) {
+    next(error);
+  }
+};
+
 export const BlogControllers = {
   createBlog,
   getAllBlog,
   getSingleBlog,
   deleteBlog,
   updateBlog,
+  updateBlogPin,
 };

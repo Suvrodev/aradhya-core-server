@@ -39,5 +39,10 @@ const blogSchema = new mongoose_1.Schema({
             message: "{VALUE} is not a valid category.",
         },
     },
+    pin: {
+        type: String,
+        enum: ["yes", "no"],
+        default: "no",
+    },
 }, { timestamps: true });
 exports.BlogModel = (0, mongoose_1.model)("blogs", blogSchema);

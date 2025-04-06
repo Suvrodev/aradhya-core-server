@@ -15,7 +15,7 @@ const createBlogIntoDB = async (blogData: TBlog) => {
 ///Get All Blog
 const getAllBlog = async () => {
   const res = await BlogModel.find().select(
-    "title category image createdAt writer"
+    "title category image createdAt writer pin"
   );
   return res;
 };
@@ -37,11 +37,24 @@ const deleteBlogFromDB = async (blogId: string) => {
   return result;
 };
 
-//Update book
+//Update Blog
 const updateBlogFromDB = async (blogId: string, blogData: TBlog) => {
   console.log("blog id:", blogId);
   console.log("Update Data: ", blogData);
   const result = await BlogModel.findByIdAndUpdate({ _id: blogId }, blogData, {
+    new: true,
+  });
+  return result;
+};
+
+//Update Pin
+const updateBlogPinFromDB = async (
+  blogId: string,
+  payload: { pin: string }
+) => {
+  console.log("blog id:", blogId);
+  console.log("Update Data: ", payload);
+  const result = await BlogModel.findByIdAndUpdate({ _id: blogId }, payload, {
     new: true,
   });
   return result;
@@ -53,4 +66,5 @@ export const BlogServices = {
   getSingleBlogFromDB,
   deleteBlogFromDB,
   updateBlogFromDB,
+  updateBlogPinFromDB,
 };

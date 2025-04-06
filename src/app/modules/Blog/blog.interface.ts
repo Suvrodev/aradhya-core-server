@@ -4,4 +4,5 @@ export type TBlog = {
   image: string;
   category: string;
   writer: string;
+  pin: "yes" | "no";
 };

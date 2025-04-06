@@ -19,7 +19,7 @@ const createBlogIntoDB = (blogData) => __awaiter(void 0, void 0, void 0, functio
 });
 ///Get All Blog
 const getAllBlog = () => __awaiter(void 0, void 0, void 0, function* () {
-    const res = yield blog_model_1.BlogModel.find().select("title category image createdAt writer");
+    const res = yield blog_model_1.BlogModel.find().select("title category image createdAt writer pin");
     return res;
 });
 //Get Single Blog
@@ -38,11 +38,20 @@ const deleteBlogFromDB = (blogId) => __awaiter(void 0, void 0, void 0, function*
     const result = yield blog_model_1.BlogModel.findByIdAndDelete({ _id: blogId });
     return result;
 });
-//Update book
+//Update Blog
 const updateBlogFromDB = (blogId, blogData) => __awaiter(void 0, void 0, void 0, function* () {
     console.log("blog id:", blogId);
     console.log("Update Data: ", blogData);
     const result = yield blog_model_1.BlogModel.findByIdAndUpdate({ _id: blogId }, blogData, {
+        new: true,
+    });
+    return result;
+});
+//Update Pin
+const updateBlogPinFromDB = (blogId, payload) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log("blog id:", blogId);
+    console.log("Update Data: ", payload);
+    const result = yield blog_model_1.BlogModel.findByIdAndUpdate({ _id: blogId }, payload, {
         new: true,
     });
     return result;
@@ -53,4 +62,5 @@ exports.BlogServices = {
     getSingleBlogFromDB,
     deleteBlogFromDB,
     updateBlogFromDB,
+    updateBlogPinFromDB,
 };

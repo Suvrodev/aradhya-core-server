@@ -39,6 +39,11 @@ const blogSchema = new Schema<TBlog>(
         message: "{VALUE} is not a valid category.",
       },
     },
+    pin: {
+      type: String,
+      enum: ["yes", "no"],
+      default: "no",
+    },
   },
   { timestamps: true }
 );

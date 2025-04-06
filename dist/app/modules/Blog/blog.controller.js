@@ -93,10 +93,28 @@ const updateBlog = (req, res, next) => __awaiter(void 0, void 0, void 0, functio
         next(error);
     }
 });
+//Update Blog
+const updateBlogPin = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const blogId = req.params.id;
+        const blogBody = req === null || req === void 0 ? void 0 : req.body;
+        const result = yield blog_service_1.BlogServices.updateBlogPinFromDB(blogId, blogBody);
+        //Send Response
+        res.status(200).json({
+            message: "Pin updated successfully",
+            success: true,
+            data: result,
+        });
+    }
+    catch (error) {
+        next(error);
+    }
+});
 exports.BlogControllers = {
     createBlog,
     getAllBlog,
     getSingleBlog,
     deleteBlog,
     updateBlog,
+    updateBlogPin,
 };

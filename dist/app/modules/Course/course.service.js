@@ -29,7 +29,7 @@ const createCourseIntoDB = (courseData) => __awaiter(void 0, void 0, void 0, fun
 });
 // Get all Course
 const getAllCourseFromDB = () => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield course_model_1.CourseModel.find({ courseExists: "yes" }).select("_id courseId courseTitle courseImage courseClassNumber courseProjectNumber courseDuration courseExists");
+    const result = yield course_model_1.CourseModel.find({ courseExists: "yes" }).select("courseId refServiceId courseTitle courseImage courseClassNumber courseProjectNumber courseDuration courseDiscount courseExists");
     return result;
 });
 // Get all Course By Admin

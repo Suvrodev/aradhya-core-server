@@ -11,5 +11,6 @@ router.get("/", BlogControllers.getAllBlog);
 router.get("/:id", BlogControllers.getSingleBlog);
 router.delete("/:id", BlogControllers.deleteBlog);
 router.patch("/update/:id", BlogControllers.updateBlog);
+router.put("/update/pin/:id", BlogControllers.updateBlogPin);
 
 export const blogRoutes = router;
