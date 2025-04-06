@@ -55,7 +55,7 @@ const getSpecificServiceCourseFromDB = (serviceId) => __awaiter(void 0, void 0, 
         result = yield course_model_1.CourseModel.find({
             refServiceId: serviceId,
             courseExists: "yes",
-        }).select("courseTitle courseImage courseClassNumber courseProjectNumber courseDuration courseDiscount");
+        }).select("courseTitle courseImage courseId courseClassNumber courseProjectNumber courseDuration courseDiscount");
     }
     return result;
 });

@@ -14,7 +14,9 @@ const createBlogIntoDB = async (blogData: TBlog) => {
 
 ///Get All Blog
 const getAllBlog = async () => {
-  const res = await BlogModel.find();
+  const res = await BlogModel.find().select(
+    "title category image createdAt writer"
+  );
   return res;
 };
 

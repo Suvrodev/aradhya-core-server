@@ -54,7 +54,7 @@ const getSpecificServiceCourseFromDB = async (serviceId: string) => {
       refServiceId: serviceId,
       courseExists: "yes",
     }).select(
-      "courseTitle courseImage courseClassNumber courseProjectNumber courseDuration courseDiscount"
+      "courseTitle courseImage courseId courseClassNumber courseProjectNumber courseDuration courseDiscount"
     );
   }
   return result;
