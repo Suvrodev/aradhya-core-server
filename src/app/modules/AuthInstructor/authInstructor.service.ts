@@ -8,16 +8,24 @@ import Jwt from "jsonwebtoken";
 const loginInstructor = async (payload: TLoginUser) => {
   //   console.log("Payloadddd: ", payload);
 
-  //Checking  if the user is exist
-  const isUserExists = await instructorModel.findOne({ email: payload.email });
-  if (!isUserExists) {
+  //Checking  if the Instructor is exist
+  const isInstructorExists = await instructorModel.findOne({
+    email: payload.email,
+  });
+  if (!isInstructorExists) {
     throw new AppError(404, "Instructor not Found");
   }
 
-  //Check User blocked or not
-  const userIsBlocked = isUserExists?.isBlocked;
-  if (userIsBlocked) {
+  //Check Instructor blocked or not
+  const instructorIsBlocked = isInstructorExists?.isBlocked;
+  if (instructorIsBlocked) {
     throw new AppError(403, "Instructor is Blocked");
+  }
+
+  //Check Instructor status enable or disable
+  const instructorStatus = isInstructorExists?.status;
+  if (instructorStatus == "disable") {
+    throw new AppError(403, "Instructor is disable");
   }
 
   //Check Password is right or wrong
@@ -30,21 +38,21 @@ const loginInstructor = async (payload: TLoginUser) => {
   // }
 
   ///Check Password without bycript (For Don't set forget Password)
-  if (payload?.password !== isUserExists?.password) {
+  if (payload?.password !== isInstructorExists?.password) {
     throw new AppError(401, "Password is Incorrect");
   }
 
   // console.log("is User exists----: ", isUserExists);
   //Create Token and send to the client
   const jwtPayload = {
-    _id: isUserExists._id,
-    name: isUserExists?.name,
-    email: isUserExists?.email,
-    role: isUserExists?.role,
-    isBlocked: isUserExists?.isBlocked,
-    studentId: isUserExists?.instructorId,
-    phone: isUserExists?.phone,
-    image: isUserExists?.image,
+    _id: isInstructorExists._id,
+    name: isInstructorExists?.name,
+    email: isInstructorExists?.email,
+    role: isInstructorExists?.role,
+    isBlocked: isInstructorExists?.isBlocked,
+    studentId: isInstructorExists?.instructorId,
+    phone: isInstructorExists?.phone,
+    image: isInstructorExists?.image,
   };
   const accessToken = Jwt.sign(jwtPayload, config.jwt_access_token as string, {
     expiresIn: "30d",

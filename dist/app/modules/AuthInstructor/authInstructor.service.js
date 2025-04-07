@@ -19,15 +19,22 @@ const instructor_model_1 = require("../UInstructor/instructor.model");
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const loginInstructor = (payload) => __awaiter(void 0, void 0, void 0, function* () {
     //   console.log("Payloadddd: ", payload);
-    //Checking  if the user is exist
-    const isUserExists = yield instructor_model_1.instructorModel.findOne({ email: payload.email });
-    if (!isUserExists) {
+    //Checking  if the Instructor is exist
+    const isInstructorExists = yield instructor_model_1.instructorModel.findOne({
+        email: payload.email,
+    });
+    if (!isInstructorExists) {
         throw new AppError_1.default(404, "Instructor not Found");
     }
-    //Check User blocked or not
-    const userIsBlocked = isUserExists === null || isUserExists === void 0 ? void 0 : isUserExists.isBlocked;
-    if (userIsBlocked) {
+    //Check Instructor blocked or not
+    const instructorIsBlocked = isInstructorExists === null || isInstructorExists === void 0 ? void 0 : isInstructorExists.isBlocked;
+    if (instructorIsBlocked) {
         throw new AppError_1.default(403, "Instructor is Blocked");
+    }
+    //Check Instructor status enable or disable
+    const instructorStatus = isInstructorExists === null || isInstructorExists === void 0 ? void 0 : isInstructorExists.status;
+    if (instructorStatus == "disable") {
+        throw new AppError_1.default(403, "Instructor is disable");
     }
     //Check Password is right or wrong
     // const isPasswordMatched = await bcrypt.compare(
@@ -38,20 +45,20 @@ const loginInstructor = (payload) => __awaiter(void 0, void 0, void 0, function*
     //   throw new AppError(401, "Password is Incorrect");
     // }
     ///Check Password without bycript (For Don't set forget Password)
-    if ((payload === null || payload === void 0 ? void 0 : payload.password) !== (isUserExists === null || isUserExists === void 0 ? void 0 : isUserExists.password)) {
+    if ((payload === null || payload === void 0 ? void 0 : payload.password) !== (isInstructorExists === null || isInstructorExists === void 0 ? void 0 : isInstructorExists.password)) {
         throw new AppError_1.default(401, "Password is Incorrect");
     }
     // console.log("is User exists----: ", isUserExists);
     //Create Token and send to the client
     const jwtPayload = {
-        _id: isUserExists._id,
-        name: isUserExists === null || isUserExists === void 0 ? void 0 : isUserExists.name,
-        email: isUserExists === null || isUserExists === void 0 ? void 0 : isUserExists.email,
-        role: isUserExists === null || isUserExists === void 0 ? void 0 : isUserExists.role,
-        isBlocked: isUserExists === null || isUserExists === void 0 ? void 0 : isUserExists.isBlocked,
-        studentId: isUserExists === null || isUserExists === void 0 ? void 0 : isUserExists.instructorId,
-        phone: isUserExists === null || isUserExists === void 0 ? void 0 : isUserExists.phone,
-        image: isUserExists === null || isUserExists === void 0 ? void 0 : isUserExists.image,
+        _id: isInstructorExists._id,
+        name: isInstructorExists === null || isInstructorExists === void 0 ? void 0 : isInstructorExists.name,
+        email: isInstructorExists === null || isInstructorExists === void 0 ? void 0 : isInstructorExists.email,
+        role: isInstructorExists === null || isInstructorExists === void 0 ? void 0 : isInstructorExists.role,
+        isBlocked: isInstructorExists === null || isInstructorExists === void 0 ? void 0 : isInstructorExists.isBlocked,
+        studentId: isInstructorExists === null || isInstructorExists === void 0 ? void 0 : isInstructorExists.instructorId,
+        phone: isInstructorExists === null || isInstructorExists === void 0 ? void 0 : isInstructorExists.phone,
+        image: isInstructorExists === null || isInstructorExists === void 0 ? void 0 : isInstructorExists.image,
     };
     const accessToken = jsonwebtoken_1.default.sign(jwtPayload, config_1.default.jwt_access_token, {
         expiresIn: "30d",

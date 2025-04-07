@@ -60,6 +60,11 @@ const instructorSchema = new mongoose_1.Schema({
         type: Boolean,
         default: false,
     },
+    status: {
+        type: String,
+        enum: ["enable", "disable"],
+        default: "disable",
+    },
     passwordResetCode: {
         type: String,
         default: "123",

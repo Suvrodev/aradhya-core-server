@@ -23,5 +23,6 @@ export type TInstructor = {
   whatsappNumber: string;
   role: "instructor";
   isBlocked: boolean;
+  status: "enable" | "disable";
   passwordResetCode: string;
 };

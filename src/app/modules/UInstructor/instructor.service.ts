@@ -12,6 +12,7 @@ interface IPassword {
 
 ///Create Instructor into db
 const registerInstructorIntoDB = async (payload: TInstructor) => {
+  console.log("------------------------------------------");
   console.log("User Payload: ", payload);
   const email = payload?.email;
   const res = await instructorModel.findOne({ email: email });
@@ -27,6 +28,8 @@ const registerInstructorIntoDB = async (payload: TInstructor) => {
   }
 
   payload.instructorId = instructorId; // Now this is assigning a string value to instructorId
+
+  console.log("Payload: ", payload);
   const result = await instructorModel.create(payload);
   return result;
 };

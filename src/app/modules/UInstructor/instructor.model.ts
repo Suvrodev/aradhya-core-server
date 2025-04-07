@@ -63,6 +63,11 @@ const instructorSchema = new Schema<TInstructor>(
       type: Boolean,
       default: false,
     },
+    status: {
+      type: String,
+      enum: ["enable", "disable"],
+      default: "disable",
+    },
     passwordResetCode: {
       type: String,
       default: "123",

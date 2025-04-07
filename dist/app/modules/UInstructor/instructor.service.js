@@ -18,6 +18,7 @@ const instructor_model_1 = require("./instructor.model");
 const generateInstructorId_1 = require("./generateInstructorId");
 ///Create Instructor into db
 const registerInstructorIntoDB = (payload) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log("------------------------------------------");
     console.log("User Payload: ", payload);
     const email = payload === null || payload === void 0 ? void 0 : payload.email;
     const res = yield instructor_model_1.instructorModel.findOne({ email: email });
@@ -31,6 +32,7 @@ const registerInstructorIntoDB = (payload) => __awaiter(void 0, void 0, void 0, 
         throw new AppError_1.default(400, "Bad request for user id");
     }
     payload.instructorId = instructorId; // Now this is assigning a string value to instructorId
+    console.log("Payload: ", payload);
     const result = yield instructor_model_1.instructorModel.create(payload);
     return result;
 });
