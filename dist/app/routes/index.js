@@ -16,6 +16,8 @@ const assignStudent_route_1 = require("../modules/AssignStudent/assignStudent.ro
 const blog_route_1 = require("../modules/Blog/blog.route");
 const promocode_route_1 = require("../modules/PromoCode/promocode.route");
 const forgetPassword_route_1 = require("../modules/ForgetPassword/forgetPassword.route");
+const instructor_route_1 = require("../modules/UInstructor/instructor.route");
+const authInstructor_route_1 = require("../modules/AuthInstructor/authInstructor.route");
 const router = express_1.default.Router();
 const moduleRoutes = [
     {
@@ -59,8 +61,16 @@ const moduleRoutes = [
         route: user_route_1.userRoutes,
     },
     {
+        path: "/i-auth",
+        route: instructor_route_1.instructorRoutes,
+    },
+    {
         path: "/login",
         route: auth_route_1.AuthRoutes,
+    },
+    {
+        path: "/i-login",
+        route: authInstructor_route_1.AuthInstructorRoutes,
     },
     {
         path: "/forget-password",

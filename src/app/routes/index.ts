@@ -11,6 +11,8 @@ import { AssignStudentRoute } from "../modules/AssignStudent/assignStudent.route
 import { blogRoutes } from "../modules/Blog/blog.route";
 import { PromocodeRoute } from "../modules/PromoCode/promocode.route";
 import { ForgetPasswordRoute } from "../modules/ForgetPassword/forgetPassword.route";
+import { instructorRoutes } from "../modules/UInstructor/instructor.route";
+import { AuthInstructorRoutes } from "../modules/AuthInstructor/authInstructor.route";
 
 const router = express.Router();
 
@@ -56,8 +58,16 @@ const moduleRoutes = [
     route: userRoutes,
   },
   {
+    path: "/i-auth",
+    route: instructorRoutes,
+  },
+  {
     path: "/login",
     route: AuthRoutes,
+  },
+  {
+    path: "/i-login",
+    route: AuthInstructorRoutes,
   },
   {
     path: "/forget-password",
