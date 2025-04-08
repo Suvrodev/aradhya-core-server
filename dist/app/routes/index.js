@@ -15,9 +15,10 @@ const batch_route_1 = require("../modules/Batch/batch.route");
 const assignStudent_route_1 = require("../modules/AssignStudent/assignStudent.route");
 const blog_route_1 = require("../modules/Blog/blog.route");
 const promocode_route_1 = require("../modules/PromoCode/promocode.route");
-const forgetPassword_route_1 = require("../modules/ForgetPassword/forgetPassword.route");
 const instructor_route_1 = require("../modules/UInstructor/instructor.route");
 const authInstructor_route_1 = require("../modules/AuthInstructor/authInstructor.route");
+const forgetPasswordInstructor_route_1 = require("../modules/ForgetPasswordInstructor/forgetPasswordInstructor.route");
+const forgetPassword_route_1 = require("../modules/ForgetPassword/forgetPassword.route");
 const router = express_1.default.Router();
 const moduleRoutes = [
     {
@@ -75,6 +76,10 @@ const moduleRoutes = [
     {
         path: "/forget-password",
         route: forgetPassword_route_1.ForgetPasswordRoute,
+    },
+    {
+        path: "/forget-password-ins",
+        route: forgetPasswordInstructor_route_1.ForgetPasswordInstructorRoute,
     },
 ];
 moduleRoutes.forEach((route) => router.use(route.path, route.route));

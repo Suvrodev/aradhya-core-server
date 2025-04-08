@@ -10,9 +10,10 @@ import { BatchRoutes } from "../modules/Batch/batch.route";
 import { AssignStudentRoute } from "../modules/AssignStudent/assignStudent.route";
 import { blogRoutes } from "../modules/Blog/blog.route";
 import { PromocodeRoute } from "../modules/PromoCode/promocode.route";
-import { ForgetPasswordRoute } from "../modules/ForgetPassword/forgetPassword.route";
 import { instructorRoutes } from "../modules/UInstructor/instructor.route";
 import { AuthInstructorRoutes } from "../modules/AuthInstructor/authInstructor.route";
+import { ForgetPasswordInstructorRoute } from "../modules/ForgetPasswordInstructor/forgetPasswordInstructor.route";
+import { ForgetPasswordRoute } from "../modules/ForgetPassword/forgetPassword.route";
 
 const router = express.Router();
 
@@ -72,6 +73,10 @@ const moduleRoutes = [
   {
     path: "/forget-password",
     route: ForgetPasswordRoute,
+  },
+  {
+    path: "/forget-password-ins",
+    route: ForgetPasswordInstructorRoute,
   },
 ];
 moduleRoutes.forEach((route) => router.use(route.path, route.route));
