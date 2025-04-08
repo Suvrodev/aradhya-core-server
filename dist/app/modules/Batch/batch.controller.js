@@ -28,7 +28,7 @@ const insertBatch = (req, res, next) => __awaiter(void 0, void 0, void 0, functi
         next(error);
     }
 });
-//Get All batch
+//Get All batch (Admin jodi Student k assign korte chay tahole eta lage)  (UnUsed)
 const getAllBatch = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const result = yield batch_service_1.BatchService.getAllBatchFromDB();
@@ -90,12 +90,28 @@ const getUpComingBatchUnderCourse = (req, res, next) => __awaiter(void 0, void 0
         next(error);
     }
 });
-//getUnder Course Batch
+//getBatch Under Course Batch
 const getSpecificBatchUnderCourse = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const courseId = req.params.courseId;
         console.log("Course id-----------------: ", courseId);
         const result = yield batch_service_1.BatchService.getSpecificBatchUnderCourseFromDB(courseId);
+        res.status(200).json({
+            message: "Batch Retrive successfully",
+            success: true,
+            data: result,
+        });
+    }
+    catch (error) {
+        next(error);
+    }
+});
+//getBatch Under Instructor
+const getBatchForInstructorAssignation = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const instructorId = req.params.instructorid;
+        console.log("instructorId-----------------: ", instructorId);
+        const result = yield batch_service_1.BatchService.getBatchForInstructorAssignation(Number(instructorId));
         res.status(200).json({
             message: "Batch Retrive successfully",
             success: true,
@@ -147,6 +163,7 @@ exports.BatchController = {
     getJustOneBatch,
     getUpComingBatchUnderCourse,
     getSpecificBatchUnderCourse,
+    getBatchForInstructorAssignation,
     deleteBatch,
     updateBatch,
 };

@@ -35,7 +35,7 @@ const insertBatchIntoDB = (batchData) => __awaiter(void 0, void 0, void 0, funct
     const result = yield batch_model_1.BatchModel.create(batchData);
     return result;
 });
-///Get batch
+///Get batch (Admin jodi Student k assign korte chay tahole eta lage)  (UnUsed)
 const getAllBatchFromDB = () => __awaiter(void 0, void 0, void 0, function* () {
     const res = yield batch_model_1.BatchModel.find();
     return res;
@@ -65,11 +65,19 @@ const getUpComingBatchUnderCourseFromDB = (courseId) => __awaiter(void 0, void 0
     });
     return res;
 });
-///Get Specific all batch under course
+///Get Specific all batch under course (course Drop down e batch khoja)
 const getSpecificBatchUnderCourseFromDB = (courseId) => __awaiter(void 0, void 0, void 0, function* () {
     console.log("Check Course id: ", courseId);
     const res = yield batch_model_1.BatchModel.find({
         underCourse: courseId,
+    });
+    return res;
+});
+// Instructor detail e click korle dekhte parbe se kon kon batch e assign
+const getBatchForInstructorAssignation = (instructorId) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log("Instructor id: ", instructorId);
+    const res = yield batch_model_1.BatchModel.find({
+        instructorId: instructorId,
     });
     return res;
 });
@@ -95,6 +103,7 @@ exports.BatchService = {
     getJustOneBatchFromDB,
     getUpComingBatchUnderCourseFromDB,
     getSpecificBatchUnderCourseFromDB,
+    getBatchForInstructorAssignation,
     deleteBatchFromDB,
     updateBatchFromDB,
 };

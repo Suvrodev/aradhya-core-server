@@ -29,7 +29,7 @@ const insertBatchIntoDB = async (batchData: TBatch) => {
   return result;
 };
 
-///Get batch
+///Get batch (Admin jodi Student k assign korte chay tahole eta lage)  (UnUsed)
 const getAllBatchFromDB = async () => {
   const res = await BatchModel.find();
   return res;
@@ -62,11 +62,20 @@ const getUpComingBatchUnderCourseFromDB = async (courseId: string) => {
   });
   return res;
 };
-///Get Specific all batch under course
+///Get Specific all batch under course (course Drop down e batch khoja)
 const getSpecificBatchUnderCourseFromDB = async (courseId: string) => {
   console.log("Check Course id: ", courseId);
   const res = await BatchModel.find({
     underCourse: courseId,
+  });
+  return res;
+};
+
+// Instructor detail e click korle dekhte parbe se kon kon batch e assign
+const getBatchForInstructorAssignation = async (instructorId: number) => {
+  console.log("Instructor id: ", instructorId);
+  const res = await BatchModel.find({
+    instructorId: instructorId,
   });
   return res;
 };
@@ -95,6 +104,7 @@ export const BatchService = {
   getJustOneBatchFromDB,
   getUpComingBatchUnderCourseFromDB,
   getSpecificBatchUnderCourseFromDB,
+  getBatchForInstructorAssignation,
   deleteBatchFromDB,
   updateBatchFromDB,
 };

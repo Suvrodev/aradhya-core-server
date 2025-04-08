@@ -20,7 +20,7 @@ const insertBatch: RequestHandler = async (req, res, next) => {
   }
 };
 
-//Get All batch
+//Get All batch (Admin jodi Student k assign korte chay tahole eta lage)  (UnUsed)
 const getAllBatch: RequestHandler = async (req, res, next) => {
   try {
     const result = await BatchService.getAllBatchFromDB();
@@ -81,13 +81,36 @@ const getUpComingBatchUnderCourse: RequestHandler = async (req, res, next) => {
     next(error);
   }
 };
-//getUnder Course Batch
+
+//getBatch Under Course Batch
 const getSpecificBatchUnderCourse: RequestHandler = async (req, res, next) => {
   try {
     const courseId = req.params.courseId;
     console.log("Course id-----------------: ", courseId);
     const result = await BatchService.getSpecificBatchUnderCourseFromDB(
       courseId
+    );
+    res.status(200).json({
+      message: "Batch Retrive successfully",
+      success: true,
+      data: result,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+//getBatch Under Instructor
+const getBatchForInstructorAssignation: RequestHandler = async (
+  req,
+  res,
+  next
+) => {
+  try {
+    const instructorId = req.params.instructorid;
+    console.log("instructorId-----------------: ", instructorId);
+    const result = await BatchService.getBatchForInstructorAssignation(
+      Number(instructorId)
     );
     res.status(200).json({
       message: "Batch Retrive successfully",
@@ -145,6 +168,7 @@ export const BatchController = {
   getJustOneBatch,
   getUpComingBatchUnderCourse,
   getSpecificBatchUnderCourse,
+  getBatchForInstructorAssignation,
   deleteBatch,
   updateBatch,
 };

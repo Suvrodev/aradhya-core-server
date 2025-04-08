@@ -11,6 +11,7 @@ const batchSchema: Schema = new Schema<TBatch>(
     },
     batchName: {
       type: String,
+      required: [true, "Batch Name is required"],
       trim: true,
     },
     underCourse: {
@@ -61,6 +62,11 @@ const batchSchema: Schema = new Schema<TBatch>(
     },
     projectnumber: {
       type: Number,
+    },
+    instructorId: {
+      type: String,
+      required: [true, "Instructor id is required"],
+      trim: true,
     },
     instructorname: {
       type: String,
