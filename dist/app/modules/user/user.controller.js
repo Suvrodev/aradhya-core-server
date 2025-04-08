@@ -56,8 +56,8 @@ const getAllUsers = (req, res, next) => __awaiter(void 0, void 0, void 0, functi
 const getSpecificUsers = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
     try {
-        const id = (_a = req === null || req === void 0 ? void 0 : req.params) === null || _a === void 0 ? void 0 : _a.id;
-        const result = yield user_service_1.userServices.getSingleUserFromDB(id);
+        const email = (_a = req === null || req === void 0 ? void 0 : req.params) === null || _a === void 0 ? void 0 : _a.email;
+        const result = yield user_service_1.userServices.getSingleUserFromDB(email);
         res.status(201).json({
             success: true,
             message: "Users Retrived successfully",
@@ -73,8 +73,8 @@ const getSpecificUsers = (req, res, next) => __awaiter(void 0, void 0, void 0, f
 const deleteUser = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
     try {
-        const id = (_a = req === null || req === void 0 ? void 0 : req.params) === null || _a === void 0 ? void 0 : _a.id;
-        const result = yield user_service_1.userServices.deleteUser(id);
+        const email = (_a = req === null || req === void 0 ? void 0 : req.params) === null || _a === void 0 ? void 0 : _a.email;
+        const result = yield user_service_1.userServices.deleteUser(email);
         res.status(201).json({
             success: true,
             message: "Users Deleted successfully",
@@ -90,11 +90,11 @@ const deleteUser = (req, res, next) => __awaiter(void 0, void 0, void 0, functio
 const updateUser = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
     try {
-        const id = (_a = req === null || req === void 0 ? void 0 : req.params) === null || _a === void 0 ? void 0 : _a.id;
+        const email = (_a = req === null || req === void 0 ? void 0 : req.params) === null || _a === void 0 ? void 0 : _a.email;
         const body = req === null || req === void 0 ? void 0 : req.body;
-        console.log("Come id: ", id);
+        console.log("Come email: ", email);
         console.log("Body ", body);
-        const result = yield user_service_1.userServices.updatUserIntoDB(id, body);
+        const result = yield user_service_1.userServices.updatUserIntoDB(email, body);
         res.status(201).json({
             success: true,
             message: "Users Updated successfully",
@@ -108,16 +108,16 @@ const updateUser = (req, res, next) => __awaiter(void 0, void 0, void 0, functio
 });
 ///Update Password
 const updatePassword = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    var _a, _b;
+    var _a;
     try {
-        const userId = (_a = req === null || req === void 0 ? void 0 : req.params) === null || _a === void 0 ? void 0 : _a.userId;
+        const email = (_a = req === null || req === void 0 ? void 0 : req.params) === null || _a === void 0 ? void 0 : _a.email;
         const userPassword = req.body;
-        console.log("Logged user id : ", (_b = req === null || req === void 0 ? void 0 : req.user) === null || _b === void 0 ? void 0 : _b._id);
-        console.log("come user id: ", userId);
+        // console.log("Logged user email : ", req?.user?._id);
+        console.log("come user email: ", email);
         // if (req?.user?._id !== userId) {
         //   throw new AppError(403, "You are not authorized");
         // }
-        const result = yield user_service_1.userServices.updatePasswordIntoDB(userId, userPassword);
+        const result = yield user_service_1.userServices.updatePasswordIntoDB(email, userPassword);
         res.status(201).json({
             success: true,
             message: "Password Updated Successfully",

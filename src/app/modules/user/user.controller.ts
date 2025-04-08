@@ -47,8 +47,9 @@ const getAllUsers: RequestHandler = async (req, res, next) => {
 //Get Specific User
 const getSpecificUsers: RequestHandler = async (req, res, next) => {
   try {
-    const id = req?.params?.id;
-    const result = await userServices.getSingleUserFromDB(id);
+    const email = req?.params?.email;
+
+    const result = await userServices.getSingleUserFromDB(email);
     res.status(201).json({
       success: true,
       message: "Users Retrived successfully",
@@ -63,8 +64,8 @@ const getSpecificUsers: RequestHandler = async (req, res, next) => {
 //delete  User
 const deleteUser: RequestHandler = async (req, res, next) => {
   try {
-    const id = req?.params?.id;
-    const result = await userServices.deleteUser(id);
+    const email = req?.params?.email;
+    const result = await userServices.deleteUser(email);
 
     res.status(201).json({
       success: true,
@@ -84,12 +85,13 @@ const updateUser: RequestHandler = async (
   next
 ) => {
   try {
-    const id = req?.params?.id;
+    const email = req?.params?.email;
     const body = req?.body;
-    console.log("Come id: ", id);
+
+    console.log("Come email: ", email);
     console.log("Body ", body);
 
-    const result = await userServices.updatUserIntoDB(id, body);
+    const result = await userServices.updatUserIntoDB(email, body);
     res.status(201).json({
       success: true,
       message: "Users Updated successfully",
@@ -104,18 +106,15 @@ const updateUser: RequestHandler = async (
 ///Update Password
 const updatePassword: RequestHandler = async (req, res, next) => {
   try {
-    const userId = req?.params?.userId;
+    const email = req?.params?.email;
     const userPassword = req.body;
-    console.log("Logged user id : ", req?.user?._id);
-    console.log("come user id: ", userId);
+    // console.log("Logged user email : ", req?.user?._id);
+    console.log("come user email: ", email);
     // if (req?.user?._id !== userId) {
     //   throw new AppError(403, "You are not authorized");
     // }
 
-    const result = await userServices.updatePasswordIntoDB(
-      userId,
-      userPassword
-    );
+    const result = await userServices.updatePasswordIntoDB(email, userPassword);
 
     res.status(201).json({
       success: true,

@@ -49,15 +49,16 @@ const getAllUser = (search) => __awaiter(void 0, void 0, void 0, function* () {
     return result;
 });
 //Get single User from DB
-const getSingleUserFromDB = (id) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield user_model_1.userModel.findOne({ studentId: id });
+const getSingleUserFromDB = (email) => __awaiter(void 0, void 0, void 0, function* () {
+    // console.log("Email in service: ", email);
+    const result = yield user_model_1.userModel.findOne({ email: email });
     return result;
 });
 //deletel User from DB
-const deleteUser = (id) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log("Delete id: ", id);
+const deleteUser = (email) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log("Delete email: ", email);
     try {
-        const result = yield user_model_1.userModel.deleteOne({ studentId: id });
+        const result = yield user_model_1.userModel.deleteOne({ email: email });
         return result;
     }
     catch (error) {
@@ -65,14 +66,14 @@ const deleteUser = (id) => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 //Update Password
-const updatePasswordIntoDB = (userId, payload) => __awaiter(void 0, void 0, void 0, function* () {
+const updatePasswordIntoDB = (email, payload) => __awaiter(void 0, void 0, void 0, function* () {
     const { oldPassword, newPassword } = payload;
     console.log("------------------");
-    console.log("User Id: ", userId);
+    console.log("User email: ", email);
     console.log("Old Password ", oldPassword);
     console.log("New  Password ", newPassword);
     //Checking  if the user is exist
-    const isUserExists = yield user_model_1.userModel.findOne({ studentId: userId });
+    const isUserExists = yield user_model_1.userModel.findOne({ email: email });
     if (!isUserExists) {
         throw new AppError_1.default(404, "User not Found");
     }
@@ -88,14 +89,14 @@ const updatePasswordIntoDB = (userId, payload) => __awaiter(void 0, void 0, void
     //   newPassword,
     //   Number(config.bcrypt_salt_rounds)
     // );
-    const result = yield user_model_1.userModel.updateOne({ studentId: userId }, { password: newPassword }, { new: true });
+    const result = yield user_model_1.userModel.updateOne({ email: email }, { password: newPassword }, { new: true });
     return result;
 });
 //Update User
-const updatUserIntoDB = (userId, payload) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log("User Id in service: ", userId);
+const updatUserIntoDB = (email, payload) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log("User Mail in service: ", email);
     console.log("payload in service", payload);
-    const result = yield user_model_1.userModel.updateOne({ studentId: userId }, payload, {
+    const result = yield user_model_1.userModel.updateOne({ email: email }, payload, {
         new: true,
     });
     return result;

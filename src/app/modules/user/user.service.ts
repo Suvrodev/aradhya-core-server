@@ -48,16 +48,17 @@ const getAllUser = async (search?: string) => {
 };
 
 //Get single User from DB
-const getSingleUserFromDB = async (id: string) => {
-  const result = await userModel.findOne({ studentId: id });
+const getSingleUserFromDB = async (email: string) => {
+  // console.log("Email in service: ", email);
+  const result = await userModel.findOne({ email: email });
   return result;
 };
 
 //deletel User from DB
-const deleteUser = async (id: string) => {
-  console.log("Delete id: ", id);
+const deleteUser = async (email: string) => {
+  console.log("Delete email: ", email);
   try {
-    const result = await userModel.deleteOne({ studentId: id });
+    const result = await userModel.deleteOne({ email: email });
     return result;
   } catch (error) {
     throw new Error("USer Not Found");
@@ -65,15 +66,15 @@ const deleteUser = async (id: string) => {
 };
 
 //Update Password
-const updatePasswordIntoDB = async (userId: string, payload: IPassword) => {
+const updatePasswordIntoDB = async (email: string, payload: IPassword) => {
   const { oldPassword, newPassword } = payload;
   console.log("------------------");
-  console.log("User Id: ", userId);
+  console.log("User email: ", email);
   console.log("Old Password ", oldPassword);
   console.log("New  Password ", newPassword);
 
   //Checking  if the user is exist
-  const isUserExists = await userModel.findOne({ studentId: userId });
+  const isUserExists = await userModel.findOne({ email: email });
   if (!isUserExists) {
     throw new AppError(404, "User not Found");
   }
@@ -93,18 +94,18 @@ const updatePasswordIntoDB = async (userId: string, payload: IPassword) => {
   //   Number(config.bcrypt_salt_rounds)
   // );
   const result = await userModel.updateOne(
-    { studentId: userId },
+    { email: email },
     { password: newPassword },
     { new: true }
   );
   return result;
 };
 //Update User
-const updatUserIntoDB = async (userId: string, payload: TUser) => {
-  console.log("User Id in service: ", userId);
+const updatUserIntoDB = async (email: string, payload: TUser) => {
+  console.log("User Mail in service: ", email);
   console.log("payload in service", payload);
 
-  const result = await userModel.updateOne({ studentId: userId }, payload, {
+  const result = await userModel.updateOne({ email: email }, payload, {
     new: true,
   });
   return result;

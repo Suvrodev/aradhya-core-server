@@ -12,13 +12,13 @@ router.post("/register", user_controller_1.userControllers.registerUser);
 // router.get("/allusers", auth("admin"), userControllers.getAllUsers);
 router.get("/allusers", user_controller_1.userControllers.getAllUsers);
 //Get Single User
-router.get("/allusers/:id", user_controller_1.userControllers.getSpecificUsers);
+router.get("/allusers/:email", user_controller_1.userControllers.getSpecificUsers);
 //delete user
-router.delete("/allusers/:id", user_controller_1.userControllers.deleteUser);
+router.delete("/allusers/:email", user_controller_1.userControllers.deleteUser);
 //update user
-router.patch("/allusers/:id", user_controller_1.userControllers.updateUser);
+router.patch("/allusers/:email", user_controller_1.userControllers.updateUser);
 //change password
-router.patch("/updatepassword/:userId", user_controller_1.userControllers.updatePassword);
+router.patch("/updatepassword/:email", user_controller_1.userControllers.updatePassword);
 // router.patch(
 //   "/updatepassword/:userId",
 //   auth("user"),
