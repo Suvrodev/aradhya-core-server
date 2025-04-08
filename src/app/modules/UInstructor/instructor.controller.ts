@@ -95,7 +95,7 @@ const updateInstructor: RequestHandler = async (
     const result = await instructorServices.updatInstructorIntoDB(id, body);
     res.status(201).json({
       success: true,
-      message: "Users Updated successfully",
+      message: "Instructor Updated successfully",
       statusCode: 201,
       data: result,
     });

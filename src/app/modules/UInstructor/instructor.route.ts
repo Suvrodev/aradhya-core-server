@@ -7,14 +7,14 @@ const router = express.Router();
 router.post("/register", instructorControllers.registerInstructor);
 //Get All User
 // router.get("/allusers", auth("admin"), userControllers.getAllUsers);
-router.get("/allusers", instructorControllers.getAllInstructor);
+router.get("/all-instructor", instructorControllers.getAllInstructor);
 
 //Get Single User
-router.get("/allusers/:id", instructorControllers.getSpecificInstructor);
+router.get("/all-instructor/:id", instructorControllers.getSpecificInstructor);
 //delete user
-router.delete("/allusers/:id", instructorControllers.deleteInstructor);
+router.delete("/all-instructor/:id", instructorControllers.deleteInstructor);
 //update user
-router.patch("/allusers/:id", instructorControllers.updateInstructor);
+router.patch("/all-instructor/:id", instructorControllers.updateInstructor);
 //change password
 router.patch(
   "/updatepassword/:instructorId",

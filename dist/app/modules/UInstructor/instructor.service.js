@@ -69,7 +69,7 @@ const deleteInstructor = (id) => __awaiter(void 0, void 0, void 0, function* () 
 //Update Password
 const updatePasswordIntoDB = (userId, payload) => __awaiter(void 0, void 0, void 0, function* () {
     const { oldPassword, newPassword } = payload;
-    console.log("------------------");
+    console.log("Change Password----------------------------------");
     console.log("User Id: ", userId);
     console.log("Old Password ", oldPassword);
     console.log("New  Password ", newPassword);
@@ -92,14 +92,14 @@ const updatePasswordIntoDB = (userId, payload) => __awaiter(void 0, void 0, void
     //   newPassword,
     //   Number(config.bcrypt_salt_rounds)
     // );
-    const result = yield instructor_model_1.instructorModel.updateOne({ studentId: userId }, { password: newPassword }, { new: true });
+    const result = yield instructor_model_1.instructorModel.updateOne({ instructorId: userId }, { password: newPassword }, { new: true });
     return result;
 });
-//Update User
-const updatInstructorIntoDB = (userId, payload) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log("User Id in service: ", userId);
+//Update Instructor
+const updatInstructorIntoDB = (instructorId, payload) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log("Instructor Id in service: ", instructorId);
     console.log("payload in service", payload);
-    const result = yield instructor_model_1.instructorModel.updateOne({ instructorId: userId }, payload, {
+    const result = yield instructor_model_1.instructorModel.updateOne({ instructorId: instructorId }, payload, {
         new: true,
     });
     return result;

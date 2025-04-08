@@ -10,13 +10,13 @@ const router = express_1.default.Router();
 router.post("/register", instructor_controller_1.instructorControllers.registerInstructor);
 //Get All User
 // router.get("/allusers", auth("admin"), userControllers.getAllUsers);
-router.get("/allusers", instructor_controller_1.instructorControllers.getAllInstructor);
+router.get("/all-instructor", instructor_controller_1.instructorControllers.getAllInstructor);
 //Get Single User
-router.get("/allusers/:id", instructor_controller_1.instructorControllers.getSpecificInstructor);
+router.get("/all-instructor/:id", instructor_controller_1.instructorControllers.getSpecificInstructor);
 //delete user
-router.delete("/allusers/:id", instructor_controller_1.instructorControllers.deleteInstructor);
+router.delete("/all-instructor/:id", instructor_controller_1.instructorControllers.deleteInstructor);
 //update user
-router.patch("/allusers/:id", instructor_controller_1.instructorControllers.updateInstructor);
+router.patch("/all-instructor/:id", instructor_controller_1.instructorControllers.updateInstructor);
 //change password
 router.patch("/updatepassword/:instructorId", instructor_controller_1.instructorControllers.updatePassword);
 // router.patch(

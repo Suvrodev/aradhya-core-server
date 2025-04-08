@@ -97,7 +97,7 @@ const updateInstructor = (req, res, next) => __awaiter(void 0, void 0, void 0, f
         const result = yield instructor_service_1.instructorServices.updatInstructorIntoDB(id, body);
         res.status(201).json({
             success: true,
-            message: "Users Updated successfully",
+            message: "Instructor Updated successfully",
             statusCode: 201,
             data: result,
         });

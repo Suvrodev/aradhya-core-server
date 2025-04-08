@@ -71,7 +71,7 @@ const deleteInstructor = async (id: string) => {
 //Update Password
 const updatePasswordIntoDB = async (userId: string, payload: IPassword) => {
   const { oldPassword, newPassword } = payload;
-  console.log("------------------");
+  console.log("Change Password----------------------------------");
   console.log("User Id: ", userId);
   console.log("Old Password ", oldPassword);
   console.log("New  Password ", newPassword);
@@ -99,19 +99,22 @@ const updatePasswordIntoDB = async (userId: string, payload: IPassword) => {
   //   Number(config.bcrypt_salt_rounds)
   // );
   const result = await instructorModel.updateOne(
-    { studentId: userId },
+    { instructorId: userId },
     { password: newPassword },
     { new: true }
   );
   return result;
 };
-//Update User
-const updatInstructorIntoDB = async (userId: string, payload: TInstructor) => {
-  console.log("User Id in service: ", userId);
+//Update Instructor
+const updatInstructorIntoDB = async (
+  instructorId: string,
+  payload: TInstructor
+) => {
+  console.log("Instructor Id in service: ", instructorId);
   console.log("payload in service", payload);
 
   const result = await instructorModel.updateOne(
-    { instructorId: userId },
+    { instructorId: instructorId },
     payload,
     {
       new: true,
