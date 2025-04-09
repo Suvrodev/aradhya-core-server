@@ -89,6 +89,21 @@ const getOwnCourseOfSAssignStudentFromDB = async (studentEmail: string) => {
   return result;
 };
 
+// Get Assigner Student of instructor based on batch id and course id
+const getAssignStudentOfInstructorFromDB = async (
+  batchId: string,
+  coursesId: string
+) => {
+  console.log("Batch id:", batchId);
+  console.log("Course id:", coursesId);
+  const result = await AssignStudentModel.find({
+    batchId: batchId,
+    courseId: coursesId,
+    status: true,
+  });
+  return result;
+};
+
 //delete AssignStudent
 const deleteAssignStudentFromDB = async (assignId: string) => {
   //main work
@@ -118,6 +133,7 @@ export const AssignStudentServices = {
   getAllAssignSudentFromDB,
   getSpecificAssignStudentFromDB,
   getOwnCourseOfSAssignStudentFromDB,
+  getAssignStudentOfInstructorFromDB,
   deleteAssignStudentFromDB,
   updateAssignStudetFromDB,
 };

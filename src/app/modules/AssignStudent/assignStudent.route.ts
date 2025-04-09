@@ -10,6 +10,10 @@ router.get(
   "/own-course/:studentEmail",
   AssignStudentController.getOwnCourseOfSAssignStudent
 );
+router.get(
+  "/instructors-assign-student/:batchId/:courseId",
+  AssignStudentController.getAssignStudentOfInstructor
+);
 router.delete("/:assignId", AssignStudentController.deleteAssignStudent);
 router.patch("/:assignId", AssignStudentController.updateAssignStudent);
 

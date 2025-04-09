@@ -11,6 +11,7 @@ router.post("/", assignStudent_controller_1.AssignStudentController.insertAssign
 router.get("/", assignStudent_controller_1.AssignStudentController.getAllAssignStudent);
 router.get("/:assignId", assignStudent_controller_1.AssignStudentController.getSpecificAssignStudent);
 router.get("/own-course/:studentEmail", assignStudent_controller_1.AssignStudentController.getOwnCourseOfSAssignStudent);
+router.get("/instructors-assign-student/:batchId/:courseId", assignStudent_controller_1.AssignStudentController.getAssignStudentOfInstructor);
 router.delete("/:assignId", assignStudent_controller_1.AssignStudentController.deleteAssignStudent);
 router.patch("/:assignId", assignStudent_controller_1.AssignStudentController.updateAssignStudent);
 exports.AssignStudentRoute = router;

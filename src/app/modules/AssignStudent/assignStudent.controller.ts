@@ -79,6 +79,25 @@ const getOwnCourseOfSAssignStudent: RequestHandler = async (req, res, next) => {
   }
 };
 
+// Get Assigner Student of instructor based on batch id and course id
+const getAssignStudentOfInstructor: RequestHandler = async (req, res, next) => {
+  try {
+    const { batchId, courseId } = req.params;
+    const result =
+      await AssignStudentServices.getAssignStudentOfInstructorFromDB(
+        batchId,
+        courseId
+      );
+    res.status(200).json({
+      message: "Assigned Students retrieved successfully",
+      success: true,
+      data: result,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 //Delete Assign
 const deleteAssignStudent: RequestHandler = async (req, res, next) => {
   try {
@@ -125,6 +144,7 @@ export const AssignStudentController = {
   getAllAssignStudent,
   getSpecificAssignStudent,
   getOwnCourseOfSAssignStudent,
+  getAssignStudentOfInstructor,
   deleteAssignStudent,
   updateAssignStudent,
 };

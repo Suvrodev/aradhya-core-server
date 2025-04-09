@@ -79,6 +79,17 @@ const getOwnCourseOfSAssignStudentFromDB = (studentEmail) => __awaiter(void 0, v
     });
     return result;
 });
+// Get Assigner Student of instructor based on batch id and course id
+const getAssignStudentOfInstructorFromDB = (batchId, coursesId) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log("Batch id:", batchId);
+    console.log("Course id:", coursesId);
+    const result = yield assignStudent_model_1.AssignStudentModel.find({
+        batchId: batchId,
+        courseId: coursesId,
+        status: true,
+    });
+    return result;
+});
 //delete AssignStudent
 const deleteAssignStudentFromDB = (assignId) => __awaiter(void 0, void 0, void 0, function* () {
     //main work
@@ -99,6 +110,7 @@ exports.AssignStudentServices = {
     getAllAssignSudentFromDB,
     getSpecificAssignStudentFromDB,
     getOwnCourseOfSAssignStudentFromDB,
+    getAssignStudentOfInstructorFromDB,
     deleteAssignStudentFromDB,
     updateAssignStudetFromDB,
 };
