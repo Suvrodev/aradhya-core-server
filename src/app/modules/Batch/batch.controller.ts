@@ -161,6 +161,30 @@ const updateBatch: RequestHandler = async (req, res, next) => {
   }
 };
 
+//Update Batch Notice
+const updateBatchNotice: RequestHandler = async (req, res, next) => {
+  try {
+    console.log("Batch Notice Controller-----------");
+    const batchId = req.params.batchId;
+    const { batchNotice } = req.body;
+    console.log("Notice: ", batchNotice);
+
+    const result = await BatchService.updateBatchNoticeFromDB(
+      batchId,
+      batchNotice
+    );
+
+    //Send Response
+    res.status(200).json({
+      message: "Batch Notice updated successfully",
+      status: true,
+      data: result,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const BatchController = {
   insertBatch,
   getAllBatch,
@@ -171,4 +195,5 @@ export const BatchController = {
   getBatchForInstructorAssignation,
   deleteBatch,
   updateBatch,
+  updateBatchNotice,
 };

@@ -156,6 +156,25 @@ const updateBatch = (req, res, next) => __awaiter(void 0, void 0, void 0, functi
         next(error);
     }
 });
+//Update Batch Notice
+const updateBatchNotice = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        console.log("Batch Notice Controller-----------");
+        const batchId = req.params.batchId;
+        const { batchNotice } = req.body;
+        console.log("Notice: ", batchNotice);
+        const result = yield batch_service_1.BatchService.updateBatchNoticeFromDB(batchId, batchNotice);
+        //Send Response
+        res.status(200).json({
+            message: "Batch Notice updated successfully",
+            status: true,
+            data: result,
+        });
+    }
+    catch (error) {
+        next(error);
+    }
+});
 exports.BatchController = {
     insertBatch,
     getAllBatch,
@@ -166,4 +185,5 @@ exports.BatchController = {
     getBatchForInstructorAssignation,
     deleteBatch,
     updateBatch,
+    updateBatchNotice,
 };

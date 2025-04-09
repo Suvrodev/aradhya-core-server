@@ -102,6 +102,10 @@ const batchSchema: Schema = new Schema<TBatch>(
         message: "Batch status must be one of: onGoing, upComing, ended",
       },
     },
+    batchNotice: {
+      type: String,
+      default: "",
+    },
 
     schedule: [
       {

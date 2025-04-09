@@ -21,4 +21,5 @@ router.get("/undercourse/:courseId", batch_controller_1.BatchController.getSpeci
 router.get("/underinstructor/:instructorid", batch_controller_1.BatchController.getBatchForInstructorAssignation);
 router.delete("/:batchId", batch_controller_1.BatchController.deleteBatch);
 router.patch("/:batchId", batch_controller_1.BatchController.updateBatch);
+router.patch("/batch-notice/:batchId", batch_controller_1.BatchController.updateBatchNotice);
 exports.BatchRoutes = router;

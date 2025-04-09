@@ -97,6 +97,22 @@ const updateBatchFromDB = async (batchId: string, payload: TBatch) => {
   return result;
 };
 
+//Update batch Notice
+const updateBatchNoticeFromDB = async (batchId: string, payload: string) => {
+  console.log("Update Batch Notice Service--------------");
+  console.log("Batch id: ", batchId);
+  console.log("Payload: ", payload);
+  const result = await BatchModel.updateOne(
+    { batchId: batchId },
+    { batchNotice: payload },
+    {
+      new: true,
+    }
+  );
+  console.log("Result: ", result);
+  return result;
+};
+
 export const BatchService = {
   insertBatchIntoDB,
   getAllBatchFromDB,
@@ -107,4 +123,5 @@ export const BatchService = {
   getBatchForInstructorAssignation,
   deleteBatchFromDB,
   updateBatchFromDB,
+  updateBatchNoticeFromDB,
 };

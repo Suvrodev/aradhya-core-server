@@ -99,6 +99,10 @@ const batchSchema = new mongoose_1.Schema({
             message: "Batch status must be one of: onGoing, upComing, ended",
         },
     },
+    batchNotice: {
+        type: String,
+        default: "",
+    },
     schedule: [
         {
             date: {

@@ -96,6 +96,17 @@ const updateBatchFromDB = (batchId, payload) => __awaiter(void 0, void 0, void 0
     });
     return result;
 });
+//Update batch Notice
+const updateBatchNoticeFromDB = (batchId, payload) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log("Update Batch Notice Service--------------");
+    console.log("Batch id: ", batchId);
+    console.log("Payload: ", payload);
+    const result = yield batch_model_1.BatchModel.updateOne({ batchId: batchId }, { batchNotice: payload }, {
+        new: true,
+    });
+    console.log("Result: ", result);
+    return result;
+});
 exports.BatchService = {
     insertBatchIntoDB,
     getAllBatchFromDB,
@@ -106,4 +117,5 @@ exports.BatchService = {
     getBatchForInstructorAssignation,
     deleteBatchFromDB,
     updateBatchFromDB,
+    updateBatchNoticeFromDB,
 };

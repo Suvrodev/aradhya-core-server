@@ -30,5 +30,6 @@ router.get(
 );
 router.delete("/:batchId", BatchController.deleteBatch);
 router.patch("/:batchId", BatchController.updateBatch);
+router.patch("/batch-notice/:batchId", BatchController.updateBatchNotice);
 
 export const BatchRoutes = router;
