@@ -39,6 +39,21 @@ const blogSchema = new Schema<TBlog>(
         message: "{VALUE} is not a valid category.",
       },
     },
+    writerId: {
+      type: String || Number,
+      required: [true, "Writer id is requires"],
+      default: "",
+    },
+    writerEmail: {
+      type: String,
+      required: [true, "Writer Email is requires"],
+      default: "",
+    },
+    isEnable: {
+      type: String,
+      enum: ["yes", "no"],
+      default: "no",
+    },
     pin: {
       type: String,
       enum: ["yes", "no"],

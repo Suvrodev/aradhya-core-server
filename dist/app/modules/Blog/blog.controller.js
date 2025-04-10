@@ -44,6 +44,21 @@ const getAllBlog = (req, res, next) => __awaiter(void 0, void 0, void 0, functio
         next(error);
     }
 });
+// Get All Blog By Admin
+const getAllBlogByAdmin = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const result = yield blog_service_1.BlogServices.getAllBlogByAdmin();
+        // Send response with the results
+        res.status(200).json({
+            message: "Blog retrieved successfully",
+            success: true,
+            data: result,
+        });
+    }
+    catch (error) {
+        next(error);
+    }
+});
 // Get Single Blog
 const getSingleBlog = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
@@ -111,11 +126,30 @@ const updateBlogPin = (req, res, next) => __awaiter(void 0, void 0, void 0, func
         next(error);
     }
 });
+//Update Blog isEnable
+const updateBlogIsEnable = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const blogId = req.params.id;
+        const blogBody = req === null || req === void 0 ? void 0 : req.body;
+        const result = yield blog_service_1.BlogServices.updateBlogIsEnableFromDB(blogId, blogBody);
+        //Send Response
+        res.status(200).json({
+            message: "isEnable updated successfully",
+            success: true,
+            data: result,
+        });
+    }
+    catch (error) {
+        next(error);
+    }
+});
 exports.BlogControllers = {
     createBlog,
     getAllBlog,
+    getAllBlogByAdmin,
     getSingleBlog,
     deleteBlog,
     updateBlog,
     updateBlogPin,
+    updateBlogIsEnable,
 };

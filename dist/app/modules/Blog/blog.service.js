@@ -22,11 +22,16 @@ const getAllBlog = (params) => __awaiter(void 0, void 0, void 0, function* () {
     console.log("params: ", params);
     let res;
     if (params == "yes") {
-        res = yield blog_model_1.BlogModel.find({ pin: "yes" }).select("title category image createdAt writer pin");
+        res = yield blog_model_1.BlogModel.find({ isEnable: "yes", pin: "yes" }).select("title category image createdAt writer pin");
     }
     else {
-        res = yield blog_model_1.BlogModel.find().select("title category image createdAt writer pin");
+        res = yield blog_model_1.BlogModel.find({ isEnable: "yes" }).select("title category image createdAt writer pin");
     }
+    return res;
+});
+///Get All Blog By admin  isEanble dont care
+const getAllBlogByAdmin = () => __awaiter(void 0, void 0, void 0, function* () {
+    const res = yield blog_model_1.BlogModel.find().select("title category image createdAt writer pin isEnable");
     return res;
 });
 //Get Single Blog
@@ -63,11 +68,22 @@ const updateBlogPinFromDB = (blogId, payload) => __awaiter(void 0, void 0, void 
     });
     return result;
 });
+//Update enable or disable
+const updateBlogIsEnableFromDB = (blogId, payload) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log("blog id:", blogId);
+    console.log("Update Data: ", payload);
+    const result = yield blog_model_1.BlogModel.findByIdAndUpdate({ _id: blogId }, payload, {
+        new: true,
+    });
+    return result;
+});
 exports.BlogServices = {
     createBlogIntoDB,
     getAllBlog,
+    getAllBlogByAdmin,
     getSingleBlogFromDB,
     deleteBlogFromDB,
     updateBlogFromDB,
     updateBlogPinFromDB,
+    updateBlogIsEnableFromDB,
 };

@@ -17,14 +17,23 @@ const getAllBlog = async (params: string) => {
   console.log("params: ", params);
   let res;
   if (params == "yes") {
-    res = await BlogModel.find({ pin: "yes" }).select(
+    res = await BlogModel.find({ isEnable: "yes", pin: "yes" }).select(
       "title category image createdAt writer pin"
     );
   } else {
-    res = await BlogModel.find().select(
+    res = await BlogModel.find({ isEnable: "yes" }).select(
       "title category image createdAt writer pin"
     );
   }
+  return res;
+};
+
+///Get All Blog By admin  isEanble dont care
+const getAllBlogByAdmin = async () => {
+  const res = await BlogModel.find().select(
+    "title category image createdAt writer pin isEnable"
+  );
+
   return res;
 };
 
@@ -68,11 +77,26 @@ const updateBlogPinFromDB = async (
   return result;
 };
 
+//Update enable or disable
+const updateBlogIsEnableFromDB = async (
+  blogId: string,
+  payload: { isEnable: string }
+) => {
+  console.log("blog id:", blogId);
+  console.log("Update Data: ", payload);
+  const result = await BlogModel.findByIdAndUpdate({ _id: blogId }, payload, {
+    new: true,
+  });
+  return result;
+};
+
 export const BlogServices = {
   createBlogIntoDB,
   getAllBlog,
+  getAllBlogByAdmin,
   getSingleBlogFromDB,
   deleteBlogFromDB,
   updateBlogFromDB,
   updateBlogPinFromDB,
+  updateBlogIsEnableFromDB,
 };
