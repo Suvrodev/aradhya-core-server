@@ -31,7 +31,12 @@ const getAllBlog = (params) => __awaiter(void 0, void 0, void 0, function* () {
 });
 ///Get All Blog By admin  isEanble dont care
 const getAllBlogByAdmin = () => __awaiter(void 0, void 0, void 0, function* () {
-    const res = yield blog_model_1.BlogModel.find().select("title category image createdAt writer pin isEnable");
+    const res = yield blog_model_1.BlogModel.find().select("title category image createdAt writer pin isEnable writerEmail");
+    return res;
+});
+///Get All Blog By Instructor own isEanble dont care
+const getAllBlogByInstructor = (writerEmail) => __awaiter(void 0, void 0, void 0, function* () {
+    const res = yield blog_model_1.BlogModel.find({ writerEmail: writerEmail }).select("title category image createdAt writer pin isEnable writerEmail");
     return res;
 });
 //Get Single Blog
@@ -81,6 +86,7 @@ exports.BlogServices = {
     createBlogIntoDB,
     getAllBlog,
     getAllBlogByAdmin,
+    getAllBlogByInstructor,
     getSingleBlogFromDB,
     deleteBlogFromDB,
     updateBlogFromDB,

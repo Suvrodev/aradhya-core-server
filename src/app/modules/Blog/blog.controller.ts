@@ -53,6 +53,22 @@ const getAllBlogByAdmin: RequestHandler = async (req, res, next) => {
   }
 };
 
+// Get All Blog By Instructor
+const getAllBlogByInstructor: RequestHandler = async (req, res, next) => {
+  try {
+    const email = req?.params?.email;
+    const result = await BlogServices.getAllBlogByInstructor(email);
+    // Send response with the results
+    res.status(200).json({
+      message: "Blog retrieved successfully",
+      success: true,
+      data: result,
+    });
+  } catch (error: any) {
+    next(error);
+  }
+};
+
 // Get Single Blog
 const getSingleBlog: RequestHandler = async (req, res, next) => {
   try {
@@ -148,6 +164,7 @@ export const BlogControllers = {
   createBlog,
   getAllBlog,
   getAllBlogByAdmin,
+  getAllBlogByInstructor,
   getSingleBlog,
   deleteBlog,
   updateBlog,

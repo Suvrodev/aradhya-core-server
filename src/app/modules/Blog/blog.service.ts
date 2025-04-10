@@ -31,9 +31,16 @@ const getAllBlog = async (params: string) => {
 ///Get All Blog By admin  isEanble dont care
 const getAllBlogByAdmin = async () => {
   const res = await BlogModel.find().select(
-    "title category image createdAt writer pin isEnable"
+    "title category image createdAt writer pin isEnable writerEmail"
   );
+  return res;
+};
 
+///Get All Blog By Instructor own isEanble dont care
+const getAllBlogByInstructor = async (writerEmail: string) => {
+  const res = await BlogModel.find({ writerEmail: writerEmail }).select(
+    "title category image createdAt writer pin isEnable writerEmail"
+  );
   return res;
 };
 
@@ -94,6 +101,7 @@ export const BlogServices = {
   createBlogIntoDB,
   getAllBlog,
   getAllBlogByAdmin,
+  getAllBlogByInstructor,
   getSingleBlogFromDB,
   deleteBlogFromDB,
   updateBlogFromDB,

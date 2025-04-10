@@ -59,6 +59,23 @@ const getAllBlogByAdmin = (req, res, next) => __awaiter(void 0, void 0, void 0, 
         next(error);
     }
 });
+// Get All Blog By Instructor
+const getAllBlogByInstructor = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    var _a;
+    try {
+        const email = (_a = req === null || req === void 0 ? void 0 : req.params) === null || _a === void 0 ? void 0 : _a.email;
+        const result = yield blog_service_1.BlogServices.getAllBlogByInstructor(email);
+        // Send response with the results
+        res.status(200).json({
+            message: "Blog retrieved successfully",
+            success: true,
+            data: result,
+        });
+    }
+    catch (error) {
+        next(error);
+    }
+});
 // Get Single Blog
 const getSingleBlog = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
@@ -147,6 +164,7 @@ exports.BlogControllers = {
     createBlog,
     getAllBlog,
     getAllBlogByAdmin,
+    getAllBlogByInstructor,
     getSingleBlog,
     deleteBlog,
     updateBlog,

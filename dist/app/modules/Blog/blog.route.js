@@ -11,6 +11,7 @@ const router = express_1.default.Router();
 router.post("/", blog_controller_1.BlogControllers.createBlog);
 router.get("/", blog_controller_1.BlogControllers.getAllBlog);
 router.get("/admin", blog_controller_1.BlogControllers.getAllBlogByAdmin);
+router.get("/instructor/:email", blog_controller_1.BlogControllers.getAllBlogByInstructor);
 router.get("/:id", blog_controller_1.BlogControllers.getSingleBlog);
 router.delete("/:id", blog_controller_1.BlogControllers.deleteBlog);
 router.patch("/update/:id", blog_controller_1.BlogControllers.updateBlog);

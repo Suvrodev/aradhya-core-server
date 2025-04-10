@@ -9,6 +9,7 @@ const router = express.Router();
 router.post("/", BlogControllers.createBlog);
 router.get("/", BlogControllers.getAllBlog);
 router.get("/admin", BlogControllers.getAllBlogByAdmin);
+router.get("/instructor/:email", BlogControllers.getAllBlogByInstructor);
 router.get("/:id", BlogControllers.getSingleBlog);
 router.delete("/:id", BlogControllers.deleteBlog);
 router.patch("/update/:id", BlogControllers.updateBlog);
