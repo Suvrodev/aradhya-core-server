@@ -19,7 +19,7 @@ const createCourseIntoDB = async (courseData: TCourse) => {
 
 // Get all Course
 const getAllCourseFromDB = async () => {
-  const result = await CourseModel.find({ courseExists: "yes" }).select(
+  const result = await CourseModel.find().select(
     "courseId refServiceId courseTitle courseImage courseClassNumber courseProjectNumber courseDuration courseDiscount courseExists"
   );
   return result;
