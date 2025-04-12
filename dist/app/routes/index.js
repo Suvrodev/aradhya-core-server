@@ -19,6 +19,7 @@ const instructor_route_1 = require("../modules/UInstructor/instructor.route");
 const authInstructor_route_1 = require("../modules/AuthInstructor/authInstructor.route");
 const forgetPasswordInstructor_route_1 = require("../modules/ForgetPasswordInstructor/forgetPasswordInstructor.route");
 const forgetPassword_route_1 = require("../modules/ForgetPassword/forgetPassword.route");
+const OurPeople_route_1 = require("../modules/OurPeople/OurPeople.route");
 const router = express_1.default.Router();
 const moduleRoutes = [
     {
@@ -56,6 +57,10 @@ const moduleRoutes = [
     {
         path: "/promo",
         route: promocode_route_1.PromocodeRoute,
+    },
+    {
+        path: "/people",
+        route: OurPeople_route_1.PeopleRoute,
     },
     {
         path: "/auth",

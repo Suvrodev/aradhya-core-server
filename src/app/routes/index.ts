@@ -14,6 +14,7 @@ import { instructorRoutes } from "../modules/UInstructor/instructor.route";
 import { AuthInstructorRoutes } from "../modules/AuthInstructor/authInstructor.route";
 import { ForgetPasswordInstructorRoute } from "../modules/ForgetPasswordInstructor/forgetPasswordInstructor.route";
 import { ForgetPasswordRoute } from "../modules/ForgetPassword/forgetPassword.route";
+import { PeopleRoute } from "../modules/OurPeople/OurPeople.route";
 
 const router = express.Router();
 
@@ -53,6 +54,10 @@ const moduleRoutes = [
   {
     path: "/promo",
     route: PromocodeRoute,
+  },
+  {
+    path: "/people",
+    route: PeopleRoute,
   },
   {
     path: "/auth",

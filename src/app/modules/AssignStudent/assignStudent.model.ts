@@ -28,6 +28,10 @@ const AssignStudentSchema: Schema = new Schema<TAssignStudent>(
       type: String,
       required: [true, "batchId is required"],
     },
+    batchName: {
+      type: String,
+      required: [true, "batchName is required"],
+    },
     coursePrice: {
       type: Number,
       required: [true, "coursePrice is required"],
