@@ -9,6 +9,7 @@ const OurPeople_controller_1 = require("./OurPeople.controller");
 const router = express_1.default.Router();
 router.post("/", OurPeople_controller_1.PeopleController.addOurPeople);
 router.get("/", OurPeople_controller_1.PeopleController.getAllOurPeople);
+router.get("/wm", OurPeople_controller_1.PeopleController.getAllOurPeopleWithMessage);
 router.get("/:peopleId", OurPeople_controller_1.PeopleController.getSpecificOurPeople);
 router.delete("/:peopleId", OurPeople_controller_1.PeopleController.deleteOurPeople);
 router.patch("/:peopleId", OurPeople_controller_1.PeopleController.updateOurPeople);

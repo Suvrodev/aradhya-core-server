@@ -102,6 +102,7 @@ const updatePasswordIntoDB = async (email: string, payload: IPassword) => {
 };
 //Update User
 const updatUserIntoDB = async (email: string, payload: TUser) => {
+  console.log("==============================================");
   console.log("User Mail in service: ", email);
   console.log("payload in service", payload);
 

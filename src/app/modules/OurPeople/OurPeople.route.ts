@@ -5,6 +5,7 @@ const router = express.Router();
 
 router.post("/", PeopleController.addOurPeople);
 router.get("/", PeopleController.getAllOurPeople);
+router.get("/wm", PeopleController.getAllOurPeopleWithMessage);
 router.get("/:peopleId", PeopleController.getSpecificOurPeople);
 router.delete("/:peopleId", PeopleController.deleteOurPeople);
 router.patch("/:peopleId", PeopleController.updateOurPeople);

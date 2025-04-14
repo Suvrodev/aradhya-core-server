@@ -33,6 +33,20 @@ const getAllOurPeople: RequestHandler = async (req, res, next) => {
     next(error);
   }
 };
+//Get All Our People With message
+const getAllOurPeopleWithMessage: RequestHandler = async (req, res, next) => {
+  try {
+    const result = await OurPeopleService.getAllOurPeopleWithMessageFromDB();
+    res.status(201).json({
+      success: true,
+      message: "Our People Retrived successfully",
+      statusCode: 201,
+      data: result,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
 
 //Get Specific Our People
 const getSpecificOurPeople: RequestHandler = async (req, res, next) => {
@@ -95,6 +109,7 @@ const updateOurPeople: RequestHandler = async (req, res, next) => {
 export const PeopleController = {
   addOurPeople,
   getAllOurPeople,
+  getAllOurPeopleWithMessage,
   getSpecificOurPeople,
   deleteOurPeople,
   updateOurPeople,

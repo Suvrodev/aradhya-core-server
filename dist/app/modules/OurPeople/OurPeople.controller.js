@@ -43,6 +43,21 @@ const getAllOurPeople = (req, res, next) => __awaiter(void 0, void 0, void 0, fu
         next(error);
     }
 });
+//Get All Our People With message
+const getAllOurPeopleWithMessage = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const result = yield OurPeople_service_1.OurPeopleService.getAllOurPeopleWithMessageFromDB();
+        res.status(201).json({
+            success: true,
+            message: "Our People Retrived successfully",
+            statusCode: 201,
+            data: result,
+        });
+    }
+    catch (error) {
+        next(error);
+    }
+});
 //Get Specific Our People
 const getSpecificOurPeople = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
@@ -101,6 +116,7 @@ const updateOurPeople = (req, res, next) => __awaiter(void 0, void 0, void 0, fu
 exports.PeopleController = {
     addOurPeople,
     getAllOurPeople,
+    getAllOurPeopleWithMessage,
     getSpecificOurPeople,
     deleteOurPeople,
     updateOurPeople,

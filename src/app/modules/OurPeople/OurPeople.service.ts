@@ -15,6 +15,16 @@ const getAllOurPeopleFromDB = async () => {
   return result;
 };
 
+// Get top 4 "Our People" who have a message, sorted by order
+const getAllOurPeopleWithMessageFromDB = async () => {
+  const result = await OurPeopleModel.find({
+    message: { $exists: true, $ne: "" },
+  })
+    .sort({ order: 1 }) // sort by order ascending
+    .limit(4); // limit to first 4
+  return result;
+};
+
 // Get specific Our People
 const getSpecificOurPeopleFromDB = async (id: string) => {
   const result = await OurPeopleModel.findOne({ _id: id });
@@ -42,6 +52,7 @@ const updateOurPeopleFromDB = async (id: string, payload: TOurPeople) => {
 export const OurPeopleService = {
   createOurPeopleIntoDB,
   getAllOurPeopleFromDB,
+  getAllOurPeopleWithMessageFromDB,
   getSpecificOurPeopleFromDB,
   deleteOurPeopleFromDB,
   updateOurPeopleFromDB,

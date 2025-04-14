@@ -94,6 +94,7 @@ const updatePasswordIntoDB = (email, payload) => __awaiter(void 0, void 0, void 
 });
 //Update User
 const updatUserIntoDB = (email, payload) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log("==============================================");
     console.log("User Mail in service: ", email);
     console.log("payload in service", payload);
     const result = yield user_model_1.userModel.updateOne({ email: email }, payload, {

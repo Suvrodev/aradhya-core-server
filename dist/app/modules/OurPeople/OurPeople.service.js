@@ -22,6 +22,15 @@ const getAllOurPeopleFromDB = () => __awaiter(void 0, void 0, void 0, function* 
     const result = yield OurPeople_model_1.OurPeopleModel.find().sort({ order: 1 }); // 1 for ascending
     return result;
 });
+// Get top 4 "Our People" who have a message, sorted by order
+const getAllOurPeopleWithMessageFromDB = () => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield OurPeople_model_1.OurPeopleModel.find({
+        message: { $exists: true, $ne: "" },
+    })
+        .sort({ order: 1 }) // sort by order ascending
+        .limit(4); // limit to first 4
+    return result;
+});
 // Get specific Our People
 const getSpecificOurPeopleFromDB = (id) => __awaiter(void 0, void 0, void 0, function* () {
     const result = yield OurPeople_model_1.OurPeopleModel.findOne({ _id: id });
@@ -46,6 +55,7 @@ const updateOurPeopleFromDB = (id, payload) => __awaiter(void 0, void 0, void 0,
 exports.OurPeopleService = {
     createOurPeopleIntoDB,
     getAllOurPeopleFromDB,
+    getAllOurPeopleWithMessageFromDB,
     getSpecificOurPeopleFromDB,
     deleteOurPeopleFromDB,
     updateOurPeopleFromDB,
