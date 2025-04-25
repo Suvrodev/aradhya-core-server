@@ -60,7 +60,6 @@ const CourseSchema: Schema = new Schema<TCourse>(
     },
     courseProjectNumber: {
       type: String,
-      required: [true, "Number of projects is required"],
     },
     courseReview: {
       type: Number,
@@ -130,7 +129,11 @@ const CourseSchema: Schema = new Schema<TCourse>(
         },
       },
     ],
+    courseOrder: {
+      type: Number,
+    },
   },
+
   { timestamps: true }
 );
 

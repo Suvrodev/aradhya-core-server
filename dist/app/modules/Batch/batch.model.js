@@ -78,7 +78,6 @@ const batchSchema = new mongoose_1.Schema({
     },
     instructorfb: {
         type: String,
-        required: [true, "Instructor Facebook profile link is required"],
         trim: true,
     },
     classdays: {

@@ -59,6 +59,7 @@ const loginInstructor = (payload) => __awaiter(void 0, void 0, void 0, function*
         studentId: isInstructorExists === null || isInstructorExists === void 0 ? void 0 : isInstructorExists.instructorId,
         phone: isInstructorExists === null || isInstructorExists === void 0 ? void 0 : isInstructorExists.phone,
         image: isInstructorExists === null || isInstructorExists === void 0 ? void 0 : isInstructorExists.image,
+        status: isInstructorExists === null || isInstructorExists === void 0 ? void 0 : isInstructorExists.status,
     };
     const accessToken = jsonwebtoken_1.default.sign(jwtPayload, config_1.default.jwt_access_token, {
         expiresIn: "30d",

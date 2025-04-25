@@ -10,10 +10,10 @@ export type TCourse = {
   courseDiscount?: number;
   courseDiscountReason?: string;
   courseYoutubeVideo?: string;
-  courseClassNumber: string;
 
+  courseClassNumber: string;
   courseDuration: string;
-  courseProjectNumber: string;
+  courseProjectNumber?: string;
   courseReview?: number;
   computerConfiguration: string;
   courseExists: string;
@@ -22,4 +22,5 @@ export type TCourse = {
   jobposition: string[];
   projects: string[];
   neededSoftware: { image: string; title: string }[];
+  courseOrder?: number;
 };

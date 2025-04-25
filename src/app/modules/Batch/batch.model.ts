@@ -80,7 +80,6 @@ const batchSchema: Schema = new Schema<TBatch>(
     },
     instructorfb: {
       type: String,
-      required: [true, "Instructor Facebook profile link is required"],
       trim: true,
     },
     classdays: {

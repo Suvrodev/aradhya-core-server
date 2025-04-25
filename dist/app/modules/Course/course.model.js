@@ -59,7 +59,6 @@ const CourseSchema = new mongoose_1.Schema({
     },
     courseProjectNumber: {
         type: String,
-        required: [true, "Number of projects is required"],
     },
     courseReview: {
         type: Number,
@@ -129,5 +128,8 @@ const CourseSchema = new mongoose_1.Schema({
             },
         },
     ],
+    courseOrder: {
+        type: Number,
+    },
 }, { timestamps: true });
 exports.CourseModel = (0, mongoose_1.model)("course", CourseSchema);

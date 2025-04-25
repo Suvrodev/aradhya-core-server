@@ -16,6 +16,7 @@ const blogSchema = new Schema<TBlog>(
           "Backend Development",
           "Full-Stack Development",
           "Graphics Design",
+          "3d Design",
           "UI/UX Design",
           "Motion Graphics",
           "Game Developing",
