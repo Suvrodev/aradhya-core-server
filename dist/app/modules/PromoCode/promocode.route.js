@@ -10,6 +10,7 @@ const router = express_1.default.Router();
 router.post("/", peomocode_controller_1.PromocodeController.addPromoCode);
 router.get("/", peomocode_controller_1.PromocodeController.getAllPromoCode);
 router.get("/:promoId", peomocode_controller_1.PromocodeController.getSpecificPromocode);
+router.get("/promocode/:promoCode", peomocode_controller_1.PromocodeController.getSpecificPromoBasedOnPromoCodeFromDB);
 router.delete("/:promoId", peomocode_controller_1.PromocodeController.deletePromocode);
 router.patch("/:promoId", peomocode_controller_1.PromocodeController.updatePromocode);
 exports.PromocodeRoute = router;

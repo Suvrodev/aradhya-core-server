@@ -23,8 +23,16 @@ const getAllPromoCodeFromDB = () => __awaiter(void 0, void 0, void 0, function* 
     return result;
 });
 //Get Specific Promocode
-const getSpecificPromoFromDB = (serviceId) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield promocode_model_1.promocodeModel.findOne({ promoId: serviceId });
+const getSpecificPromoFromDB = (promoId) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log("---------------------");
+    console.log("Promo id--: ", promoId);
+    const result = yield promocode_model_1.promocodeModel.findOne({ promoId: promoId });
+    console.log("Result: ", result);
+    return result;
+});
+//Get Specific Promocode based on PromoCode
+const getSpecificPromoBasedOnPromoCodeFromDB = (promoCode) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield promocode_model_1.promocodeModel.findOne({ promoCode: promoCode });
     return result;
 });
 //Delete Promocode from DB
@@ -34,17 +42,20 @@ const deletePromocodeFromDB = (promoId) => __awaiter(void 0, void 0, void 0, fun
 });
 //Update Promocode
 const UpdatePromoCodeIntoDBFromDB = (promoId, payload) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log("Service---------------------------------------------");
     console.log("promoId: ", promoId);
     console.log("payload", payload);
     const result = yield promocode_model_1.promocodeModel.updateOne({ promoId: promoId }, payload, {
         new: true,
     });
+    console.log("Fucking Result: ", result);
     return result;
 });
 exports.PromoCodeService = {
     addPromoCodeIntoDB,
     getAllPromoCodeFromDB,
     getSpecificPromoFromDB,
+    getSpecificPromoBasedOnPromoCodeFromDB,
     deletePromocodeFromDB,
     UpdatePromoCodeIntoDBFromDB,
 };

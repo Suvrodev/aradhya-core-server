@@ -62,6 +62,25 @@ const getSpecificPromocode = (req, res, next) => __awaiter(void 0, void 0, void 
         next(error);
     }
 });
+//Get Specific Promocode based on PromoCode
+const getSpecificPromoBasedOnPromoCodeFromDB = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    var _a;
+    try {
+        const promoCode = (_a = req === null || req === void 0 ? void 0 : req.params) === null || _a === void 0 ? void 0 : _a.promoCode;
+        console.log("Promo Code: ", promoCode);
+        const result = yield promocode_service_1.PromoCodeService.getSpecificPromoBasedOnPromoCodeFromDB(promoCode);
+        console.log("Result: ", result);
+        res.status(201).json({
+            success: true,
+            message: "Promocode Retrived successfully",
+            statusCode: 201,
+            data: result,
+        });
+    }
+    catch (error) {
+        next(error);
+    }
+});
 //Delete Promocode
 const deletePromocode = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
@@ -84,8 +103,11 @@ const deletePromocode = (req, res, next) => __awaiter(void 0, void 0, void 0, fu
 //Update Promocode
 const updatePromocode = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
+        console.log("Controller-----------------------------------------");
         const promoId = req.params.promoId;
         const promoCodeBody = req.body;
+        console.log("Promo id: ", promoId);
+        console.log("Promo Code Body: ", promoCodeBody);
         const result = yield promocode_service_1.PromoCodeService.UpdatePromoCodeIntoDBFromDB(promoId, promoCodeBody);
         //Send Response
         res.status(200).json({
@@ -102,6 +124,7 @@ exports.PromocodeController = {
     addPromoCode,
     getAllPromoCode,
     getSpecificPromocode,
+    getSpecificPromoBasedOnPromoCodeFromDB,
     deletePromocode,
     updatePromocode,
 };

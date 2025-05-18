@@ -15,8 +15,18 @@ const getAllPromoCodeFromDB = async () => {
 };
 
 //Get Specific Promocode
-const getSpecificPromoFromDB = async (serviceId: string) => {
-  const result = await promocodeModel.findOne({ promoId: serviceId });
+const getSpecificPromoFromDB = async (promoId: string) => {
+  console.log("---------------------");
+  console.log("Promo id--: ", promoId);
+  const result = await promocodeModel.findOne({ promoId: promoId });
+  console.log("Result: ", result);
+
+  return result;
+};
+
+//Get Specific Promocode based on PromoCode
+const getSpecificPromoBasedOnPromoCodeFromDB = async (promoCode: string) => {
+  const result = await promocodeModel.findOne({ promoCode: promoCode });
   return result;
 };
 
@@ -31,12 +41,14 @@ const UpdatePromoCodeIntoDBFromDB = async (
   promoId: string,
   payload: TPromocode
 ) => {
+  console.log("Service---------------------------------------------");
   console.log("promoId: ", promoId);
   console.log("payload", payload);
 
   const result = await promocodeModel.updateOne({ promoId: promoId }, payload, {
     new: true,
   });
+  console.log("Fucking Result: ", result);
   return result;
 };
 
@@ -44,6 +56,7 @@ export const PromoCodeService = {
   addPromoCodeIntoDB,
   getAllPromoCodeFromDB,
   getSpecificPromoFromDB,
+  getSpecificPromoBasedOnPromoCodeFromDB,
   deletePromocodeFromDB,
   UpdatePromoCodeIntoDBFromDB,
 };

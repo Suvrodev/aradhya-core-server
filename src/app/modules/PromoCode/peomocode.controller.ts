@@ -51,6 +51,28 @@ const getSpecificPromocode: RequestHandler = async (req, res, next) => {
     next(error);
   }
 };
+//Get Specific Promocode based on PromoCode
+const getSpecificPromoBasedOnPromoCodeFromDB: RequestHandler = async (
+  req,
+  res,
+  next
+) => {
+  try {
+    const promoCode = req?.params?.promoCode;
+    console.log("Promo Code: ", promoCode);
+    const result =
+      await PromoCodeService.getSpecificPromoBasedOnPromoCodeFromDB(promoCode);
+    console.log("Result: ", result);
+    res.status(201).json({
+      success: true,
+      message: "Promocode Retrived successfully",
+      statusCode: 201,
+      data: result,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
 
 //Delete Promocode
 const deletePromocode: RequestHandler = async (req, res, next) => {
@@ -73,8 +95,11 @@ const deletePromocode: RequestHandler = async (req, res, next) => {
 //Update Promocode
 const updatePromocode: RequestHandler = async (req, res, next) => {
   try {
+    console.log("Controller-----------------------------------------");
     const promoId = req.params.promoId;
     const promoCodeBody = req.body;
+    console.log("Promo id: ", promoId);
+    console.log("Promo Code Body: ", promoCodeBody);
 
     const result = await PromoCodeService.UpdatePromoCodeIntoDBFromDB(
       promoId,
@@ -96,6 +121,7 @@ export const PromocodeController = {
   addPromoCode,
   getAllPromoCode,
   getSpecificPromocode,
+  getSpecificPromoBasedOnPromoCodeFromDB,
   deletePromocode,
   updatePromocode,
 };

@@ -26,6 +26,7 @@ app.use((0, cors_1.default)({
     origin: [
         "http://localhost:5173",
         "https://aradhyacore.netlify.app",
+        "https://www.aradhyacore.com",
         "https://aradhyacore.com",
     ],
     credentials: true,

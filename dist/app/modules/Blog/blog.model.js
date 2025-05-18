@@ -21,6 +21,7 @@ const blogSchema = new mongoose_1.Schema({
                 "Motion Graphics",
                 "Game Developing",
                 "UnReal engine",
+                "Netwrorking",
                 "C",
                 "C++",
                 "Python",
