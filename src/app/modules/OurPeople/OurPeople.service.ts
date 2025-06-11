@@ -27,7 +27,7 @@ const getAllOurPeopleWithMessageFromDB = async () => {
 
 // Get specific Our People
 const getSpecificOurPeopleFromDB = async (id: string) => {
-  const result = await OurPeopleModel.findOne({ _id: id });
+  const result = await OurPeopleModel.findOne({ instructorId: id });
   return result;
 };
 

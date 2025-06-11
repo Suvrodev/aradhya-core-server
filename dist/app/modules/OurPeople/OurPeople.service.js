@@ -33,7 +33,7 @@ const getAllOurPeopleWithMessageFromDB = () => __awaiter(void 0, void 0, void 0,
 });
 // Get specific Our People
 const getSpecificOurPeopleFromDB = (id) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield OurPeople_model_1.OurPeopleModel.findOne({ _id: id });
+    const result = yield OurPeople_model_1.OurPeopleModel.findOne({ instructorId: id });
     return result;
 });
 //delete Our People
