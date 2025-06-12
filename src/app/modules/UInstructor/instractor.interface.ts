@@ -12,6 +12,7 @@ export type TInstructor = {
   deviceType: string;
   internetType: string;
   areaType: string;
+  bloodGroup: "A+" | "A-" | "B+" | "B-" | "AB+" | "AB-" | "O+" | "O-";
   presentAddress: string;
   permanentAddress: string;
   currentEducation: string;

@@ -45,6 +45,10 @@ const instructorSchema = new Schema<TInstructor>(
     deviceType: { type: String, default: "" },
     internetType: { type: String, default: "" },
     areaType: { type: String, default: "" },
+    bloodGroup: {
+      type: String,
+      enum: ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"],
+    },
     presentAddress: { type: String, default: "" },
     permanentAddress: { type: String, default: "" },
     currentEducation: { type: String, default: "" },
