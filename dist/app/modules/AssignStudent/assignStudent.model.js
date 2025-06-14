@@ -42,7 +42,7 @@ const AssignStudentSchema = new mongoose_1.Schema({
     },
     promoCodeStatus: {
         type: String,
-        required: [true, "promoCodeStatus is required"],
+        // required: [true, "promoCodeStatus is required"],
     },
     promoCode: {
         type: String,

@@ -42,7 +42,7 @@ const AssignStudentSchema: Schema = new Schema<TAssignStudent>(
     },
     promoCodeStatus: {
       type: String,
-      required: [true, "promoCodeStatus is required"],
+      // required: [true, "promoCodeStatus is required"],
     },
     promoCode: {
       type: String,
