@@ -15,6 +15,7 @@ import { AuthInstructorRoutes } from "../modules/AuthInstructor/authInstructor.r
 import { ForgetPasswordInstructorRoute } from "../modules/ForgetPasswordInstructor/forgetPasswordInstructor.route";
 import { ForgetPasswordRoute } from "../modules/ForgetPassword/forgetPassword.route";
 import { PeopleRoute } from "../modules/OurPeople/OurPeople.route";
+import { userGoogleRoutes } from "../modules/userGoogle/usergoogle.route";
 
 const router = express.Router();
 
@@ -62,6 +63,10 @@ const moduleRoutes = [
   {
     path: "/auth",
     route: userRoutes,
+  },
+  {
+    path: "/google-auth",
+    route: userGoogleRoutes,
   },
   {
     path: "/i-auth",

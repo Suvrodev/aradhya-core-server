@@ -20,6 +20,7 @@ const authInstructor_route_1 = require("../modules/AuthInstructor/authInstructor
 const forgetPasswordInstructor_route_1 = require("../modules/ForgetPasswordInstructor/forgetPasswordInstructor.route");
 const forgetPassword_route_1 = require("../modules/ForgetPassword/forgetPassword.route");
 const OurPeople_route_1 = require("../modules/OurPeople/OurPeople.route");
+const usergoogle_route_1 = require("../modules/userGoogle/usergoogle.route");
 const router = express_1.default.Router();
 const moduleRoutes = [
     {
@@ -65,6 +66,10 @@ const moduleRoutes = [
     {
         path: "/auth",
         route: user_route_1.userRoutes,
+    },
+    {
+        path: "/google-auth",
+        route: usergoogle_route_1.userGoogleRoutes,
     },
     {
         path: "/i-auth",

@@ -14,7 +14,7 @@ const userSchema = new mongoose_1.Schema({
     },
     phone: {
         type: String,
-        required: [true, "Phone Number is required"],
+        // required: [true, "Phone Number is required"],
         trim: true,
     },
     email: {
@@ -30,7 +30,7 @@ const userSchema = new mongoose_1.Schema({
     },
     password: {
         type: String,
-        required: [true, "Password Must be required"],
+        // required: [true, "Password Must be required"],
         maxlength: [30, "Password can not be more than 30 character"],
     },
     image: {

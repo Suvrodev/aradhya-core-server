@@ -6,6 +6,7 @@ import validateRequest from "../../middleware/validateRequest";
 import auth from "../../middleware/auth";
 const router = express.Router();
 
+//Register
 router.post("/register", userControllers.registerUser);
 //Get All User
 // router.get("/allusers", auth("admin"), userControllers.getAllUsers);
