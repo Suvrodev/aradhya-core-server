@@ -23,6 +23,7 @@ const registerUserIntoDBByGoogle = async (payload: TUser) => {
 
     payload.studentId = studentId;
     payload.role = "student";
+    // payload.image = (payload as any)?.picture;
     user = await userModel.create(payload);
   }
 

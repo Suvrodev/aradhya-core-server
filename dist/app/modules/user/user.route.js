@@ -6,9 +6,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.userRoutes = void 0;
 const express_1 = __importDefault(require("express"));
 const user_controller_1 = require("./user.controller");
+const user_newcontroller_1 = require("./registrationPro/user.newcontroller");
 const router = express_1.default.Router();
 //Register
 router.post("/register", user_controller_1.userControllers.registerUser);
+//New Register with toke
+router.post("/register-new", user_newcontroller_1.userNewControllers.newRegisterUser);
 //Get All User
 // router.get("/allusers", auth("admin"), userControllers.getAllUsers);
 router.get("/allusers", user_controller_1.userControllers.getAllUsers);

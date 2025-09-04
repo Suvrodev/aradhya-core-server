@@ -33,6 +33,7 @@ const registerUserIntoDBByGoogle = (payload) => __awaiter(void 0, void 0, void 0
         }
         payload.studentId = studentId;
         payload.role = "student";
+        // payload.image = (payload as any)?.picture;
         user = yield user_model_1.userModel.create(payload);
     }
     // ✅ Ensure user is not null
