@@ -24,6 +24,10 @@ const AssignStudentSchema = new mongoose_1.Schema({
         type: String,
         required: [true, "courseId is required"],
     },
+    courseName: {
+        type: String,
+        required: [true, "Course Name is required"],
+    },
     batchId: {
         type: String,
         required: [true, "batchId is required"],

@@ -6,6 +6,7 @@ export type TAssignStudent = {
   studentEmail: string;
   studentPhone: string;
   courseId: string;
+  courseName: string;
   batchId: string;
   batchName: string;
   coursePrice: number;

@@ -1,10 +1,17 @@
 import { TAssignStudent } from "./assignStudent.interface";
 import { AssignStudentModel } from "./assignStudent.model";
+import { sendAssignStudentMail } from "./assignStudentMail";
 
 //Insert AssignStudent
 const createAssignStudentIntoDB = async (assignStudent: TAssignStudent) => {
   console.log("Assign Student: ", assignStudent);
   const result = await AssignStudentModel.create(assignStudent);
+  await sendAssignStudentMail(
+    assignStudent.studentName,
+    assignStudent.studentEmail,
+    assignStudent.courseName
+  );
+
   return result;
 };
 

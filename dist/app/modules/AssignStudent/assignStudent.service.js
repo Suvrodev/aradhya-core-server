@@ -11,10 +11,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AssignStudentServices = void 0;
 const assignStudent_model_1 = require("./assignStudent.model");
+const assignStudentMail_1 = require("./assignStudentMail");
 //Insert AssignStudent
 const createAssignStudentIntoDB = (assignStudent) => __awaiter(void 0, void 0, void 0, function* () {
     console.log("Assign Student: ", assignStudent);
     const result = yield assignStudent_model_1.AssignStudentModel.create(assignStudent);
+    yield (0, assignStudentMail_1.sendAssignStudentMail)(assignStudent.studentName, assignStudent.studentEmail, assignStudent.courseName);
     return result;
 });
 // // Get all Assign Student
